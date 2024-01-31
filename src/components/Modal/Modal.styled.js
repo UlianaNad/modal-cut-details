@@ -71,7 +71,7 @@ export const WrapButtons = styled.div`
   bottom: 20px;
   display: flex;
   flex-direction: row;
-  /* margin-top: 27px; */
+  margin-top: 27px;
   justify-content: space-between;
 `;
 
@@ -137,6 +137,7 @@ export const StyledMoreButton = styled.button`
   &:hover {
     background-color: #c48000;
   }
+
   @media (max-width: 425px) {
     font-size: 12px;
     padding: 5px 10px;

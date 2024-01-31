@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
-import Modal from './Modal/Modal';
-import styled from 'styled-components';
-import { products } from './data/data';
-import { useState } from 'react';
+import React, { useEffect } from "react";
+import Modal from "./Modal/Modal";
+import styled from "styled-components";
+import { products } from "./data/data";
+import { useState } from "react";
 
 export const App = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,32 +10,23 @@ export const App = () => {
   const [countDetails, setCountDetails] = useState(1);
   const [details, setDetails] = useState([]);
 
-  useEffect(() => {
-    if (product) {
-      window.localStorage.setItem(
-        `detailsToCut${product.id}`,
-        JSON.stringify(details)
-      );
-    }
-  }, [details, product]);
-
-  const toggleModal = product => {
+  const toggleModal = (product) => {
     const body = document.body;
     if (!isOpen) {
-      body.classList.add('modal-open');
+      body.classList.add("modal-open");
     } else {
-      body.classList.remove('modal-open');
+      body.classList.remove("modal-open");
       setDetails([]);
     }
 
-    setIsOpen(prev => !prev);
+    setIsOpen((prev) => !prev);
     setProduct(product);
   };
 
   return (
     <AppWrapper>
       <StyledUl>
-        {products.map(product => (
+        {products.map((product) => (
           <Item onClick={() => toggleModal(product)} key={product.id}>
             {product.name}
             <br />

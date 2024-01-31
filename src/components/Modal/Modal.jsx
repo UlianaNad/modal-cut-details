@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   StyledModal,
   StyledOverlay,
@@ -27,6 +27,15 @@ const Modal = ({
   const [newDetail, setNewDetail] = useState({});
   const [language, setLanguage] = useState("ua");
   const [isSavedDetail, setIsSavedDetail] = useState(false);
+
+  useEffect(() => {
+    if (product) {
+      window.localStorage.setItem(
+        `detailsToCut${product.id}`,
+        JSON.stringify(details)
+      );
+    }
+  }, [details, product]);
 
   const handleClickOutside = (e) => {
     if (e.target === e.currentTarget) {
@@ -68,6 +77,7 @@ const Modal = ({
     setDetails((prevDetails) => [...prevDetails, newDetail]);
     close();
   };
+
   return (
     <StyledOverlay onClick={handleClickOutside}>
       <StyledModal>

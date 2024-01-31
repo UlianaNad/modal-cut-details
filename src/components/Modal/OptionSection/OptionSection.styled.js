@@ -24,7 +24,10 @@ export const StyledDimensions = styled.ul`
 `;
 
 export const StyledLi = styled.li`
-  width: calc(100% / 2 - 10px);
+  // width: calc(100% / 2 - 10px);
+  @media (max-width: 915px) {
+    //   width: 100%;
+  }
 `;
 export const StyledInput = styled.input`
   /* width: 220px; */
@@ -310,12 +313,11 @@ export const StyledInputCheckbox = styled.input`
 `;
 export const DeleteDetailButton = styled.button`
   position: absolute;
-  bottom: -50px;
-  right: 5px;
+
+  right: 2px;
   display: inline-block;
   padding: 10px 20px;
-  /* margin-bottom: 10px;
-  margin-top: 5px; */
+
   font-size: 15px;
   font-weight: bold;
   line-height: 1.42857143;

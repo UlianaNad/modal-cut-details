@@ -87,12 +87,6 @@ const OptionSection = ({
         <form onSubmit={handleFormSubmit}>
           <Wrapper>
             <StyledBlockName>Деталь</StyledBlockName>
-            <DeleteDetailButton
-              type="button"
-              onClick={() => handleDeleteDetail(detail?.id)}
-            >
-              {language === "ua" ? "Видалити деталь" : "Удалить деталь"}
-            </DeleteDetailButton>
 
             <StyledBlockName>
               {language === "ua" ? "Розміри деталі:" : "Рaзмeры детали:"}
@@ -223,6 +217,12 @@ const OptionSection = ({
               rows="6"
             ></StyledTextArea>
           </div>
+          <DeleteDetailButton
+            type="button"
+            onClick={() => handleDeleteDetail(detail?.id)}
+          >
+            {language === "ua" ? "Видалити деталь" : "Удалить деталь"}
+          </DeleteDetailButton>
         </form>
       </div>
     </WrapOptions>

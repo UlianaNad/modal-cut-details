@@ -26,6 +26,7 @@ const Detail = ({
   const [customAmount, setCustomAmount] = useState(null);
   const [comment, setComment] = useState("");
   const [selected, setSelected] = useState(null);
+  const [isSaved, setIsSaved] = useState(false);
 
   const toggleDetail = (i) => {
     if (selected === i) {
@@ -84,6 +85,7 @@ const Detail = ({
       setNewDetail(data);
       toggleDetail(i);
       setIsSavedDetail(true);
+      setIsSaved(true);
     }
   };
 
@@ -100,7 +102,7 @@ const Detail = ({
       {/* )} */}
       {selected !== i ? (
         <>
-          <WrapSections>
+          <WrapSections $isSaved={isSaved}>
             <ChosenItem
               product={product}
               width={width}
@@ -128,9 +130,11 @@ const Detail = ({
               handleDeleteDetail={handleDeleteDetail}
             />
           </WrapSections>
-          <StyledSaveButton onClick={() => handleAddNewDetail(newDetail)}>
-            {language === "ua" ? "Зберегти деталь" : "Сохранить деталь"}
-          </StyledSaveButton>
+          {!isSaved && (
+            <StyledSaveButton onClick={() => handleAddNewDetail(newDetail)}>
+              {language === "ua" ? "Зберегти деталь" : "Сохранить деталь"}
+            </StyledSaveButton>
+          )}
         </>
       ) : null}
     </WrapDetail>
@@ -142,8 +146,8 @@ export default Detail;
 export const StyledSaveButton = styled.button`
   display: inline-block;
   padding: 10px 20px;
-  margin-bottom: 10px;
-  margin-top: 5px;
+  //margin-bottom: 80px;
+  //  margin-top: 9px;
   font-size: 15px;
   font-weight: bold;
   line-height: 1.4;
@@ -153,7 +157,7 @@ export const StyledSaveButton = styled.button`
   color: #fff;
   border: 0;
   background-color: #ffa700;
-  margin-left: 557px;
+  margin-left: 52%;
   transition: 0.4s;
   text-transform: uppercase;
 
@@ -165,6 +169,9 @@ export const StyledSaveButton = styled.button`
     padding: 5px 10px;
     margin-right: 0;
     min-width: 0;
+  }
+  @media (max-width: 915px) {
+    margin-left: 0;
   }
 `;
 export const WrapToggleDiv = styled.div`
