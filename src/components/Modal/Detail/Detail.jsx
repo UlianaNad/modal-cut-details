@@ -4,6 +4,7 @@ import OptionSection from "../OptionSection/OptionSection";
 
 import { WrapDetail, WrapSections } from "./Detail.styled";
 import styled from "styled-components";
+import { toast } from "react-toastify";
 
 const Detail = ({
   i,
@@ -76,18 +77,24 @@ const Detail = ({
     comment,
   };
   const handleAddNewDetail = (data) => {
-    setNewDetail(data);
-    toggleDetail(i);
-    setIsSavedDetail(true);
+    if (width === null || height === null || customAmount === null) {
+      toast.error("Вкажіть розмір деталі і кількість!");
+      return;
+    } else {
+      setNewDetail(data);
+      toggleDetail(i);
+      setIsSavedDetail(true);
+    }
   };
-  console.log(isSavedDetail);
+
   return (
     <WrapDetail>
       {/* {selected !== i ? null : ( */}
       <WrapToggleDiv onClick={() => toggleDetail(i)}>
-        <h2>
-          Деталь з шириною {width}мм і висотою {height} мм
-        </h2>
+        <p>
+          Деталь з шириною {width ? width : 0} мм і висотою{" "}
+          {height ? height : 0} мм
+        </p>
         <span>{selected !== i ? "-" : "+"}</span>
       </WrapToggleDiv>
       {/* )} */}
@@ -164,10 +171,16 @@ export const WrapToggleDiv = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #ffeac4;
+  border-bottom: 1px solid #c48000;
   cursor: pointer;
-  margin-top: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
-  transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  /* margin-top: 20px; */
+  color: #001a34;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.4;
+  /* margin-bottom: 10px; */
+
+  span {
+    transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
 `;

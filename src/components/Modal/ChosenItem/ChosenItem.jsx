@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import {
   Example,
   ExampleItem,
@@ -9,7 +9,7 @@ import {
   StyledSpan,
   TopArrow,
   WrapInfo,
-} from './ChosenItem.styled';
+} from "./ChosenItem.styled";
 
 const ChosenItem = ({
   detail,
@@ -42,54 +42,54 @@ const ChosenItem = ({
 
   return (
     <section>
-      <StyledItemName>{product.name}</StyledItemName>
+      <StyledItemName></StyledItemName>
 
       <WrapInfo>
         <StyledOption>
-          {language === 'ua' ? 'Розмір товару:' : 'Розмeр товара:'}
+          {language === "ua" ? "Розмір товару:" : "Розмeр товара:"}
         </StyledOption>
         <StyledSpan>
-          {language === 'ua' ? 'ширина ' : 'ширина '}
+          {language === "ua" ? "ширина " : "ширина "}
           {product.dimensions.width} мм
-          {language === 'ua' ? ' і висота ' : 'и высота '}
+          {language === "ua" ? " і висота " : "и высота "}
           {product.dimensions.height} мм
         </StyledSpan>
       </WrapInfo>
 
       <WrapInfo>
         <StyledOption>
-          {language === 'ua' ? 'Товщина листа:' : 'Толщина листа:'}
+          {language === "ua" ? "Товщина листа:" : "Толщина листа:"}
         </StyledOption>
         <StyledSpan>{product.dimensions.thickness} мм</StyledSpan>
       </WrapInfo>
       <WrapInfo>
         <StyledOption>
-          {language === 'ua'
-            ? 'Кількість листів у розкрої:'
-            : 'Количество листов в разкрое:'}
+          {language === "ua"
+            ? "Кількість листів у розкрої:"
+            : "Количество листов в разкрое:"}
         </StyledOption>
         <StyledSpan>
           {computedValues.possibleAmountOfPieces
             ? computedValues.possibleAmountOfPieces
-            : 0}{' '}
+            : 0}{" "}
           шт.
         </StyledSpan>
       </WrapInfo>
       <WrapInfo>
         <StyledOption>
-          {language === 'ua' ? 'Ціна за 1 лист: ' : 'Цена за 1 лист: '}
+          {language === "ua" ? "Ціна за 1 лист: " : "Цена за 1 лист: "}
         </StyledOption>
         <StyledSpan>
-          {' '}
+          {" "}
           {product.offers.price} {product.offers.priceCurrency}
         </StyledSpan>
       </WrapInfo>
 
       <WrapInfo>
         <StyledOption>
-          {language === 'ua'
-            ? 'Загальна вартість листів для порізки: '
-            : 'Общее стоимость листов для порезки:'}
+          {language === "ua"
+            ? "Загальна вартість листів для порізки: "
+            : "Общее стоимость листов для порезки:"}
         </StyledOption>
         <StyledSpan>
           {computedValues.totalPrice ? computedValues.totalPrice : 0} грн.
@@ -98,7 +98,7 @@ const ChosenItem = ({
       {edgeWidth ? (
         <WrapInfo>
           <StyledOption>
-            {language === 'ua' ? 'Товщина кромки:' : 'Толщина кромки:'}
+            {language === "ua" ? "Товщина кромки:" : "Толщина кромки:"}
           </StyledOption>
           <StyledSpan>{edgeWidth ? edgeWidth : 0}</StyledSpan>
         </WrapInfo>
@@ -106,7 +106,7 @@ const ChosenItem = ({
 
       <HiddenOnPhone>
         <StyledItemName>
-          {language === 'ua' ? 'Візуалізація порізки' : 'Визуализация порезки'}
+          {language === "ua" ? "Візуалізація порізки" : "Визуализация порезки"}
         </StyledItemName>
         <Example $width={width} $height={height}>
           <LeftArrow></LeftArrow>

@@ -26,7 +26,7 @@ export const StyledModal = styled.div`
   }
 `;
 export const StyledCloseButton = styled.button`
-  position: absolute;
+  //position: absolute;
   right: 4px;
   display: flex;
   padding: 4px 5px;
@@ -65,16 +65,21 @@ export const StyledCloseButton = styled.button`
   }
 `;
 export const WrapButtons = styled.div`
+  position: fixed;
+  width: calc(100vw - 120px);
+  gap: 20px;
+  bottom: 20px;
   display: flex;
-  flex-direction: column;
-  margin-top: 65px;
+  flex-direction: row;
+  /* margin-top: 27px; */
+  justify-content: space-between;
 `;
 
 export const WrapDetail = styled.div`
   position: relative;
 `;
 export const StyledButton = styled.button`
-  width: ${(props) => (props.$edge ? `calc(50% - 10px)` : `calc(100%)`)};
+  /* width: ${(props) => (props.$edge ? `calc(50% - 10px)` : `calc(100%)`)}; */
 
   display: inline-block;
   padding: 10px 20px;
@@ -138,4 +143,15 @@ export const StyledMoreButton = styled.button`
     margin-right: 0;
     min-width: 0;
   }
+`;
+
+export const StyledText = styled.p`
+  text-align: center;
+  margin-top: 30px;
+`;
+export const ModalHeader = styled.div`
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
 `;

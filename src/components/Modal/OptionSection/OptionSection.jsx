@@ -37,8 +37,6 @@ const OptionSection = ({
   const [rotation, setRotation] = useState(90);
   const [edgeBlock, setEdgeBlock] = useState(false);
 
-  // const { language } = useContext(ProductContext);
-
   const { dimensions } = product;
 
   const hoverContent = {
