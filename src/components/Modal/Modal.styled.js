@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const StyledOverlay = styled.div`
   position: fixed;
@@ -67,14 +67,14 @@ export const StyledCloseButton = styled.button`
 export const WrapButtons = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 35px;
+  margin-top: 65px;
 `;
 
 export const WrapDetail = styled.div`
   position: relative;
 `;
 export const StyledButton = styled.button`
-  width: ${props => (props.$edge ? `calc(50% - 10px)` : `calc(100%)`)};
+  width: ${(props) => (props.$edge ? `calc(50% - 10px)` : `calc(100%)`)};
 
   display: inline-block;
   padding: 10px 20px;
@@ -106,5 +106,36 @@ export const StyledButton = styled.button`
     font-size: 12px;
     padding: 5px 10px;
     margin-right: 0;
+  }
+`;
+export const StyledMoreButton = styled.button`
+  display: inline-block;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  margin-top: 5px;
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+  border-radius: 4px;
+  color: #fff;
+  border: 0;
+  background-color: #ffa700;
+
+  position: relative;
+  overflow: hidden;
+  transition: 0.4s;
+  text-transform: uppercase;
+
+  &:hover {
+    background-color: #c48000;
+  }
+  @media (max-width: 425px) {
+    font-size: 12px;
+    padding: 5px 10px;
+    margin-right: 0;
+    min-width: 0;
   }
 `;

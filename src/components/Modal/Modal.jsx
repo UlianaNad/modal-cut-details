@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   StyledModal,
   StyledOverlay,
   StyledCloseButton,
   WrapButtons,
   StyledButton,
-} from './Modal.styled';
+  StyledMoreButton,
+} from "./Modal.styled";
 
-import Detail from './Detail/Detail';
-import { StyledMoreButton } from './Detail/Detail.styled';
+import Detail from "./Detail/Detail";
 
 const Modal = ({
   close,
@@ -19,19 +19,20 @@ const Modal = ({
   setDetails,
 }) => {
   const [newDetail, setNewDetail] = useState({});
-  const [language, setLanguage] = useState('ua');
+  const [language, setLanguage] = useState("ua");
+  const [isSavedDetail, setIsSavedDetail] = useState(false);
 
-  const handleClickOutside = e => {
+  const handleClickOutside = (e) => {
     if (e.target === e.currentTarget) {
       close();
     }
   };
 
-  const handleClickChangeLanguage = e => {
-    if (e.target.dataset.lang === 'ua') {
-      setLanguage('ua');
-    } else if (e.target.dataset.lang === 'ru') {
-      setLanguage('ru');
+  const handleClickChangeLanguage = (e) => {
+    if (e.target.dataset.lang === "ua") {
+      setLanguage("ua");
+    } else if (e.target.dataset.lang === "ru") {
+      setLanguage("ru");
     }
   };
 
@@ -40,18 +41,25 @@ const Modal = ({
   };
 
   const handleAddDetail = () => {
-    setDetails(prevDetails => [...prevDetails, newDetail]);
-    setCountDetails(prev => prev + 1);
+    setIsSavedDetail(false);
+    setDetails((prevDetails) => [...prevDetails, newDetail]);
+    setCountDetails((prev) => prev + 1);
     setNewDetail({});
   };
 
-  const handleDeleteDetail = id => {
-    const newDet = details.filter(detail => detail.id !== id);
-    setDetails(newDet);
+  const handleDeleteDetail = (id) => {
+    console.log(id);
+    if (id === undefined) {
+      close();
+    } else {
+      const newDet = details.filter((detail) => detail.id !== id);
+      setDetails(newDet);
+      setIsSavedDetail(true);
+    }
   };
 
   const handleSubmit = () => {
-    setDetails(prevDetails => [...prevDetails, newDetail]);
+    setDetails((prevDetails) => [...prevDetails, newDetail]);
     close();
   };
   return (
@@ -78,20 +86,23 @@ const Modal = ({
           </svg>
         </StyledCloseButton>
         <Detail
+          i={1}
           handleDeleteDetail={handleDeleteDetail}
           product={product}
           setDetails={setDetails}
           language={language}
           countDetails={countDetails}
           setCountDetails={setCountDetails}
-          handleAddDetail={handleAddDetail}
           handleSubmit={handleSubmit}
           details={details}
           setNewDetail={setNewDetail}
+          isSavedDetail={isSavedDetail}
+          setIsSavedDetail={setIsSavedDetail}
         />
-        {details?.map(detail => (
+        {details?.map((detail, i) => (
           <Detail
             key={detail.id}
+            i={i}
             handleDeleteDetail={handleDeleteDetail}
             product={product}
             setDetails={setDetails}
@@ -99,22 +110,26 @@ const Modal = ({
             detail={detail}
             countDetails={countDetails}
             setCountDetails={setCountDetails}
-            handleAddDetail={handleAddDetail}
             handleSubmit={handleSubmit}
             details={details}
             setNewDetail={setNewDetail}
+            isSavedDetail={isSavedDetail}
+            setIsSavedDetail={setIsSavedDetail}
           />
         ))}
-        <WrapButtons>
-          <StyledMoreButton onClick={handleAddDetail}>
-            {language === 'ua' ? 'Додати деталь' : 'Добавить деталь'}
-          </StyledMoreButton>
-          <StyledButton type="button" onClick={handleSubmit}>
-            {language === 'ua'
-              ? 'Відправити до корзини'
-              : 'Отправить в корзину'}
-          </StyledButton>
-        </WrapButtons>
+
+        {isSavedDetail ? (
+          <WrapButtons>
+            <StyledMoreButton onClick={handleAddDetail}>
+              {language === "ua" ? "Додати деталь" : "Добавить деталь"}
+            </StyledMoreButton>
+            <StyledButton type="button" onClick={handleSubmit}>
+              {language === "ua"
+                ? "Відправити до корзини"
+                : "Отправить в корзину"}
+            </StyledButton>
+          </WrapButtons>
+        ) : null}
       </StyledModal>
     </StyledOverlay>
   );

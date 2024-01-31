@@ -1,4 +1,8 @@
-import styled from 'styled-components';
+import styled from "styled-components";
+
+export const WrapOptions = styled.section`
+  position: relative;
+`;
 
 export const StyledDivDimens = styled.div`
   display: flex;
@@ -69,7 +73,7 @@ export const StyledImg = styled.img`
   transition: all 0.5s;
 `;
 export const StyledButton = styled.button`
-  width: ${props => (props.$edge ? `calc(50% - 10px)` : `calc(100%)`)};
+  width: ${(props) => (props.$edge ? `calc(50% - 10px)` : `calc(100%)`)};
 
   display: inline-block;
   padding: 10px 20px;
@@ -173,7 +177,7 @@ export const FieldChoiceTop = styled.div`
   grid-column-start: 2;
   border: 1px solid #c2c2c2;
   &::after {
-    content: '';
+    content: "";
     width: 45px;
     height: 4px;
     background-color: #204b37;
@@ -200,7 +204,7 @@ export const FieldChoiceLeft = styled.div`
   grid-column-start: 1;
   border: 1px solid #c2c2c2;
   &::after {
-    content: '';
+    content: "";
     width: 4px;
     height: 45px;
     background-color: #204b37;
@@ -228,7 +232,7 @@ export const FieldChoiceBottom = styled.div`
   grid-row-start: 3;
   border: 1px solid #c2c2c2;
   &::after {
-    content: '';
+    content: "";
     width: 45px;
     height: 4px;
     background-color: #204b37;
@@ -254,7 +258,7 @@ export const FieldChoiceRight = styled.div`
   grid-row-start: 2;
   border: 1px solid #c2c2c2;
   &::after {
-    content: '';
+    content: "";
     width: 4px;
     height: 45px;
     background-color: #204b37;
@@ -306,8 +310,8 @@ export const StyledInputCheckbox = styled.input`
 `;
 export const DeleteDetailButton = styled.button`
   position: absolute;
-  top: 26px;
-  right: 60px;
+  bottom: -50px;
+  right: 5px;
   display: inline-block;
   padding: 10px 20px;
   /* margin-bottom: 10px;
