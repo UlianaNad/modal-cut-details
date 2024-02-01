@@ -15,7 +15,6 @@ const Detail = ({
   details,
   countDetails,
   setNewDetail,
-  isSavedDetail,
   setIsSavedDetail,
 }) => {
   const [edgeSide, setEdgeSide] = useState([]);
@@ -91,15 +90,12 @@ const Detail = ({
 
   return (
     <WrapDetail>
-      {/* {selected !== i ? null : ( */}
       <WrapToggleDiv onClick={() => toggleDetail(i)}>
         <p>
-          Деталь з шириною {width ? width : 0} мм і висотою{" "}
-          {height ? height : 0} мм
+          Деталь {width ? width : 0} мм на {height ? height : 0} мм
         </p>
         <span>{selected !== i ? "-" : "+"}</span>
       </WrapToggleDiv>
-      {/* )} */}
       {selected !== i ? (
         <>
           <WrapSections $isSaved={isSaved}>
@@ -132,7 +128,7 @@ const Detail = ({
           </WrapSections>
           {!isSaved && (
             <StyledSaveButton onClick={() => handleAddNewDetail(newDetail)}>
-              {language === "ua" ? "Зберегти деталь" : "Сохранить деталь"}
+              {language === "ua" ? "Зберегти" : "Сохранить"}
             </StyledSaveButton>
           )}
         </>
@@ -146,8 +142,6 @@ export default Detail;
 export const StyledSaveButton = styled.button`
   display: inline-block;
   padding: 10px 20px;
-  //margin-bottom: 80px;
-  //  margin-top: 9px;
   font-size: 15px;
   font-weight: bold;
   line-height: 1.4;
@@ -166,7 +160,7 @@ export const StyledSaveButton = styled.button`
   }
   @media (max-width: 425px) {
     font-size: 12px;
-    padding: 5px 10px;
+    padding: 6px 10px;
     margin-right: 0;
     min-width: 0;
   }
@@ -187,7 +181,16 @@ export const WrapToggleDiv = styled.div`
   line-height: 1.4;
   /* margin-bottom: 10px; */
 
+  @media (max-width: 425px) {
+    margin-top: 10px;
+  }
+
   span {
     transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+  p {
+    @media (max-width: 425px) {
+      font-size: 14px;
+    }
   }
 `;

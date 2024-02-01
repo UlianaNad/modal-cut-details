@@ -8,13 +8,13 @@ import {
   StyledMoreButton,
   StyledText,
   ModalHeader,
+  StyledItemName,
 } from "./Modal.styled";
-import { ToastContainer } from "react-toastify";
 
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import Detail from "./Detail/Detail";
-import { StyledItemName } from "./ChosenItem/ChosenItem.styled";
 
 const Modal = ({
   close,
@@ -81,14 +81,14 @@ const Modal = ({
   return (
     <StyledOverlay onClick={handleClickOutside}>
       <StyledModal>
-        {/* <div>
+        <div>
           <button data-lang="ua" onClick={handleClickChangeLanguage}>
             ua
           </button>
           <button data-lang="ru" onClick={handleClickChangeLanguage}>
             ru
           </button>
-        </div> */}
+        </div>
         <ModalHeader>
           {" "}
           <StyledItemName>{product.name}</StyledItemName>

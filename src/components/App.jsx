@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Modal from "./Modal/Modal";
-import styled from "styled-components";
 import { products } from "./data/data";
 import { useState } from "react";
+import { AppWrapper, Item, StyledUl } from "./App.styled";
 
 export const App = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -47,30 +47,3 @@ export const App = () => {
     </AppWrapper>
   );
 };
-
-const AppWrapper = styled.div`
-  padding: 20px;
-  font-family: Helvetica, Arial, sans-serif;
-
-  ul,
-  li {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-  }
-`;
-
-const StyledUl = styled.ul`
-  display: flex;
-  gap: 15px;
-`;
-
-const Item = styled.li`
-  display: block;
-  padding: 10px;
-  border: 1px solid green;
-  border-radius: 10px;
-  margin: 5px;
-  list-style: none;
-  width: 250px;
-`;

@@ -24,13 +24,12 @@ export const StyledDimensions = styled.ul`
 `;
 
 export const StyledLi = styled.li`
-  // width: calc(100% / 2 - 10px);
-  @media (max-width: 915px) {
-    //   width: 100%;
+  width: 100%;
+  @media (min-width: 425px) {
+    width: 50%;
   }
 `;
 export const StyledInput = styled.input`
-  /* width: 220px; */
   height: 25px;
   border-width: 1px;
   border-style: solid;
@@ -48,10 +47,13 @@ export const StyledInput = styled.input`
     border-color: rgba(0, 161, 82, 0.5);
     box-shadow: 0 0 5px 1px #00a152;
   }
+  @media (max-width: 425px) {
+    width: 97%;
+  }
 `;
 export const StyledP = styled.p`
   font-size: 10px;
-  color: grey;
+  color: ${(props) => (props.$isBig ? "red" : "grey")};
 `;
 
 export const StyledBlockName = styled.p`
@@ -69,7 +71,6 @@ export const PatternRotation = styled.div`
 `;
 export const StyledImg = styled.img`
   display: block;
-  /* margin-top: -30px; */
   margin-left: 25px;
   width: 125px;
   transform: rotate(90deg);
@@ -92,7 +93,6 @@ export const StyledButton = styled.button`
   color: #fff;
   border: 0;
   background-color: #00a152;
-  /* min-width: 235px; */
   position: relative;
   overflow: hidden;
   transition: 0.4s;
@@ -143,23 +143,12 @@ export const StyledTextArea = styled.textarea`
     border-color: rgba(0, 161, 82, 0.5);
     box-shadow: 0 0 5px 1px #00a152;
   }
-  /* @media (max-width: 1100px) {
-    min-width: 455px;
-  }
-  @media (max-width: 425px) {
-    width: 95%;
-    min-width: 0;
-  } */
 `;
 
 export const WrapperButtons = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 10px;
-  /* @media (max-width: 425px) {
-    display: flex;
-    gap: 10px;
-  } */
 `;
 
 export const Wrapper = styled.div`
@@ -334,5 +323,10 @@ export const DeleteDetailButton = styled.button`
 
   &:hover {
     background-color: darkred;
+  }
+
+  @media (max-width: 425px) {
+    padding: 6px 10px;
+    font-size: 12px;
   }
 `;

@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from "react";
+import { useInView } from "react-intersection-observer";
+import { useRef } from "react";
 import {
   Example,
   ExampleItem,
   HiddenOnPhone,
   LeftArrow,
+  ModalButton,
   StyledItemName,
   StyledOption,
   StyledSpan,
   TopArrow,
   WrapInfo,
 } from "./ChosenItem.styled";
+import VisualModal from "./VisualModal/VisualModal";
 
 const ChosenItem = ({
-  detail,
   product,
   width,
   height,
@@ -22,7 +25,10 @@ const ChosenItem = ({
   language,
 }) => {
   const [scale, setScale] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const { ref: myRef, inView: myElIsVisible } = useInView();
 
+  console.log(myElIsVisible);
   useEffect(() => {
     let scaleToFit;
 
@@ -40,6 +46,16 @@ const ChosenItem = ({
     setScale(scaleToFit);
   }, [width, height]);
 
+  const toggleModal = () => {
+    const section = document.querySelector("section");
+    if (!isOpen) {
+      section.classList.add("modal-open");
+    } else {
+      section.classList.remove("modal-open");
+    }
+
+    setIsOpen((prev) => !prev);
+  };
   return (
     <section>
       <StyledItemName></StyledItemName>
@@ -104,7 +120,7 @@ const ChosenItem = ({
         </WrapInfo>
       ) : null}
 
-      <HiddenOnPhone>
+      <HiddenOnPhone ref={myRef}>
         <StyledItemName>
           {language === "ua" ? "Візуалізація порізки" : "Визуализация порезки"}
         </StyledItemName>
@@ -126,6 +142,17 @@ const ChosenItem = ({
             ))}
         </Example>
       </HiddenOnPhone>
+      {!myElIsVisible && (
+        <ModalButton onClick={toggleModal}>
+          {language === "ua" ? "Візуалізація порізки" : "Визуализация порезки"}
+          <VisualModal
+            width={width}
+            height={height}
+            scale={scale}
+            edgeSide={edgeSide}
+          />
+        </ModalButton>
+      )}
     </section>
   );
 };

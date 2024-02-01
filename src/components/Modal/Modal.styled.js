@@ -21,8 +21,10 @@ export const StyledModal = styled.div`
   position: relative;
   padding: 20px;
 
-  @media (max-width: 425px) {
-    padding: 10px;
+  @media (max-width: 768px) {
+    /* padding: 10px; */
+    width: 100vw;
+    height: 100vh;
   }
 `;
 export const StyledCloseButton = styled.button`
@@ -55,32 +57,36 @@ export const StyledCloseButton = styled.button`
     background-color: #c48000;
   }
   @media (max-width: 425px) {
-    min-width: 50px;
     font-size: 12px;
-    padding: 5px 10px;
     margin-bottom: 0;
     position: fixed;
-    right: 30px;
-    top: 40px;
+    right: 10px;
+    top: 5px;
   }
 `;
 export const WrapButtons = styled.div`
   position: fixed;
-  width: calc(100vw - 120px);
-  gap: 20px;
-  bottom: 20px;
+  bottom: 10px;
+  left: 30px;
+  right: 35px;
+  gap: 10px;
   display: flex;
-  flex-direction: row;
-  margin-top: 27px;
   justify-content: space-between;
+  @media (min-width: 768px) {
+    width: inherit;
+  }
+
+  @media (max-width: 425px) {
+    bottom: 5px;
+    left: 16px;
+    gap: 20px;
+  }
 `;
 
 export const WrapDetail = styled.div`
   position: relative;
 `;
 export const StyledButton = styled.button`
-  /* width: ${(props) => (props.$edge ? `calc(50% - 10px)` : `calc(100%)`)}; */
-
   display: inline-block;
   padding: 10px 20px;
   margin-bottom: 10px;
@@ -95,7 +101,6 @@ export const StyledButton = styled.button`
   color: #fff;
   border: 0;
   background-color: #00a152;
-  /* min-width: 235px; */
   position: relative;
   overflow: hidden;
   transition: 0.4s;
@@ -111,6 +116,7 @@ export const StyledButton = styled.button`
     font-size: 12px;
     padding: 5px 10px;
     margin-right: 0;
+    white-space: pre-wrap;
   }
 `;
 export const StyledMoreButton = styled.button`
@@ -143,16 +149,31 @@ export const StyledMoreButton = styled.button`
     padding: 5px 10px;
     margin-right: 0;
     min-width: 0;
+    white-space: pre-wrap;
   }
 `;
 
 export const StyledText = styled.p`
   text-align: center;
   margin-top: 30px;
+  padding-bottom: 20px;
 `;
 export const ModalHeader = styled.div`
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
+`;
+
+export const StyledItemName = styled.h1`
+  margin-top: 30px;
+  color: #00a152;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 18px;
+  @media (max-width: 425px) {
+    margin-top: 10px;
+    margin-bottom: 0;
+    font-size: 14px;
+  }
 `;

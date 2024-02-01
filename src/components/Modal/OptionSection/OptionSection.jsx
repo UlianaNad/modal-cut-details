@@ -19,6 +19,7 @@ import {
 
 import EdgePreview from "./EdgePreview/EdgePreview";
 import SvgHoverComponent from "./SvgHoverComponent/SvgHoverComponent";
+import { toast } from "react-toastify";
 
 const OptionSection = ({
   product,
@@ -36,6 +37,7 @@ const OptionSection = ({
 }) => {
   const [rotation, setRotation] = useState(90);
   const [edgeBlock, setEdgeBlock] = useState(false);
+  const [isBig, setIsBig] = useState(false);
 
   const { dimensions } = product;
 
@@ -81,6 +83,27 @@ const OptionSection = ({
     setPatternDirection(newRotation !== 0 ? "horizontal" : "vertical");
   };
 
+  const handleInputWidth = (e) => {
+    if (e.target.value > dimensions.width) {
+      toast.info("Введіть менше значення!");
+      setIsBig(true);
+      return;
+    } else {
+      setIsBig(false);
+      setWidth(e.target.value);
+    }
+  };
+  const handleInputHeight = (e) => {
+    if (e.target.value > dimensions.height) {
+      toast.info("Введіть менше значення!");
+      setIsBig(true);
+      return;
+    } else {
+      setIsBig(false);
+      setHeight(e.target.value);
+    }
+  };
+
   return (
     <WrapOptions>
       <div className="modal-window">
@@ -97,7 +120,7 @@ const OptionSection = ({
                 <StyledDivDimens>
                   <StyledInput
                     $width={true}
-                    onChange={(e) => setWidth(e.target.value)}
+                    onChange={handleInputWidth}
                     type="number"
                     name="width"
                     id="width"
@@ -107,7 +130,7 @@ const OptionSection = ({
                     }
                   />
                 </StyledDivDimens>
-                <StyledP>
+                <StyledP $isBig={isBig}>
                   Max: <span>{dimensions.width} mm</span>
                 </StyledP>
               </StyledLi>
@@ -115,7 +138,7 @@ const OptionSection = ({
                 <StyledDivDimens>
                   <StyledInput
                     $width={true}
-                    onChange={(e) => setHeight(e.target.value)}
+                    onChange={handleInputHeight}
                     type="number"
                     name="height"
                     id="height"
@@ -125,7 +148,7 @@ const OptionSection = ({
                     }
                   />
                 </StyledDivDimens>
-                <StyledP>
+                <StyledP  $isBig={isBig}>
                   Max: <span>{dimensions.height} mm</span>
                 </StyledP>
               </StyledLi>
@@ -221,7 +244,7 @@ const OptionSection = ({
             type="button"
             onClick={() => handleDeleteDetail(detail?.id)}
           >
-            {language === "ua" ? "Видалити деталь" : "Удалить деталь"}
+            {language === "ua" ? "Видалити" : "Удалить"}
           </DeleteDetailButton>
         </form>
       </div>
