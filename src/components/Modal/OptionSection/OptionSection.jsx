@@ -20,7 +20,7 @@ import {
 import EdgePreview from "./EdgePreview/EdgePreview";
 import SvgHoverComponent from "./SvgHoverComponent/SvgHoverComponent";
 import { toast } from "react-toastify";
-
+import { hoverContent } from "../../data/hoverData";
 const OptionSection = ({
   product,
   close,
@@ -101,7 +101,7 @@ const OptionSection = ({
 
             <StyledBlockName>
               {language === "ua" ? "Розміри деталі:" : "Рaзмeры детали:"}
-              <SvgHoverComponent />
+              <SvgHoverComponent dimensions={hoverContent.dimensions} />
             </StyledBlockName>
             <StyledDimensions>
               <StyledLi>
@@ -145,7 +145,7 @@ const OptionSection = ({
               {language === "ua"
                 ? "Загальна кількість деталей по заданим розмірам:"
                 : "Общее количество деталей по заданым размерам:"}
-              <SvgHoverComponent />
+              <SvgHoverComponent amount={hoverContent.totalAmount} />
             </StyledBlockName>
             <StyledInput
               onChange={(e) => setCustomAmount(e.target.value)}
@@ -157,7 +157,7 @@ const OptionSection = ({
           <div className="edge-block">
             <StyledBlockName>
               Кромка:
-              <SvgHoverComponent />
+              <SvgHoverComponent edge={hoverContent.edge} />
             </StyledBlockName>
             <WrapperButtons>
               <StyledButton
@@ -205,7 +205,7 @@ const OptionSection = ({
           <PatternRotation>
             <StyledBlockName>
               {language === "ua" ? "Обертання текстури:" : "Вращение текстуры:"}
-              <SvgHoverComponent />
+              <SvgHoverComponent rotation={hoverContent.rotation} />
             </StyledBlockName>
             <StyledImg
               onClick={handleImageClick}
@@ -218,7 +218,7 @@ const OptionSection = ({
               {language === "ua"
                 ? "Залиште свій коментар щодо замовлення:"
                 : "Оставьте свой коментарий к заказу:"}
-              <SvgHoverComponent />
+              <SvgHoverComponent comment={hoverContent.comment} />
             </StyledBlockName>
             <StyledTextArea
               onChange={(e) => setComment(e.target.value)}

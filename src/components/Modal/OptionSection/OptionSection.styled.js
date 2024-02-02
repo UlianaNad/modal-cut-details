@@ -330,3 +330,30 @@ export const DeleteDetailButton = styled.button`
     font-size: 12px;
   }
 `;
+// export const WrapHoverComponent = styled.div`
+//   &::after {
+//     content: "Розіміри (Введіть розміри для висоти та ширини вашого продукту в міліметрах (мм). Турбуєтеся про точність? Ми використовуємо новітню технологію різання ЧПК для точного різання з допуском +/- 1 мм)";
+
+//     display: none;
+//     position: absolute;
+//     font-size: 12px;
+//     font-weight: 100;
+//     min-width: 250px;
+//     background: rgb(248, 248, 248);
+//     border-radius: 5px;
+//     border-width: 1px;
+//     border-style: solid;
+//     border-color: rgb(225, 225, 225);
+//     padding: 8px;
+//     margin: 0px 5px;
+//     top: -5px;
+//     left: ${(props) => (props.$amount || props.$comment ? "" : "20px")};
+//     right: ${(props) => (props.$amount || props.$comment ? "20px" : "")};
+
+//     z-index: 1500;
+
+//     &:hover ::after {
+//       display: block;
+//     }
+//   }
+// `;
