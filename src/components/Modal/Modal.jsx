@@ -28,14 +28,10 @@ const Modal = ({
   const [language, setLanguage] = useState("ua");
   const [isSavedDetail, setIsSavedDetail] = useState(false);
 
-  useEffect(() => {
-    if (product) {
-      window.localStorage.setItem(
-        `detailsToCut${product.id}`,
-        JSON.stringify(details)
-      );
-    }
-  }, [details, product]);
+  // useEffect(() => {
+  //   if (product) {
+  //   }
+  // }, [details, product]);
 
   const handleClickOutside = (e) => {
     if (e.target === e.currentTarget) {
@@ -75,6 +71,7 @@ const Modal = ({
 
   const handleSubmit = () => {
     setDetails((prevDetails) => [...prevDetails, newDetail]);
+
     close();
   };
 

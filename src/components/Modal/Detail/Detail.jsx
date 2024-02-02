@@ -82,6 +82,7 @@ const Detail = ({
       return;
     } else {
       setNewDetail(data);
+
       toggleDetail(i);
       setIsSavedDetail(true);
       setIsSaved(true);

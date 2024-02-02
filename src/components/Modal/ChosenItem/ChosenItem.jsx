@@ -14,6 +14,7 @@ import {
   WrapInfo,
 } from "./ChosenItem.styled";
 import VisualModal from "./VisualModal/VisualModal";
+import ExampleComponent from "./Example/ExampleComponent";
 
 const ChosenItem = ({
   product,
@@ -59,6 +60,7 @@ const ChosenItem = ({
       scale: scale,
       edgeSide: edgeSide,
     });
+
     setIsOpen((prev) => !prev);
   };
   return (
@@ -129,23 +131,12 @@ const ChosenItem = ({
         <StyledItemName>
           {language === "ua" ? "Візуалізація порізки" : "Визуализация порезки"}
         </StyledItemName>
-        <Example $width={width} $height={height}>
-          <LeftArrow></LeftArrow>
-          <TopArrow></TopArrow>
-          <LeftArrow $rotate={true}></LeftArrow>
-          <TopArrow $rotate={true}></TopArrow>
-          <ExampleItem $width={width} $height={height} $scale={scale} />
-          {Array.isArray(edgeSide) &&
-            edgeSide.map((edge, i) => (
-              <ExampleItem
-                $key={i}
-                $width={width}
-                $height={height}
-                $scale={scale}
-                $edgeside={edge}
-              ></ExampleItem>
-            ))}
-        </Example>
+        <ExampleComponent
+          width={width}
+          height={height}
+          scale={scale}
+          edgeSide={edgeSide}
+        />
       </HiddenOnPhone>
       {!myElIsVisible && (
         <ModalButton onClick={toggleModal}>

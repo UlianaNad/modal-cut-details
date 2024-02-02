@@ -14,9 +14,11 @@ export const StyledOverlayMini = styled.div`
 `;
 
 export const StyledModalMini = styled.div`
-  width: calc(100vw - 100px);
-  height: calc(100vh - 100px);
+  width: 100vh;
+  height: 100vh;
   background-color: white;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
 `;

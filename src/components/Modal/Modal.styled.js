@@ -22,13 +22,11 @@ export const StyledModal = styled.div`
   padding: 20px;
 
   @media (max-width: 768px) {
-    /* padding: 10px; */
     width: 100vw;
     height: 100vh;
   }
 `;
 export const StyledCloseButton = styled.button`
-  //position: absolute;
   right: 4px;
   display: flex;
   padding: 4px 5px;

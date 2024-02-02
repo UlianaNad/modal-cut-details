@@ -18,7 +18,10 @@ export const Example = styled.div`
 
   /* Horizontal line */
   &::before {
-    content: "${(props) => props.$width}";
+    content: "${(props) =>
+      props.$width !== null && props.$width !== 0
+        ? props.$width + "mm"
+        : "350mm"}";
     position: absolute;
     display: flex;
     justify-content: center;
@@ -38,7 +41,10 @@ export const Example = styled.div`
 
   /* Vertical line */
   &::after {
-    content: "${(props) => props.$height}";
+    content: "${(props) =>
+      props.$height !== null && props.$height !== 0
+        ? props.$height + "mm"
+        : "350mm"}";
     position: absolute;
     display: flex;
     justify-content: center;
@@ -59,8 +65,14 @@ export const Example = styled.div`
 `;
 
 export const ExampleItem = styled.div`
-  width: ${(props) => props.$width * props.$scale + "px"};
-  height: ${(props) => props.$height * props.$scale + "px"};
+  width: ${(props) =>
+    props.$width !== null && props.$width !== 0
+      ? props.$width * props.$scale + "px"
+      : "250px"};
+  height: ${(props) =>
+    props.$height !== null && props.$height !== 0
+      ? props.$height * props.$scale + "px"
+      : "250px"};
   background-color: ${(props) => (props.$edgeside ? "transparent" : "white")};
   border-top: ${(props) =>
     props.$edgeside === "top-choice"
@@ -85,11 +97,16 @@ export const ExampleItem = styled.div`
     scale(${(props) => props.$scale || 1});
 
   @media (min-width: 425px) {
-    width: ${(props) => props.$width * props.$scale + "px"};
-    height: ${(props) => props.$height * props.$scale + "px"};
+    width: ${(props) =>
+      props.$width !== null && props.$width !== 0
+        ? props.$width * props.$scale + "px"
+        : "350px"};
+    height: ${(props) =>
+      props.$height !== null && props.$height !== 0
+        ? props.$height * props.$scale + "px"
+        : "350px"};
   }
 `;
-
 export const LeftArrow = styled.div`
   height: 50px;
   position: relative;
