@@ -1,27 +1,22 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-export const StyledInfoSvg = styled.span.attrs(props => ({
-  dimensions: props.dimensions,
-  edge: props.edge,
-  amount: props.amount,
-  rotation: props.rotation,
-  comment: props.comment, // Explicitly include the 'comment' prop
-}))`
+export const StyledInfoSvg = styled.span`
   margin-left: 5px;
   position: relative;
+  cursor: pointer;
 
   &::after {
-    content: ${props =>
+    content: ${(props) =>
       props.$dimensions
-        ? `"${props.$dimensions}"`
-        : props.edge
-        ? `"${props.$edge}"`
-        : props.amount
-        ? `"${props.$amount}"`
-        : props.rotation
-        ? `"${props.$rotation}"`
+        ? `${props.$dimensions}`
+        : props.$edge
+        ? `${props.$edge}`
+        : props.$amount
+        ? `${props.$amount}`
+        : props.$rotation
+        ? `${props.$rotation}`
         : props.$comment
-        ? `"${props.$comment}"`
+        ? `${props.$comment}`
         : "Зв'яжіться з менеджером"};
     display: none;
     position: absolute;
@@ -36,13 +31,14 @@ export const StyledInfoSvg = styled.span.attrs(props => ({
     padding: 8px;
     margin: 0px 5px;
     top: -5px;
-    left: ${props => (props.$amount || props.$comment ? null : '20px')};
-    right: ${props => (props.$$amount || props.$comment ? '20px' : '0')};
-    z-index: 10;
+    left: ${(props) => (props.$amount || props.$comment ? "" : "20px")};
+    right: ${(props) => (props.$amount || props.$comment ? "20px" : "")};
+
+    z-index: 1500;
   }
 
   &:hover::after {
-    display: block;
+    display: block !important;
   }
   & svg {
     fill: rgb(0, 161, 82, 0.6);

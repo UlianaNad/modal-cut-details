@@ -41,18 +41,6 @@ const OptionSection = ({
 
   const { dimensions } = product;
 
-  const hoverContent = {
-    dimensionsContent:
-      "Розіміри (Введіть розміри для висоти та ширини вашого продукту в міліметрах (мм). Турбуєтеся про точність? Ми використовуємо новітню технологію різання ЧПК для точного різання з допуском +/- 1 мм)",
-    totalAmountContent:
-      "Загальна кількість деталей по заданим розмірам (Потрібно вказати необхідну кількість деталей, яку необхідно порізати. Зауважте, що деталі вже мають задані розміри)",
-    edgeContent:
-      "Кромка (Асортимент продукції, представлений на нашому сайті, пропонує кромку в розмірах 42мм/2,0 мм, 22мм/0,6мм, 22мм/2,0мм і т.д. різного колірного рішення. За допомогою кромки можна виконати якісне облицювання торцевих поверхонь ДСП, створити декор-елемент у виготовленні корпусних меблів. Потрібно вибрати сторони, які кромкувати, чи не кромкувати взагалі.",
-    rotationContent:
-      "Обертання текстури (Важливо враховувати напрям текстури при замовленні порізки  плитних матеріалів, тому що деякі плитні матеріали можуть мати виражену текстуру або малюнок, і обертання їх може впливати на те, як ця текстура виглядає на поверхні.)",
-    commentContent:
-      "Залишити коментар (Вкажіть колір кромки, наявність радіусів, пазів, кутів тощо, а також їх розміри)",
-  };
   const handleOpenEdgeBlock = () => {
     setEdgeBlock(true);
   };
@@ -113,7 +101,7 @@ const OptionSection = ({
 
             <StyledBlockName>
               {language === "ua" ? "Розміри деталі:" : "Рaзмeры детали:"}
-              <SvgHoverComponent $dimensions={hoverContent.dimensionsContent} />
+              <SvgHoverComponent />
             </StyledBlockName>
             <StyledDimensions>
               <StyledLi>
@@ -148,7 +136,7 @@ const OptionSection = ({
                     }
                   />
                 </StyledDivDimens>
-                <StyledP  $isBig={isBig}>
+                <StyledP $isBig={isBig}>
                   Max: <span>{dimensions.height} mm</span>
                 </StyledP>
               </StyledLi>
@@ -157,7 +145,7 @@ const OptionSection = ({
               {language === "ua"
                 ? "Загальна кількість деталей по заданим розмірам:"
                 : "Общее количество деталей по заданым размерам:"}
-              <SvgHoverComponent $amount={hoverContent.totalAmountContent} />
+              <SvgHoverComponent />
             </StyledBlockName>
             <StyledInput
               onChange={(e) => setCustomAmount(e.target.value)}
@@ -169,7 +157,7 @@ const OptionSection = ({
           <div className="edge-block">
             <StyledBlockName>
               Кромка:
-              <SvgHoverComponent $edge={hoverContent.edgeContent} />
+              <SvgHoverComponent />
             </StyledBlockName>
             <WrapperButtons>
               <StyledButton
@@ -217,7 +205,7 @@ const OptionSection = ({
           <PatternRotation>
             <StyledBlockName>
               {language === "ua" ? "Обертання текстури:" : "Вращение текстуры:"}
-              <SvgHoverComponent $rotation={hoverContent.rotationContent} />
+              <SvgHoverComponent />
             </StyledBlockName>
             <StyledImg
               onClick={handleImageClick}
@@ -230,7 +218,7 @@ const OptionSection = ({
               {language === "ua"
                 ? "Залиште свій коментар щодо замовлення:"
                 : "Оставьте свой коментарий к заказу:"}
-              <SvgHoverComponent $comment={hoverContent.commentContent} />
+              <SvgHoverComponent />
             </StyledBlockName>
             <StyledTextArea
               onChange={(e) => setComment(e.target.value)}

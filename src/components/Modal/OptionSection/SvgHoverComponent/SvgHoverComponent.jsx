@@ -1,10 +1,18 @@
-import React from 'react';
-import { StyledInfoSvg } from './SvgHoverComponent.styled';
+import React from "react";
+import { StyledInfoSvg } from "./SvgHoverComponent.styled";
+import { hoverContent } from "../../../data/hoverData.js";
+const SvgHoverComponent = () => {
+  console.log(hoverContent);
+  const { dimensions, edge, totalAmount, rotation, comment } = hoverContent;
 
-
-const SvgHoverComponent = ({dimensions, edge, amount,rotation, comment}) => {
   return (
-    <StyledInfoSvg dimensions={dimensions} edge={edge} amount={amount} rotation={rotation} comment={comment}>
+    <StyledInfoSvg
+      $dimensions={dimensions}
+      $edge={edge}
+      $amount={totalAmount}
+      $rotation={rotation}
+      $comment={comment}
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         x="0px"

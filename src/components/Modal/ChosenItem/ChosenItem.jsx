@@ -1,16 +1,12 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
-import { useRef } from "react";
+
 import {
-  Example,
-  ExampleItem,
   HiddenOnPhone,
-  LeftArrow,
   ModalButton,
   StyledItemName,
   StyledOption,
   StyledSpan,
-  TopArrow,
   WrapInfo,
 } from "./ChosenItem.styled";
 import VisualModal from "./VisualModal/VisualModal";
