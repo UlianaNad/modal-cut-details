@@ -279,10 +279,10 @@ export const ModalButton = styled.button`
   position: fixed;
   top: 15px;
   left: 30%;
-  padding: 5px 10px;
+  padding: 7px 10px;
   border: none;
   border-radius: 5px;
-  z-index: 100;
+  z-index: 130;
   background-color: #00a152;
   color: white;
   font-weight: 600;

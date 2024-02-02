@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { useRef } from "react";
 import {
@@ -27,8 +27,8 @@ const ChosenItem = ({
   const [scale, setScale] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
   const { ref: myRef, inView: myElIsVisible } = useInView();
+  const [memorized, setMemorized] = useState({});
 
-  console.log(myElIsVisible);
   useEffect(() => {
     let scaleToFit;
 
@@ -53,7 +53,12 @@ const ChosenItem = ({
     } else {
       section.classList.remove("modal-open");
     }
-
+    setMemorized({
+      width: width,
+      height: height,
+      scale: scale,
+      edgeSide: edgeSide,
+    });
     setIsOpen((prev) => !prev);
   };
   return (
@@ -145,14 +150,9 @@ const ChosenItem = ({
       {!myElIsVisible && (
         <ModalButton onClick={toggleModal}>
           {language === "ua" ? "Візуалізація порізки" : "Визуализация порезки"}
-          <VisualModal
-            width={width}
-            height={height}
-            scale={scale}
-            edgeSide={edgeSide}
-          />
         </ModalButton>
       )}
+      {isOpen ? <VisualModal memorized={memorized} /> : null}
     </section>
   );
 };

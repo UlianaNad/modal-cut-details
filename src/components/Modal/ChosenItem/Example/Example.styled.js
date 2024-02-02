@@ -18,10 +18,7 @@ export const Example = styled.div`
 
   /* Horizontal line */
   &::before {
-    content: "${(props) =>
-      props.$width !== null && props.$width !== 0
-        ? props.$width + "mm"
-        : "350mm"}";
+    content: "${(props) => props.$width}";
     position: absolute;
     display: flex;
     justify-content: center;
@@ -41,10 +38,7 @@ export const Example = styled.div`
 
   /* Vertical line */
   &::after {
-    content: "${(props) =>
-      props.$height !== null && props.$height !== 0
-        ? props.$height + "mm"
-        : "350mm"}";
+    content: "${(props) => props.$height}";
     position: absolute;
     display: flex;
     justify-content: center;
@@ -65,14 +59,8 @@ export const Example = styled.div`
 `;
 
 export const ExampleItem = styled.div`
-  width: ${(props) =>
-    props.$width !== null && props.$width !== 0
-      ? props.$width * props.$scale + "px"
-      : "250px"};
-  height: ${(props) =>
-    props.$height !== null && props.$height !== 0
-      ? props.$height * props.$scale + "px"
-      : "250px"};
+  width: ${(props) => props.$width * props.$scale + "px"};
+  height: ${(props) => props.$height * props.$scale + "px"};
   background-color: ${(props) => (props.$edgeside ? "transparent" : "white")};
   border-top: ${(props) =>
     props.$edgeside === "top-choice"
@@ -97,56 +85,11 @@ export const ExampleItem = styled.div`
     scale(${(props) => props.$scale || 1});
 
   @media (min-width: 425px) {
-    width: ${(props) =>
-      props.$width !== null && props.$width !== 0
-        ? props.$width * props.$scale + "px"
-        : "350px"};
-    height: ${(props) =>
-      props.$height !== null && props.$height !== 0
-        ? props.$height * props.$scale + "px"
-        : "350px"};
+    width: ${(props) => props.$width * props.$scale + "px"};
+    height: ${(props) => props.$height * props.$scale + "px"};
   }
 `;
 
-// export const StyledButton = styled.button.attrs((props) => ({
-//   isimageclicked: props.$isimageclicked ? "true" : null,
-// }))`
-//   display: inline-block;
-//   padding: 10px 20px;
-//   margin-bottom: 10px;
-//   margin-right: 10px;
-//   font-size: 15px;
-//   font-weight: bold;
-//   line-height: 1.42857143;
-//   text-align: center;
-//   white-space: nowrap;
-//   cursor: pointer;
-//   border-radius: 4px;
-//   color: #fff;
-//   border: 0;
-//   background-color: ${(props) => (props.$isimageclicked ? "#ffa700" : "grey")};
-
-//   min-width: 160px;
-//   overflow: hidden;
-//   transition: 0.4s;
-//   text-transform: uppercase;
-
-//   &:hover {
-//     background-color: #c48000;
-//   }
-//   @media (max-width: 425px) {
-//     min-width: 100%;
-//   }
-// `;
-// StyledButton.shouldForwardProp = (prop) => prop !== "isimageclicked";
-
-// export const HiddenOnPhone = styled.div`
-//   @media (max-width: 768px) {
-//     display: flex;
-//     align-items: center;
-//     flex-direction: column;
-//   }
-// `;
 export const LeftArrow = styled.div`
   height: 50px;
   position: relative;
@@ -196,11 +139,6 @@ export const TopArrow = styled.div`
   border-top: 2px solid grey;
   margin: ${(props) => (props.$rotate ? " 235px 0px -8px -144px" : "0")};
   transform: ${(props) => (props.$rotate ? "rotate(90deg)" : "rotate(0deg)")};
-  /* 
-  @media (max-width: 425px) {
-    margin: ${(props) =>
-    props.$rotate ? "-14px 0px 86px -215px" : "  13px 0px 0px 20px"};
-  } */
 
   &::before,
   &::after {
