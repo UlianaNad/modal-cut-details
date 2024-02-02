@@ -14,8 +14,8 @@ export const StyledOverlay = styled.div`
 `;
 
 export const StyledModal = styled.div`
-  width: calc(100vw - 100px);
-  height: calc(100vh - 50px);
+  width: 100vw;
+  height: 100vh;
   background-color: white;
   overflow-y: scroll;
   position: relative;
