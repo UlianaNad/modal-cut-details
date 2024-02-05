@@ -2,8 +2,6 @@ import React from "react";
 import { StyledInfoSvg } from "./SvgHoverComponent.styled";
 
 const SvgHoverComponent = ({ dimensions, edge, amount, rotation, comment }) => {
-  console.log(dimensions, edge, amount, rotation, comment);
-
   return (
     <StyledInfoSvg
       $dimensions={dimensions}

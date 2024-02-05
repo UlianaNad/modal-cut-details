@@ -10,10 +10,14 @@ export const AppWrapper = styled.div`
     margin: 0;
     list-style: none;
   }
+  /* @media (max-width: 425px) {
+    width: 100%;
+  } */
 `;
 
 export const StyledUl = styled.ul`
   display: flex;
+  flex-wrap: wrap;
   gap: 15px;
 `;
 

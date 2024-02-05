@@ -40,6 +40,13 @@ export const StyledInfoSvg = styled.span.attrs((props) => ({
     left: ${(props) => (props.$amount || props.$comment ? null : "20px")};
     right: ${(props) => (props.$$amount || props.$comment ? "20px" : "0")};
     z-index: 10;
+
+    @media (max-width: 425px) {
+      font-size: 10px;
+      max-width: 300px;
+      top: 20px;
+      left: -120px;
+    }
   }
 
   &:hover::after {

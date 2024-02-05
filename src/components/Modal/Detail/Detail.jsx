@@ -35,16 +35,12 @@ const Detail = ({
   };
 
   const computedValues = useMemo(() => {
-    const startSquare = product
-      ? product?.dimensions?.width * product?.dimensions?.height
-      : 0;
+    const horizontalFit = Math.floor(product?.dimensions?.width / width);
+    const verticalFit = Math.floor(product?.dimensions?.height / height);
 
-    const customSquare = width && height ? width * height : 0;
+    const totalFit = horizontalFit * verticalFit;
 
-    const possibleAmountOfPieces =
-      startSquare !== 0 && customSquare !== 0
-        ? Math.ceil(startSquare / customSquare)
-        : 0;
+    const possibleAmountOfPieces = totalFit !== 0 ? totalFit : 0;
 
     const cutItemPrice =
       customAmount !== null
