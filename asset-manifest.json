@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/modal-cut-details/static/css/main.6f45f067.css",
-    "main.js": "/modal-cut-details/static/js/main.062dadb9.js",
+    "main.js": "/modal-cut-details/static/js/main.7dfa24de.js",
     "static/media/wood.jpg": "/modal-cut-details/static/media/wood.64d2a2507f2ffc676e20.jpg",
     "index.html": "/modal-cut-details/index.html",
     "main.6f45f067.css.map": "/modal-cut-details/static/css/main.6f45f067.css.map",
-    "main.062dadb9.js.map": "/modal-cut-details/static/js/main.062dadb9.js.map"
+    "main.7dfa24de.js.map": "/modal-cut-details/static/js/main.7dfa24de.js.map"
   },
   "entrypoints": [
     "static/css/main.6f45f067.css",
-    "static/js/main.062dadb9.js"
+    "static/js/main.7dfa24de.js"
   ]
 }
