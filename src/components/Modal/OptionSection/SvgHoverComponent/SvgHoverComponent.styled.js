@@ -44,8 +44,20 @@ export const StyledInfoSvg = styled.span.attrs((props) => ({
     @media (max-width: 425px) {
       font-size: 10px;
       max-width: 300px;
-      top: 20px;
-      left: -120px;
+      top: 25px;
+
+      left: ${(props) =>
+        props.$dimensions
+          ? `-100px`
+          : props.$edge
+          ? `-40px`
+          : props.$amount
+          ? `-245px`
+          : props.$rotation
+          ? `-115px`
+          : props.$comment
+          ? `-250px`
+          : "Зв'яжіться з менеджером"};
     }
   }
 
