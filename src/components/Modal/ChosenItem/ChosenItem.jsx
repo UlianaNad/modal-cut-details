@@ -59,6 +59,7 @@ const ChosenItem = ({
 
     setIsOpen((prev) => !prev);
   };
+
   return (
     <section>
       <StyledItemName></StyledItemName>

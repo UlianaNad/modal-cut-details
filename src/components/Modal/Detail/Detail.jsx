@@ -35,8 +35,10 @@ const Detail = ({
   };
 
   const computedValues = useMemo(() => {
-    const horizontalFit = Math.floor(product?.dimensions?.width / width);
-    const verticalFit = Math.floor(product?.dimensions?.height / height);
+    const horizontalFit =
+      width === null ? 0 : Math.floor(product?.dimensions?.width / width);
+    const verticalFit =
+      height === null ? 0 : Math.floor(product?.dimensions?.height / height);
 
     const totalFit = horizontalFit * verticalFit;
 

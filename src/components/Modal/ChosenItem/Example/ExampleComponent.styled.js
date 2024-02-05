@@ -31,7 +31,7 @@ export const Example = styled.div`
     font-size: 12px;
     font-weight: 600;
     transform: translateX(-50%);
-    z-index: 1;
+    /* z-index: 1; */
 
     @media (min-width: 425px) {
       top: 20px;
@@ -54,7 +54,7 @@ export const Example = styled.div`
     top: 50%;
     left: 15px;
     transform: translateY(-50%);
-    z-index: 1;
+    /* z-index: 1; */
     writing-mode: vertical-lr;
     text-orientation: mixed;
     @media (min-width: 425px) {

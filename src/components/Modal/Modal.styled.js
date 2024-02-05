@@ -59,8 +59,8 @@ export const StyledCloseButton = styled.button`
     font-size: 12px;
     margin-bottom: 0;
     position: fixed;
-    right: 10px;
-    top: 5px;
+    right: 0px;
+    top: 14px;
   }
 `;
 export const WrapButtons = styled.div`
@@ -77,8 +77,9 @@ export const WrapButtons = styled.div`
 
   @media (max-width: 425px) {
     bottom: 5px;
-    left: 16px;
+    left: 20px;
     gap: 20px;
+    right: 20px;
   }
 `;
 
