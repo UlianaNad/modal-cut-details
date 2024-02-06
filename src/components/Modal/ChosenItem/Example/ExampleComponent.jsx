@@ -8,7 +8,7 @@ import {
 
 const ExampleComponent = ({ width, height, scale, edgeSide }) => {
   return (
-    <Example $width={width} $height={height}>
+    <Example $width={width} $height={height} key={scale}>
       <LeftArrow></LeftArrow>
       <TopArrow></TopArrow>
       <LeftArrow $rotate={true}></LeftArrow>
@@ -17,7 +17,7 @@ const ExampleComponent = ({ width, height, scale, edgeSide }) => {
       {Array.isArray(edgeSide) &&
         edgeSide.map((edge, i) => (
           <ExampleItem
-            $key={i}
+            key={i}
             $width={width}
             $height={height}
             $scale={scale}

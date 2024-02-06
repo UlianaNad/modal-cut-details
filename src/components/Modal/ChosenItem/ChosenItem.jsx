@@ -82,19 +82,7 @@ const ChosenItem = ({
         </StyledOption>
         <StyledSpan>{product.dimensions.thickness} мм</StyledSpan>
       </WrapInfo>
-      <WrapInfo>
-        <StyledOption>
-          {language === "ua"
-            ? "Кількість листів у розкрої:"
-            : "Количество листов в разкрое:"}
-        </StyledOption>
-        <StyledSpan>
-          {computedValues.possibleAmountOfPieces
-            ? computedValues.possibleAmountOfPieces
-            : 0}{" "}
-          шт.
-        </StyledSpan>
-      </WrapInfo>
+
       <WrapInfo>
         <StyledOption>
           {language === "ua" ? "Ціна за 1 лист: " : "Цена за 1 лист: "}
@@ -102,6 +90,19 @@ const ChosenItem = ({
         <StyledSpan>
           {" "}
           {product.offers.price} {product.offers.priceCurrency}
+        </StyledSpan>
+      </WrapInfo>
+      <WrapInfo>
+        <StyledOption>
+          {language === "ua"
+            ? "Кількість деталей з розкрою 1 листа: "
+            : "Количество деталей с роскроя 1 листа: "}
+        </StyledOption>
+        <StyledSpan>
+          {computedValues.possibleAmountOfPieces
+            ? computedValues.possibleAmountOfPieces
+            : 0}{" "}
+          шт.
         </StyledSpan>
       </WrapInfo>
 
@@ -114,6 +115,14 @@ const ChosenItem = ({
         <StyledSpan>
           {computedValues.totalPrice ? computedValues.totalPrice : 0} грн.
         </StyledSpan>
+      </WrapInfo>
+      <WrapInfo>
+        <StyledOption>
+          {language === "ua"
+            ? "Загальна кількість листів для порізки: "
+            : "Общее количество листов для порезки:"}
+        </StyledOption>
+        <StyledSpan>{computedValues.maxAmount} шт.</StyledSpan>
       </WrapInfo>
       {edgeWidth ? (
         <WrapInfo>
@@ -140,7 +149,9 @@ const ChosenItem = ({
           {language === "ua" ? "Візуалізація порізки" : "Визуализация порезки"}
         </ModalButton>
       )}
-      {isOpen ? <VisualModal memorized={memorized} /> : null}
+      {isOpen ? (
+        <VisualModal memorized={memorized} close={toggleModal} />
+      ) : null}
     </section>
   );
 };

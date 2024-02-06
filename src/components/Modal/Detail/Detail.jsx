@@ -1,10 +1,11 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import ChosenItem from "../ChosenItem/ChosenItem";
 import OptionSection from "../OptionSection/OptionSection";
 
 import { WrapDetail, WrapSections } from "./Detail.styled";
 import styled from "styled-components";
 import { toast } from "react-toastify";
+import { nanoid } from "@reduxjs/toolkit";
 
 const Detail = ({
   i,
@@ -27,6 +28,8 @@ const Detail = ({
   const [selected, setSelected] = useState(null);
   const [isSaved, setIsSaved] = useState(false);
 
+  const [savedDetails, setSavedDetails] = useState([]);
+
   const toggleDetail = (i) => {
     if (selected === i) {
       return setSelected(null);
@@ -43,6 +46,11 @@ const Detail = ({
     const totalFit = horizontalFit * verticalFit;
 
     const possibleAmountOfPieces = totalFit !== 0 ? totalFit : 0;
+
+    const maxAmount =
+      customAmount !== null && totalFit !== 0
+        ? Math.ceil(Number(customAmount) / Number(totalFit))
+        : 0;
 
     const cutItemPrice =
       customAmount !== null
@@ -61,10 +69,13 @@ const Detail = ({
       cutItemPrice,
       AmountOfCustomParticles,
       totalPrice,
+      totalFit,
+      maxAmount,
     };
   }, [product, width, height, customAmount]);
+
   const newDetail = {
-    id: countDetails,
+    id: nanoid(),
     productId: product.id,
     width,
     height,
@@ -74,16 +85,56 @@ const Detail = ({
     customAmount,
     comment,
   };
+
   const handleAddNewDetail = (data) => {
     if (width === null || height === null || customAmount === null) {
       toast.error("Вкажіть розмір деталі і кількість!");
       return;
     } else {
-      setNewDetail(data);
+      const updatedDetails = [...savedDetails, data]; // Add newDetail to the existing savedDetails array
+      setSavedDetails(updatedDetails); // Update the savedDetails state
+
+      // Retrieve existing details from localStorage
+      const existingDetailsString = window.localStorage.getItem("details");
+      const existingDetails = existingDetailsString
+        ? JSON.parse(existingDetailsString)
+        : [];
+
+      // Append the new detail to existing details
+      const updatedLocalStorageDetails = [...existingDetails, newDetail];
+
+      // Update localStorage with the updated details
+      window.localStorage.setItem(
+        `details`,
+        JSON.stringify(updatedLocalStorageDetails)
+      );
 
       toggleDetail(i);
       setIsSavedDetail(true);
       setIsSaved(true);
+    }
+  };
+  const handleUpdateDetail = (updatedDetail) => {
+    const updatedDetails = savedDetails.map((detail) =>
+      detail.id === updatedDetail.id ? updatedDetail : detail
+    );
+    setSavedDetails(updatedDetails);
+
+    // Retrieve existing details from localStorage
+    const existingDetailsString = window.localStorage.getItem("details");
+    const existingDetails = existingDetailsString
+      ? JSON.parse(existingDetailsString)
+      : [];
+
+    // Find the index of the detail to be updated in localStorage
+    const indexOfUpdatedDetail = existingDetails.findIndex(
+      (detail) => detail.id === updatedDetail.id
+    );
+
+    // Update the detail in localStorage
+    if (indexOfUpdatedDetail !== -1) {
+      existingDetails[indexOfUpdatedDetail] = updatedDetail;
+      window.localStorage.setItem("details", JSON.stringify(existingDetails));
     }
   };
 
@@ -125,9 +176,13 @@ const Detail = ({
               handleDeleteDetail={handleDeleteDetail}
             />
           </WrapSections>
-          {!isSaved && (
+          {!isSaved ? (
             <StyledSaveButton onClick={() => handleAddNewDetail(newDetail)}>
               {language === "ua" ? "Зберегти" : "Сохранить"}
+            </StyledSaveButton>
+          ) : (
+            <StyledSaveButton onClick={() => handleUpdateDetail(newDetail)}>
+              {language === "ua" ? "Оновити" : "Сохранить"}
             </StyledSaveButton>
           )}
         </>
