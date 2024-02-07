@@ -15,6 +15,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import Detail from "./Detail/Detail";
+import { nanoid } from "@reduxjs/toolkit";
 
 const Modal = ({
   close,
@@ -24,7 +25,6 @@ const Modal = ({
   details,
   setDetails,
 }) => {
-  const [newDetail, setNewDetail] = useState({});
   const [language, setLanguage] = useState("ua");
   const [isSavedDetail, setIsSavedDetail] = useState(false);
 
@@ -46,11 +46,15 @@ const Modal = ({
     close();
   };
 
-  const handleAddDetail = () => {
+  const handleAddDetail = (data) => {
+    //const newDetail = {};
+
+    const detailToSave = { ...data };
+
     setIsSavedDetail(false);
-    setDetails((prevDetails) => [...prevDetails, newDetail]);
+
+    setDetails((prevDetails) => [...prevDetails, detailToSave]);
     setCountDetails((prev) => prev + 1);
-    setNewDetail({});
   };
 
   const handleDeleteDetail = (id) => {
@@ -65,11 +69,11 @@ const Modal = ({
   };
 
   const handleSubmit = () => {
-    setDetails((prevDetails) => [...prevDetails, newDetail]);
+    //setDetails((prevDetails) => [...prevDetails, newDetail]);
 
     close();
   };
-
+  console.log(details);
   return (
     <StyledOverlay onClick={handleClickOutside}>
       <StyledModal>
@@ -97,7 +101,7 @@ const Modal = ({
             </svg>
           </StyledCloseButton>
         </ModalHeader>
-        <Detail
+        {/* <Detail
           i={1}
           handleDeleteDetail={handleDeleteDetail}
           product={product}
@@ -107,11 +111,12 @@ const Modal = ({
           setCountDetails={setCountDetails}
           handleSubmit={handleSubmit}
           details={details}
-          setNewDetail={setNewDetail}
+          //  setNewDetail={setNewDetail}
           isSavedDetail={isSavedDetail}
           setIsSavedDetail={setIsSavedDetail}
-        />
-        {details?.map((detail, i) => (
+          handleAddDetail={handleAddDetail}
+        /> */}
+        {details.map((detail, i) => (
           <Detail
             key={detail.id}
             i={i}
@@ -124,29 +129,30 @@ const Modal = ({
             setCountDetails={setCountDetails}
             handleSubmit={handleSubmit}
             details={details}
-            setNewDetail={setNewDetail}
+            //setNewDetail={setNewDetail}
             isSavedDetail={isSavedDetail}
             setIsSavedDetail={setIsSavedDetail}
+            handleAddDetail={handleAddDetail}
           />
         ))}
 
-        {isSavedDetail ? (
-          <WrapButtons>
-            <StyledMoreButton onClick={handleAddDetail}>
-              {language === "ua" ? "Додати деталь" : "Добавить деталь"}
-            </StyledMoreButton>
-            <StyledButton type="button" onClick={handleSubmit}>
-              {language === "ua"
-                ? "Відправити до корзини"
-                : "Отправить в корзину"}
-            </StyledButton>
-          </WrapButtons>
-        ) : (
-          <StyledText>
-            Збережіть деталь перед відправкою до корзини або видаліть не
-            збережену деталь
-          </StyledText>
-        )}
+        {/* {isSavedDetail ? ( */}
+        <WrapButtons>
+          <StyledMoreButton onClick={handleAddDetail}>
+            {language === "ua" ? "Додати деталь" : "Добавить деталь"}
+          </StyledMoreButton>
+          <StyledButton type="button" onClick={handleSubmit}>
+            {language === "ua"
+              ? "Відправити до корзини"
+              : "Отправить в корзину"}
+          </StyledButton>
+        </WrapButtons>
+        {/* ) : ( */}
+        <StyledText>
+          Збережіть деталь перед відправкою до корзини або видаліть не збережену
+          деталь
+        </StyledText>
+        {/* )} */}
         <ToastContainer />
       </StyledModal>
     </StyledOverlay>

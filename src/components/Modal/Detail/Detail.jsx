@@ -15,8 +15,9 @@ const Detail = ({
   detail,
   details,
   countDetails,
-  setNewDetail,
+  //setNewDetail,
   setIsSavedDetail,
+  handleAddDetail,
 }) => {
   const [edgeSide, setEdgeSide] = useState([]);
   const [width, setWidth] = useState(null);
@@ -86,12 +87,14 @@ const Detail = ({
     comment,
   };
 
-  const handleAddNewDetail = (data) => {
+  const handleAddNewDetail = () => {
     if (width === null || height === null || customAmount === null) {
       toast.error("Вкажіть розмір деталі і кількість!");
       return;
     } else {
-      const updatedDetails = [...savedDetails, data]; // Add newDetail to the existing savedDetails array
+      handleAddDetail(newDetail);
+
+      const updatedDetails = [...savedDetails, newDetail]; // Add newDetail to the existing savedDetails array
       setSavedDetails(updatedDetails); // Update the savedDetails state
 
       // Retrieve existing details from localStorage
@@ -108,7 +111,7 @@ const Detail = ({
         `details`,
         JSON.stringify(updatedLocalStorageDetails)
       );
-
+      //setNewDetail(newDetail);
       toggleDetail(i);
       setIsSavedDetail(true);
       setIsSaved(true);
@@ -159,6 +162,7 @@ const Detail = ({
               edgeWidth={edgeWidth}
               customAmount={customAmount}
               language={language}
+              detail={detail}
             />
             <OptionSection
               countDetails={countDetails}
@@ -177,7 +181,7 @@ const Detail = ({
             />
           </WrapSections>
           {!isSaved ? (
-            <StyledSaveButton onClick={() => handleAddNewDetail(newDetail)}>
+            <StyledSaveButton onClick={() => handleAddNewDetail()}>
               {language === "ua" ? "Зберегти" : "Сохранить"}
             </StyledSaveButton>
           ) : (

@@ -91,7 +91,7 @@ const OptionSection = ({
       setHeight(e.target.value);
     }
   };
-
+  console.log(detail);
   return (
     <WrapOptions>
       <div className="modal-window">

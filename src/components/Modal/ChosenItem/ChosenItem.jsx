@@ -15,6 +15,7 @@ import ExampleComponent from "./Example/ExampleComponent";
 const ChosenItem = ({
   product,
   width,
+  detail,
   height,
   edgeSide,
   edgeWidth,
@@ -59,7 +60,7 @@ const ChosenItem = ({
 
     setIsOpen((prev) => !prev);
   };
-
+  console.log(detail);
   return (
     <section>
       <StyledItemName></StyledItemName>
