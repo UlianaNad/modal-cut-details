@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import ChosenItem from "../ChosenItem/ChosenItem";
 import OptionSection from "../OptionSection/OptionSection";
 
@@ -6,6 +6,7 @@ import { WrapDetail, WrapSections } from "./Detail.styled";
 import styled from "styled-components";
 import { toast } from "react-toastify";
 import { nanoid } from "@reduxjs/toolkit";
+import { useTranslation } from "react-i18next";
 
 const Detail = ({
   i,
@@ -28,6 +29,8 @@ const Detail = ({
   const [comment, setComment] = useState("");
   const [selected, setSelected] = useState(null);
   const [isSaved, setIsSaved] = useState(false);
+  const [id, setId] = useState(nanoid());
+  const { t } = useTranslation("detailPage");
 
   const [savedDetails, setSavedDetails] = useState([]);
 
@@ -76,7 +79,7 @@ const Detail = ({
   }, [product, width, height, customAmount]);
 
   const newDetail = {
-    id: nanoid(),
+    id: id,
     productId: product.id,
     width,
     height,
@@ -182,11 +185,11 @@ const Detail = ({
           </WrapSections>
           {!isSaved ? (
             <StyledSaveButton onClick={() => handleAddNewDetail()}>
-              {language === "ua" ? "Зберегти" : "Сохранить"}
+              {t("save_button")}
             </StyledSaveButton>
           ) : (
             <StyledSaveButton onClick={() => handleUpdateDetail(newDetail)}>
-              {language === "ua" ? "Оновити" : "Сохранить"}
+              {t("update_button")}
             </StyledSaveButton>
           )}
         </>

@@ -15,7 +15,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import Detail from "./Detail/Detail";
-import { nanoid } from "@reduxjs/toolkit";
+import { useTranslation } from "react-i18next";
 
 const Modal = ({
   close,
@@ -27,7 +27,7 @@ const Modal = ({
 }) => {
   const [language, setLanguage] = useState("ua");
   const [isSavedDetail, setIsSavedDetail] = useState(false);
-
+  const { i18n } = useTranslation();
   const handleClickOutside = (e) => {
     if (e.target === e.currentTarget) {
       close();
@@ -78,10 +78,10 @@ const Modal = ({
     <StyledOverlay onClick={handleClickOutside}>
       <StyledModal>
         <div>
-          <button data-lang="ua" onClick={handleClickChangeLanguage}>
+          <button data-lang="ua" onClick={() => i18n.changeLanguage("ua")}>
             ua
           </button>
-          <button data-lang="ru" onClick={handleClickChangeLanguage}>
+          <button data-lang="ru" onClick={() => i18n.changeLanguage("ru")}>
             ru
           </button>
         </div>
