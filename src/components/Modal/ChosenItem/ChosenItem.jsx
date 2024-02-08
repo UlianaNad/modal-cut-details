@@ -11,7 +11,7 @@ import {
 } from "./ChosenItem.styled";
 import VisualModal from "./VisualModal/VisualModal";
 import ExampleComponent from "./Example/ExampleComponent";
-
+import { useTranslation } from "react-i18next";
 const ChosenItem = ({
   product,
   width,
@@ -26,6 +26,7 @@ const ChosenItem = ({
   const [isOpen, setIsOpen] = useState(false);
   const { ref: myRef, inView: myElIsVisible } = useInView();
   const [memorized, setMemorized] = useState({});
+  const { t } = useTranslation("chosenItem");
 
   useEffect(() => {
     let scaleToFit;
@@ -60,45 +61,35 @@ const ChosenItem = ({
 
     setIsOpen((prev) => !prev);
   };
-  console.log(detail);
+
   return (
     <section>
       <StyledItemName></StyledItemName>
 
       <WrapInfo>
-        <StyledOption>
-          {language === "ua" ? "Розмір товару:" : "Розмeр товара:"}
-        </StyledOption>
+        <StyledOption>{t("name")}</StyledOption>
         <StyledSpan>
-          {language === "ua" ? "ширина " : "ширина "}
+          {t("width")}
           {product.dimensions.width} мм
-          {language === "ua" ? " і висота " : "и высота "}
+          {t("height")}
           {product.dimensions.height} мм
         </StyledSpan>
       </WrapInfo>
 
       <WrapInfo>
-        <StyledOption>
-          {language === "ua" ? "Товщина листа:" : "Толщина листа:"}
-        </StyledOption>
+        <StyledOption>{t("thickness")}</StyledOption>
         <StyledSpan>{product.dimensions.thickness} мм</StyledSpan>
       </WrapInfo>
 
       <WrapInfo>
-        <StyledOption>
-          {language === "ua" ? "Ціна за 1 лист: " : "Цена за 1 лист: "}
-        </StyledOption>
+        <StyledOption>{t("price1")}</StyledOption>
         <StyledSpan>
           {" "}
           {product.offers.price} {product.offers.priceCurrency}
         </StyledSpan>
       </WrapInfo>
       <WrapInfo>
-        <StyledOption>
-          {language === "ua"
-            ? "Кількість деталей з розкрою 1 листа: "
-            : "Количество деталей с роскроя 1 листа: "}
-        </StyledOption>
+        <StyledOption>{t("possibleAmountOfPieces")}</StyledOption>
         <StyledSpan>
           {computedValues.possibleAmountOfPieces
             ? computedValues.possibleAmountOfPieces
@@ -108,36 +99,24 @@ const ChosenItem = ({
       </WrapInfo>
 
       <WrapInfo>
-        <StyledOption>
-          {language === "ua"
-            ? "Загальна вартість листів для порізки: "
-            : "Общее стоимость листов для порезки:"}
-        </StyledOption>
+        <StyledOption>{t("totalPrice")}</StyledOption>
         <StyledSpan>
           {computedValues.totalPrice ? computedValues.totalPrice : 0} грн.
         </StyledSpan>
       </WrapInfo>
       <WrapInfo>
-        <StyledOption>
-          {language === "ua"
-            ? "Загальна кількість листів для порізки: "
-            : "Общее количество листов для порезки:"}
-        </StyledOption>
+        <StyledOption>{t("maxAmount")}</StyledOption>
         <StyledSpan>{computedValues.maxAmount} шт.</StyledSpan>
       </WrapInfo>
       {edgeWidth ? (
         <WrapInfo>
-          <StyledOption>
-            {language === "ua" ? "Товщина кромки:" : "Толщина кромки:"}
-          </StyledOption>
+          <StyledOption>{t("edgeWidth")}</StyledOption>
           <StyledSpan>{edgeWidth ? edgeWidth : 0}</StyledSpan>
         </WrapInfo>
       ) : null}
 
       <HiddenOnPhone ref={myRef}>
-        <StyledItemName>
-          {language === "ua" ? "Візуалізація порізки" : "Визуализация порезки"}
-        </StyledItemName>
+        <StyledItemName>{t("cut")}</StyledItemName>
         <ExampleComponent
           width={width}
           height={height}
@@ -146,9 +125,7 @@ const ChosenItem = ({
         />
       </HiddenOnPhone>
       {!myElIsVisible && (
-        <ModalButton onClick={toggleModal}>
-          {language === "ua" ? "Візуалізація порізки" : "Визуализация порезки"}
-        </ModalButton>
+        <ModalButton onClick={toggleModal}>{t("cut")}</ModalButton>
       )}
       {isOpen ? (
         <VisualModal memorized={memorized} close={toggleModal} />

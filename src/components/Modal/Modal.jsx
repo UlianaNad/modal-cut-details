@@ -13,9 +13,8 @@ import {
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-import Detail from "./Detail/Detail";
 import { useTranslation } from "react-i18next";
+import Detail from "./Detail/Detail";
 
 const Modal = ({
   close,
@@ -25,20 +24,13 @@ const Modal = ({
   details,
   setDetails,
 }) => {
-  const [language, setLanguage] = useState("ua");
   const [isSavedDetail, setIsSavedDetail] = useState(false);
   const { i18n } = useTranslation();
+  const { t } = useTranslation("modalPage");
+  const [newDetail, setNewDetail] = useState({});
   const handleClickOutside = (e) => {
     if (e.target === e.currentTarget) {
       close();
-    }
-  };
-
-  const handleClickChangeLanguage = (e) => {
-    if (e.target.dataset.lang === "ua") {
-      setLanguage("ua");
-    } else if (e.target.dataset.lang === "ru") {
-      setLanguage("ru");
     }
   };
 
@@ -46,14 +38,9 @@ const Modal = ({
     close();
   };
 
-  const handleAddDetail = (data) => {
-    //const newDetail = {};
-
-    const detailToSave = { ...data };
-
+  const handleAddDetail = () => {
     setIsSavedDetail(false);
-
-    setDetails((prevDetails) => [...prevDetails, detailToSave]);
+    setDetails((prevDetails) => [...prevDetails, newDetail]);
     setCountDetails((prev) => prev + 1);
   };
 
@@ -73,7 +60,7 @@ const Modal = ({
 
     close();
   };
-  console.log(details);
+
   return (
     <StyledOverlay onClick={handleClickOutside}>
       <StyledModal>
@@ -101,21 +88,20 @@ const Modal = ({
             </svg>
           </StyledCloseButton>
         </ModalHeader>
-        {/* <Detail
+        <Detail
           i={1}
           handleDeleteDetail={handleDeleteDetail}
           product={product}
           setDetails={setDetails}
-          language={language}
           countDetails={countDetails}
           setCountDetails={setCountDetails}
           handleSubmit={handleSubmit}
           details={details}
-          //  setNewDetail={setNewDetail}
           isSavedDetail={isSavedDetail}
           setIsSavedDetail={setIsSavedDetail}
           handleAddDetail={handleAddDetail}
-        /> */}
+          setNewDetail={setNewDetail}
+        />
         {details.map((detail, i) => (
           <Detail
             key={detail.id}
@@ -123,36 +109,30 @@ const Modal = ({
             handleDeleteDetail={handleDeleteDetail}
             product={product}
             setDetails={setDetails}
-            language={language}
             detail={detail}
             countDetails={countDetails}
             setCountDetails={setCountDetails}
             handleSubmit={handleSubmit}
             details={details}
-            //setNewDetail={setNewDetail}
+            setNewDetail={setNewDetail}
             isSavedDetail={isSavedDetail}
             setIsSavedDetail={setIsSavedDetail}
             handleAddDetail={handleAddDetail}
           />
         ))}
 
-        {/* {isSavedDetail ? ( */}
-        <WrapButtons>
-          <StyledMoreButton onClick={handleAddDetail}>
-            {language === "ua" ? "Додати деталь" : "Добавить деталь"}
-          </StyledMoreButton>
-          <StyledButton type="button" onClick={handleSubmit}>
-            {language === "ua"
-              ? "Відправити до корзини"
-              : "Отправить в корзину"}
-          </StyledButton>
-        </WrapButtons>
-        {/* ) : ( */}
-        <StyledText>
-          Збережіть деталь перед відправкою до корзини або видаліть не збережену
-          деталь
-        </StyledText>
-        {/* )} */}
+        {isSavedDetail ? (
+          <WrapButtons>
+            <StyledMoreButton onClick={handleAddDetail}>
+              {t("more_button")}
+            </StyledMoreButton>
+            <StyledButton type="button" onClick={handleSubmit}>
+              {t("submit_button")}
+            </StyledButton>
+          </WrapButtons>
+        ) : (
+          <StyledText>{t("text_info")}</StyledText>
+        )}
         <ToastContainer />
       </StyledModal>
     </StyledOverlay>

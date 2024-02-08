@@ -16,7 +16,7 @@ import {
   DeleteDetailButton,
   WrapOptions,
 } from "./OptionSection.styled";
-
+import { useTranslation } from "react-i18next";
 import EdgePreview from "./EdgePreview/EdgePreview";
 import SvgHoverComponent from "./SvgHoverComponent/SvgHoverComponent";
 import { toast } from "react-toastify";
@@ -38,7 +38,7 @@ const OptionSection = ({
   const [rotation, setRotation] = useState(90);
   const [edgeBlock, setEdgeBlock] = useState(false);
   const [isBig, setIsBig] = useState(false);
-
+  const { t } = useTranslation("optionSection");
   const { dimensions } = product;
 
   const handleOpenEdgeBlock = () => {
@@ -73,7 +73,7 @@ const OptionSection = ({
 
   const handleInputWidth = (e) => {
     if (e.target.value > dimensions.width) {
-      toast.info("Введіть менше значення!");
+      toast.info(t("info_toast"));
       setIsBig(true);
       return;
     } else {
@@ -83,7 +83,7 @@ const OptionSection = ({
   };
   const handleInputHeight = (e) => {
     if (e.target.value > dimensions.height) {
-      toast.info("Введіть менше значення!");
+      toast.info(t("info_toast"));
       setIsBig(true);
       return;
     } else {
@@ -100,7 +100,7 @@ const OptionSection = ({
             <StyledBlockName>Деталь</StyledBlockName>
 
             <StyledBlockName>
-              {language === "ua" ? "Розміри деталі:" : "Рaзмeры детали:"}
+              {t("dimensions")}
               <SvgHoverComponent dimensions={hoverContent.dimensions} />
             </StyledBlockName>
             <StyledDimensions>
@@ -113,9 +113,7 @@ const OptionSection = ({
                     name="width"
                     id="width"
                     className="width"
-                    placeholder={
-                      language === "ua" ? "Ширина, мм" : "Ширина, мм"
-                    }
+                    placeholder={t("text_weight")}
                   />
                 </StyledDivDimens>
                 <StyledP $isBig={isBig}>
@@ -131,9 +129,7 @@ const OptionSection = ({
                     name="height"
                     id="height"
                     className="height"
-                    placeholder={
-                      language === "ua" ? "Висота, мм" : "Высота, мм"
-                    }
+                    placeholder={t("text_height")}
                   />
                 </StyledDivDimens>
                 <StyledP $isBig={isBig}>
@@ -142,9 +138,7 @@ const OptionSection = ({
               </StyledLi>
             </StyledDimensions>
             <StyledBlockName>
-              {language === "ua"
-                ? "Загальна кількість деталей по заданим розмірам:"
-                : "Общее количество деталей по заданым размерам:"}
+              {t("totalAmount")}
               <SvgHoverComponent amount={hoverContent.totalAmount} />
             </StyledBlockName>
             <StyledInput
@@ -165,35 +159,27 @@ const OptionSection = ({
                 type="button"
                 onClick={handleOpenEdgeBlock}
               >
-                {language === "ua" ? "Так" : "Да"}
+                {t("yes")}
               </StyledButton>
               <StyledButton
                 $width={true}
                 type="button"
                 onClick={handleCloseEdgeBlock}
               >
-                {language === "ua" ? "Ні" : "Нет"}
+                {t("no")}
               </StyledButton>
             </WrapperButtons>
             {edgeBlock ? (
               <div>
                 <EdgePreview setEdgeSide={setEdgeSide} language={language} />
                 <div className="field position">
-                  <StyledBlockName>
-                    {language === "ua"
-                      ? "Вибрати ширину кромки:"
-                      : "Выбрать ширину кромки:"}
-                  </StyledBlockName>
+                  <StyledBlockName>{t("edge")}</StyledBlockName>
                   <StyledSelect
                     onChange={(e) => setEdgeWidth(e.target.value)}
                     name="edge-width"
                     id="edge-width"
                   >
-                    <option value="">
-                      {language === "ua"
-                        ? "Вибрати ширину кромки"
-                        : "Выбрать ширину кромки"}{" "}
-                    </option>
+                    <option value="">{t("edge")}</option>
                     <option value="22*0.6">22*0.6 </option>
                     <option value="22*2">22*2</option>
                     <option value="42*2">42*2</option>
@@ -204,7 +190,7 @@ const OptionSection = ({
           </div>
           <PatternRotation>
             <StyledBlockName>
-              {language === "ua" ? "Обертання текстури:" : "Вращение текстуры:"}
+              {t("rotation")}
               <SvgHoverComponent rotation={hoverContent.rotation} />
             </StyledBlockName>
             <StyledImg
@@ -215,9 +201,7 @@ const OptionSection = ({
           </PatternRotation>
           <div>
             <StyledBlockName>
-              {language === "ua"
-                ? "Залиште свій коментар щодо замовлення:"
-                : "Оставьте свой коментарий к заказу:"}
+              {t("comment")}
               <SvgHoverComponent comment={hoverContent.comment} />
             </StyledBlockName>
             <StyledTextArea
@@ -232,7 +216,7 @@ const OptionSection = ({
             type="button"
             onClick={() => handleDeleteDetail(detail?.id)}
           >
-            {language === "ua" ? "Видалити" : "Удалить"}
+            {t("deleteButton")}
           </DeleteDetailButton>
         </form>
       </div>

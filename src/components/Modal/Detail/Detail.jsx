@@ -2,8 +2,12 @@ import React, { useMemo, useState } from "react";
 import ChosenItem from "../ChosenItem/ChosenItem";
 import OptionSection from "../OptionSection/OptionSection";
 
-import { WrapDetail, WrapSections } from "./Detail.styled";
-import styled from "styled-components";
+import {
+  StyledSaveButton,
+  WrapDetail,
+  WrapSections,
+  WrapToggleDiv,
+} from "./Detail.styled";
 import { toast } from "react-toastify";
 import { nanoid } from "@reduxjs/toolkit";
 import { useTranslation } from "react-i18next";
@@ -11,14 +15,12 @@ import { useTranslation } from "react-i18next";
 const Detail = ({
   i,
   product,
-  language,
   handleDeleteDetail,
   detail,
   details,
   countDetails,
-  //setNewDetail,
   setIsSavedDetail,
-  handleAddDetail,
+  setNewDetail,
 }) => {
   const [edgeSide, setEdgeSide] = useState([]);
   const [width, setWidth] = useState(null);
@@ -29,7 +31,7 @@ const Detail = ({
   const [comment, setComment] = useState("");
   const [selected, setSelected] = useState(null);
   const [isSaved, setIsSaved] = useState(false);
-  const [id, setId] = useState(nanoid());
+  const [id] = useState(nanoid());
   const { t } = useTranslation("detailPage");
 
   const [savedDetails, setSavedDetails] = useState([]);
@@ -92,21 +94,17 @@ const Detail = ({
 
   const handleAddNewDetail = () => {
     if (width === null || height === null || customAmount === null) {
-      toast.error("Вкажіть розмір деталі і кількість!");
+      toast.error(t("toast_error"));
       return;
     } else {
-      handleAddDetail(newDetail);
+      const updatedDetails = [...savedDetails, newDetail];
+      setSavedDetails(updatedDetails);
 
-      const updatedDetails = [...savedDetails, newDetail]; // Add newDetail to the existing savedDetails array
-      setSavedDetails(updatedDetails); // Update the savedDetails state
-
-      // Retrieve existing details from localStorage
       const existingDetailsString = window.localStorage.getItem("details");
       const existingDetails = existingDetailsString
         ? JSON.parse(existingDetailsString)
         : [];
 
-      // Append the new detail to existing details
       const updatedLocalStorageDetails = [...existingDetails, newDetail];
 
       // Update localStorage with the updated details
@@ -114,7 +112,8 @@ const Detail = ({
         `details`,
         JSON.stringify(updatedLocalStorageDetails)
       );
-      //setNewDetail(newDetail);
+
+      setNewDetail(newDetail);
       toggleDetail(i);
       setIsSavedDetail(true);
       setIsSaved(true);
@@ -125,19 +124,16 @@ const Detail = ({
       detail.id === updatedDetail.id ? updatedDetail : detail
     );
     setSavedDetails(updatedDetails);
-
-    // Retrieve existing details from localStorage
+    console.log(updatedDetail);
     const existingDetailsString = window.localStorage.getItem("details");
     const existingDetails = existingDetailsString
       ? JSON.parse(existingDetailsString)
       : [];
 
-    // Find the index of the detail to be updated in localStorage
     const indexOfUpdatedDetail = existingDetails.findIndex(
       (detail) => detail.id === updatedDetail.id
     );
 
-    // Update the detail in localStorage
     if (indexOfUpdatedDetail !== -1) {
       existingDetails[indexOfUpdatedDetail] = updatedDetail;
       window.localStorage.setItem("details", JSON.stringify(existingDetails));
@@ -164,7 +160,6 @@ const Detail = ({
               patternDirection={patternDirection}
               edgeWidth={edgeWidth}
               customAmount={customAmount}
-              language={language}
               detail={detail}
             />
             <OptionSection
@@ -179,7 +174,6 @@ const Detail = ({
               setComment={setComment}
               detail={detail}
               details={details}
-              language={language}
               handleDeleteDetail={handleDeleteDetail}
             />
           </WrapSections>
@@ -199,59 +193,3 @@ const Detail = ({
 };
 
 export default Detail;
-
-export const StyledSaveButton = styled.button`
-  display: inline-block;
-  padding: 10px 20px;
-  font-size: 15px;
-  font-weight: bold;
-  line-height: 1.4;
-  text-align: center;
-  cursor: pointer;
-  border-radius: 4px;
-  color: #fff;
-  border: 0;
-  background-color: #ffa700;
-  margin-left: 52%;
-  transition: 0.4s;
-  text-transform: uppercase;
-
-  &:hover {
-    background-color: #c48000;
-  }
-  @media (max-width: 425px) {
-    font-size: 12px;
-    padding: 6px 10px;
-    margin-right: 0;
-    min-width: 0;
-  }
-  @media (max-width: 915px) {
-    margin-left: 0;
-  }
-`;
-export const WrapToggleDiv = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #c48000;
-  cursor: pointer;
-  /* margin-top: 20px; */
-  color: #001a34;
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 1.4;
-  /* margin-bottom: 10px; */
-
-  @media (max-width: 425px) {
-    margin-top: 10px;
-  }
-
-  span {
-    transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
-  }
-  p {
-    @media (max-width: 425px) {
-      font-size: 14px;
-    }
-  }
-`;
