@@ -7,7 +7,7 @@ import { AppWrapper, Item, StyledUl } from "./App.styled";
 export const App = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [product, setProduct] = useState({});
-  const [countDetails, setCountDetails] = useState(1);
+
   const [details, setDetails] = useState([]);
 
   const toggleModal = (product) => {
@@ -36,8 +36,6 @@ export const App = () => {
       </StyledUl>
       {isOpen ? (
         <Modal
-          countDetails={countDetails}
-          setCountDetails={setCountDetails}
           close={toggleModal}
           product={product}
           details={details}

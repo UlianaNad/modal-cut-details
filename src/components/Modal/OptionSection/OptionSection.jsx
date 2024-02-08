@@ -23,7 +23,6 @@ import { toast } from "react-toastify";
 import { hoverContent } from "../../data/hoverData";
 const OptionSection = ({
   product,
-  close,
   setWidth,
   setHeight,
   setEdgeSide,
@@ -32,7 +31,6 @@ const OptionSection = ({
   setCustomAmount,
   setComment,
   detail,
-  language,
   handleDeleteDetail,
   isBigHeight,
   setIsBigHeight,
@@ -47,10 +45,11 @@ const OptionSection = ({
   setEdgeBlock,
   comment,
   patternDirection,
+  countDetails,
+  id,
 }) => {
   const [rotation, setRotation] = useState(90);
 
-  console.log(patternDirection);
   const { t } = useTranslation("optionSection");
   const { dimensions } = product;
 
@@ -63,13 +62,7 @@ const OptionSection = ({
     setEdgeWidth(null);
     setEdgeSide([]);
   };
-
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-
-    close();
-  };
-
+  console.log(id);
   const handleImageClick = (e) => {
     const newRotation = rotation === 0 ? 90 : 0;
     setRotation(newRotation);
@@ -104,13 +97,13 @@ const OptionSection = ({
       setHeight(e.target.value);
     }
   };
-
+  console.log(countDetails);
   return (
     <WrapOptions>
       <div className="modal-window">
-        <form onSubmit={handleFormSubmit}>
+        <form>
           <Wrapper>
-            <StyledBlockName>Деталь</StyledBlockName>
+            <StyledBlockName>Деталь {countDetails}</StyledBlockName>
 
             <StyledBlockName>
               {t("dimensions")}
@@ -184,11 +177,7 @@ const OptionSection = ({
             </WrapperButtons>
             {edgeBlock ? (
               <div>
-                <EdgePreview
-                  setEdgeSide={setEdgeSide}
-                  language={language}
-                  edgeSide={edgeSide}
-                />
+                <EdgePreview setEdgeSide={setEdgeSide} edgeSide={edgeSide} />
                 <div className="field position">
                   <StyledBlockName>{t("edge")}</StyledBlockName>
                   <StyledSelect
@@ -234,7 +223,7 @@ const OptionSection = ({
           </div>
           <DeleteDetailButton
             type="button"
-            onClick={() => handleDeleteDetail(detail.id)}
+            onClick={() => handleDeleteDetail(id)}
           >
             {t("deleteButton")}
           </DeleteDetailButton>

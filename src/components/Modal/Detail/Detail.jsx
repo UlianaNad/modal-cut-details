@@ -19,11 +19,11 @@ const Detail = ({
   handleDeleteDetail,
   detail,
   details,
-  countDetails,
   setIsSavedDetail,
   setNewDetail,
-  openedDetail,
   setOpenedDetail,
+  countDetails,
+  setCountDetails,
 }) => {
   const [edgeSide, setEdgeSide] = useState([]);
   const [width, setWidth] = useState(null);
@@ -40,14 +40,15 @@ const Detail = ({
   const [isBigWidth, setIsBigWidth] = useState(false);
   const [isBigHeight, setIsBigHeight] = useState(false);
   const [savedDetails, setSavedDetails] = useState([]);
-  const [rotation, setRotation] = useState(90);
   const [edgeBlock, setEdgeBlock] = useState(false);
-
+  const [count] = useState(countDetails);
   const toggleDetail = (i) => {
     if (selected === i) {
+      console.log(detail);
       setOpenedDetail(true);
       return setSelected(null);
     }
+    console.log(detail);
     setSelected(i);
     setEdgeBlock((prev) => !prev);
   };
@@ -130,6 +131,7 @@ const Detail = ({
       setIsSaved(true);
       setOpenedDetail(false);
       setEdgeBlock((prev) => !prev);
+      setCountDetails((prev) => prev + 1);
     }
   };
   const handleUpdateDetail = (updatedDetail) => {
@@ -160,7 +162,7 @@ const Detail = ({
     <WrapDetail>
       <WrapToggleDiv onClick={() => toggleDetail(i)}>
         <p>
-          Деталь {width ? width : 0} мм на {height ? height : 0} мм
+          Деталь №{count} {width ? width : 0} мм на {height ? height : 0} мм
         </p>
         <span>{selected !== i ? "-" : "+"}</span>
       </WrapToggleDiv>
@@ -179,22 +181,22 @@ const Detail = ({
               detail={detail}
             />
             <OptionSection
+              product={product}
+              setWidth={setWidth}
+              setHeight={setHeight}
               width={width}
               height={height}
+              setEdgeSide={setEdgeSide}
+              setPatternDirection={setPatternDirection}
+              setCustomAmount={setCustomAmount}
+              setComment={setComment}
               computedValues={computedValues}
               edgeSide={edgeSide}
               patternDirection={patternDirection}
               edgeWidth={edgeWidth}
               customAmount={customAmount}
               countDetails={countDetails}
-              product={product}
-              setWidth={setWidth}
-              setHeight={setHeight}
-              setEdgeSide={setEdgeSide}
-              setPatternDirection={setPatternDirection}
               setEdgeWidth={setEdgeWidth}
-              setCustomAmount={setCustomAmount}
-              setComment={setComment}
               detail={detail}
               details={details}
               handleDeleteDetail={handleDeleteDetail}
@@ -205,6 +207,7 @@ const Detail = ({
               edgeBlock={edgeBlock}
               setEdgeBlock={setEdgeBlock}
               comment={comment}
+              id={id}
             />
           </WrapSections>
           {!isSaved ? (

@@ -17,20 +17,13 @@ import "react-toastify/dist/ReactToastify.css";
 import { useTranslation } from "react-i18next";
 import Detail from "./Detail/Detail";
 
-const Modal = ({
-  close,
-  product,
-  countDetails,
-  setCountDetails,
-  details,
-  setDetails,
-}) => {
+const Modal = ({ close, product, details, setDetails }) => {
   const [isSavedDetail, setIsSavedDetail] = useState(false);
   const { i18n } = useTranslation();
   const { t } = useTranslation("modalPage");
   const [newDetail, setNewDetail] = useState({});
   const [openedDetail, setOpenedDetail] = useState(false);
-
+  const [countDetails, setCountDetails] = useState(1);
   const handleClickOutside = (e) => {
     if (e.target === e.currentTarget) {
       close();
@@ -44,7 +37,7 @@ const Modal = ({
   const handleAddDetail = () => {
     setIsSavedDetail(false);
     setDetails((prevDetails) => [...prevDetails, newDetail]);
-    setCountDetails((prev) => prev + 1);
+
     setOpenedDetail(true);
   };
 
@@ -93,31 +86,15 @@ const Modal = ({
             </svg>
           </StyledCloseButton>
         </ModalHeader>
-        {/* <Detail
-          i={1}
-          handleDeleteDetail={handleDeleteDetail}
-          product={product}
-          setDetails={setDetails}
-          countDetails={countDetails}
-          setCountDetails={setCountDetails}
-          handleSubmit={handleSubmit}
-          details={details}
-          isSavedDetail={isSavedDetail}
-          setIsSavedDetail={setIsSavedDetail}
-          handleAddDetail={handleAddDetail}
-          setNewDetail={setNewDetail}
-        /> */}
         {details.length === 0 && <StyledInfo>{t("styled_info")}</StyledInfo>}
         {details.map((detail, i) => (
           <Detail
-            key={`${detail.productId}-${i}`}
+            key={`${product.id}-${i}`}
             i={i}
             handleDeleteDetail={handleDeleteDetail}
             product={product}
             setDetails={setDetails}
             detail={detail}
-            countDetails={countDetails}
-            setCountDetails={setCountDetails}
             handleSubmit={handleSubmit}
             details={details}
             setNewDetail={setNewDetail}
@@ -126,6 +103,8 @@ const Modal = ({
             handleAddDetail={handleAddDetail}
             openedDetail={openedDetail}
             setOpenedDetail={setOpenedDetail}
+            countDetails={countDetails}
+            setCountDetails={setCountDetails}
           />
         ))}
 

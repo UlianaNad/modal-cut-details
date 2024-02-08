@@ -16,16 +16,10 @@ export const StyledOverlay = styled.div`
 export const StyledModal = styled.div`
   width: calc(100vw - 50px);
   height: calc(100vh - 50px);
-
   background-color: white;
   overflow-y: scroll;
   position: relative;
   padding: 20px;
-  /* 
-  @media (max-width: 768px) {
-    width: 100vw;
-    height: 100vh;
-  } */
 `;
 export const StyledCloseButton = styled.button`
   right: 4px;
