@@ -92,7 +92,3 @@ const EdgePreview = ({ setEdgeSide, edgeSide }) => {
 };
 
 export default EdgePreview;
-
-// EdgePreview.propTypes = {
-//   handleEdgeSide: PropTypes.func.isRequired,
-// };

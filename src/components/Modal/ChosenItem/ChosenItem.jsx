@@ -64,13 +64,10 @@ const ChosenItem = ({
   return (
     <section>
       <StyledItemName></StyledItemName>
-
       <WrapInfo>
         <StyledOption>{t("name")}</StyledOption>
         <StyledSpan>
-          {t("width")}
-          {product.dimensions.width} мм
-          {t("height")}
+          {t("width")} {product.dimensions.width} мм {t("height")}{" "}
           {product.dimensions.height} мм
         </StyledSpan>
       </WrapInfo>

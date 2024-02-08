@@ -74,6 +74,10 @@ export const StyledImg = styled.img`
   margin-left: 25px;
   width: 125px;
   transform: rotate(90deg);
+  transform: ${(props) =>
+    props.$patternDirection === "horizontal"
+      ? "rotate(90deg)"
+      : "rotate(0deg)"};
   transition: all 0.5s;
 `;
 export const StyledButton = styled.button`

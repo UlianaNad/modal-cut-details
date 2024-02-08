@@ -9,6 +9,7 @@ import {
   StyledText,
   ModalHeader,
   StyledItemName,
+  StyledInfo,
 } from "./Modal.styled";
 
 import { ToastContainer } from "react-toastify";
@@ -106,9 +107,10 @@ const Modal = ({
           handleAddDetail={handleAddDetail}
           setNewDetail={setNewDetail}
         /> */}
+        {details.length === 0 && <StyledInfo>{t("styled_info")}</StyledInfo>}
         {details.map((detail, i) => (
           <Detail
-            key={detail.id}
+            key={`${detail.productId}-${i}`}
             i={i}
             handleDeleteDetail={handleDeleteDetail}
             product={product}

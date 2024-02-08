@@ -46,10 +46,11 @@ const OptionSection = ({
   edgeBlock,
   setEdgeBlock,
   comment,
+  patternDirection,
 }) => {
   const [rotation, setRotation] = useState(90);
-  // const [edgeBlock, setEdgeBlock] = useState(false);
 
+  console.log(patternDirection);
   const { t } = useTranslation("optionSection");
   const { dimensions } = product;
 
@@ -194,7 +195,7 @@ const OptionSection = ({
                     onChange={(e) => setEdgeWidth(e.target.value)}
                     name="edge-width"
                     id="edge-width"
-                    value={edgeWidth}
+                    value={edgeWidth || ""}
                   >
                     <option value="">{t("edge")}</option>
                     <option value="22*0.6">22*0.6 </option>
@@ -211,6 +212,7 @@ const OptionSection = ({
               <SvgHoverComponent rotation={hoverContent.rotation} />
             </StyledBlockName>
             <StyledImg
+              $patternDirection={patternDirection}
               onClick={handleImageClick}
               src={require("./wood.jpg")}
               alt="pattern"

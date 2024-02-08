@@ -61,6 +61,7 @@ export const StyledCloseButton = styled.button`
     position: fixed;
     right: 0px;
     top: 14px;
+    padding: 0px 0px;
   }
 `;
 export const WrapButtons = styled.div`
@@ -176,5 +177,14 @@ export const StyledItemName = styled.h1`
     margin-top: 10px;
     margin-bottom: 0;
     font-size: 14px;
+  }
+`;
+export const StyledInfo = styled.p`
+  font-size: 25px;
+  text-align: center;
+  margin-top: 50px;
+  @media (max-width: 425px) {
+    margin-top: 50px;
+    font-size: 18px;
   }
 `;
