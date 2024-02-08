@@ -34,10 +34,22 @@ const OptionSection = ({
   detail,
   language,
   handleDeleteDetail,
+  isBigHeight,
+  setIsBigHeight,
+  isBigWidth,
+  setIsBigWidth,
+  width,
+  height,
+  edgeSide,
+  edgeWidth,
+  customAmount,
+  edgeBlock,
+  setEdgeBlock,
+  comment,
 }) => {
   const [rotation, setRotation] = useState(90);
-  const [edgeBlock, setEdgeBlock] = useState(false);
-  const [isBig, setIsBig] = useState(false);
+  // const [edgeBlock, setEdgeBlock] = useState(false);
+
   const { t } = useTranslation("optionSection");
   const { dimensions } = product;
 
@@ -74,24 +86,24 @@ const OptionSection = ({
   const handleInputWidth = (e) => {
     if (e.target.value > dimensions.width) {
       toast.info(t("info_toast"));
-      setIsBig(true);
+      setIsBigWidth(true);
       return;
     } else {
-      setIsBig(false);
+      setIsBigWidth(false);
       setWidth(e.target.value);
     }
   };
   const handleInputHeight = (e) => {
     if (e.target.value > dimensions.height) {
       toast.info(t("info_toast"));
-      setIsBig(true);
+      setIsBigHeight(true);
       return;
     } else {
-      setIsBig(false);
+      setIsBigHeight(false);
       setHeight(e.target.value);
     }
   };
-  console.log(detail);
+
   return (
     <WrapOptions>
       <div className="modal-window">
@@ -113,10 +125,10 @@ const OptionSection = ({
                     name="width"
                     id="width"
                     className="width"
-                    placeholder={t("text_weight")}
+                    placeholder={width ? width + " мм" : t("text_weight")}
                   />
                 </StyledDivDimens>
-                <StyledP $isBig={isBig}>
+                <StyledP $isBig={isBigWidth}>
                   Max: <span>{dimensions.width} mm</span>
                 </StyledP>
               </StyledLi>
@@ -129,10 +141,10 @@ const OptionSection = ({
                     name="height"
                     id="height"
                     className="height"
-                    placeholder={t("text_height")}
+                    placeholder={height ? height + " мм" : t("text_height")}
                   />
                 </StyledDivDimens>
-                <StyledP $isBig={isBig}>
+                <StyledP $isBig={isBigHeight}>
                   Max: <span>{dimensions.height} mm</span>
                 </StyledP>
               </StyledLi>
@@ -145,7 +157,7 @@ const OptionSection = ({
               onChange={(e) => setCustomAmount(e.target.value)}
               type="number"
               name="total-amount"
-              placeholder="шт."
+              placeholder={customAmount ? customAmount + " шт." : "шт."}
             />
           </Wrapper>
           <div className="edge-block">
@@ -171,13 +183,18 @@ const OptionSection = ({
             </WrapperButtons>
             {edgeBlock ? (
               <div>
-                <EdgePreview setEdgeSide={setEdgeSide} language={language} />
+                <EdgePreview
+                  setEdgeSide={setEdgeSide}
+                  language={language}
+                  edgeSide={edgeSide}
+                />
                 <div className="field position">
                   <StyledBlockName>{t("edge")}</StyledBlockName>
                   <StyledSelect
                     onChange={(e) => setEdgeWidth(e.target.value)}
                     name="edge-width"
                     id="edge-width"
+                    value={edgeWidth}
                   >
                     <option value="">{t("edge")}</option>
                     <option value="22*0.6">22*0.6 </option>
@@ -210,11 +227,12 @@ const OptionSection = ({
               id=""
               cols="50"
               rows="6"
+              value={comment}
             ></StyledTextArea>
           </div>
           <DeleteDetailButton
             type="button"
-            onClick={() => handleDeleteDetail(detail?.id)}
+            onClick={() => handleDeleteDetail(detail.id)}
           >
             {t("deleteButton")}
           </DeleteDetailButton>

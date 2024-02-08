@@ -20,7 +20,6 @@ const ChosenItem = ({
   edgeSide,
   edgeWidth,
   computedValues,
-  language,
 }) => {
   const [scale, setScale] = useState(null);
   const [isOpen, setIsOpen] = useState(false);

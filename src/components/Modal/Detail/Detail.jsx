@@ -4,6 +4,7 @@ import OptionSection from "../OptionSection/OptionSection";
 
 import {
   StyledSaveButton,
+  StyledUpdateButton,
   WrapDetail,
   WrapSections,
   WrapToggleDiv,
@@ -21,6 +22,8 @@ const Detail = ({
   countDetails,
   setIsSavedDetail,
   setNewDetail,
+  openedDetail,
+  setOpenedDetail,
 }) => {
   const [edgeSide, setEdgeSide] = useState([]);
   const [width, setWidth] = useState(null);
@@ -34,13 +37,19 @@ const Detail = ({
   const [id] = useState(nanoid());
   const { t } = useTranslation("detailPage");
 
+  const [isBigWidth, setIsBigWidth] = useState(false);
+  const [isBigHeight, setIsBigHeight] = useState(false);
   const [savedDetails, setSavedDetails] = useState([]);
+  const [rotation, setRotation] = useState(90);
+  const [edgeBlock, setEdgeBlock] = useState(false);
 
   const toggleDetail = (i) => {
     if (selected === i) {
+      setOpenedDetail(true);
       return setSelected(null);
     }
     setSelected(i);
+    setEdgeBlock((prev) => !prev);
   };
 
   const computedValues = useMemo(() => {
@@ -96,6 +105,8 @@ const Detail = ({
     if (width === null || height === null || customAmount === null) {
       toast.error(t("toast_error"));
       return;
+    } else if (isBigHeight || isBigWidth) {
+      toast.error(t("info_toast"));
     } else {
       const updatedDetails = [...savedDetails, newDetail];
       setSavedDetails(updatedDetails);
@@ -117,6 +128,8 @@ const Detail = ({
       toggleDetail(i);
       setIsSavedDetail(true);
       setIsSaved(true);
+      setOpenedDetail(false);
+      setEdgeBlock((prev) => !prev);
     }
   };
   const handleUpdateDetail = (updatedDetail) => {
@@ -124,7 +137,7 @@ const Detail = ({
       detail.id === updatedDetail.id ? updatedDetail : detail
     );
     setSavedDetails(updatedDetails);
-    console.log(updatedDetail);
+
     const existingDetailsString = window.localStorage.getItem("details");
     const existingDetails = existingDetailsString
       ? JSON.parse(existingDetailsString)
@@ -138,6 +151,9 @@ const Detail = ({
       existingDetails[indexOfUpdatedDetail] = updatedDetail;
       window.localStorage.setItem("details", JSON.stringify(existingDetails));
     }
+    toggleDetail(i);
+    setOpenedDetail(false);
+    setEdgeBlock((prev) => !prev);
   };
 
   return (
@@ -163,6 +179,13 @@ const Detail = ({
               detail={detail}
             />
             <OptionSection
+              width={width}
+              height={height}
+              computedValues={computedValues}
+              edgeSide={edgeSide}
+              patternDirection={patternDirection}
+              edgeWidth={edgeWidth}
+              customAmount={customAmount}
               countDetails={countDetails}
               product={product}
               setWidth={setWidth}
@@ -175,6 +198,13 @@ const Detail = ({
               detail={detail}
               details={details}
               handleDeleteDetail={handleDeleteDetail}
+              isBigHeight={isBigHeight}
+              setIsBigHeight={setIsBigHeight}
+              isBigWidth={isBigWidth}
+              setIsBigWidth={setIsBigWidth}
+              edgeBlock={edgeBlock}
+              setEdgeBlock={setEdgeBlock}
+              comment={comment}
             />
           </WrapSections>
           {!isSaved ? (
@@ -182,9 +212,9 @@ const Detail = ({
               {t("save_button")}
             </StyledSaveButton>
           ) : (
-            <StyledSaveButton onClick={() => handleUpdateDetail(newDetail)}>
+            <StyledUpdateButton onClick={() => handleUpdateDetail(newDetail)}>
               {t("update_button")}
-            </StyledSaveButton>
+            </StyledUpdateButton>
           )}
         </>
       ) : null}

@@ -65,8 +65,9 @@ export const StyledCloseButton = styled.button`
 `;
 export const WrapButtons = styled.div`
   position: fixed;
-  bottom: 10px;
-  left: 30px;
+  bottom: 15px;
+  left: 25px;
+
   right: 35px;
   gap: 10px;
   display: flex;

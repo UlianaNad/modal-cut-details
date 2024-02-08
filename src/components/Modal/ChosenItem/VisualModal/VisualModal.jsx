@@ -3,7 +3,7 @@ import { StyledModalMini, StyledOverlayMini } from "./VisualModal.styled";
 import ExampleComponent from "../Example/ExampleComponent";
 
 const VisualModal = ({ memorized, close }) => {
-  // const { width, height, scale, edgeSide } = memorized;
+
   const { width, height, scale, edgeSide } = useMemo(
     () => memorized,
     [memorized]

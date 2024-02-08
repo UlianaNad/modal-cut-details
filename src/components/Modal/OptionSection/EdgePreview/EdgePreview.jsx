@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   ChoiceWrap,
   FieldChoiceBottom,
@@ -7,70 +7,76 @@ import {
   FieldChoiceTop,
   SpanLabel,
   StyledInputCheckbox,
-} from './EdgePreview.styled';
+} from "./EdgePreview.styled";
 //import PropTypes from 'prop-types';
-import { StyledBlockName } from '../OptionSection.styled';
+import { StyledBlockName } from "../OptionSection.styled";
+import { useTranslation } from "react-i18next";
 
-const EdgePreview = ({ setEdgeSide, language }) => {
+const EdgePreview = ({ setEdgeSide, edgeSide }) => {
+  const { t } = useTranslation("edgePreview");
+
   const handleChange = ({ target }) => {
     const { value, checked } = target;
-
-    setEdgeSide(prev =>
-      checked ? [...prev, value] : [...prev?.filter(choice => choice !== value)]
+    // Toggle the value in the state based on checkbox checked status
+    setEdgeSide((prev) =>
+      checked
+        ? [...prev, value]
+        : [...prev.filter((choice) => choice !== value)]
     );
   };
 
-  const renderCheckbox = (name, label) => (
-    <>
-      <StyledInputCheckbox
-        onChange={handleChange}
-        className="validate-variable-product-one-required"
-        type="checkbox"
-        name={name}
-        value={name}
-      />
-      <label htmlFor={`rounded_corners_${name}`}>
-        <SpanLabel>{label}</SpanLabel>
-      </label>
-    </>
-  );
+  const renderCheckbox = (name, label) => {
+    // Determine if the checkbox should be checked based on edgeSide
+    const isChecked = edgeSide.includes(name);
+    return (
+      <>
+        <StyledInputCheckbox
+          onChange={handleChange}
+          className="validate-variable-product-one-required"
+          type="checkbox"
+          name={name}
+          value={name}
+          checked={isChecked} // Set the checked attribute based on edgeSide
+        />
+        <label htmlFor={`rounded_corners_${name}`}>
+          <SpanLabel>{label}</SpanLabel>
+        </label>
+      </>
+    );
+  };
 
   return (
     <div className="edge-preview">
       <label className="label">
-        <StyledBlockName>
-          {language === 'ua'
-            ? 'Вибрати сторони для кромки:'
-            : 'Выбрать стороны для кромки:'}
-        </StyledBlockName>
+        <StyledBlockName>{t("edge-preview")}</StyledBlockName>
       </label>
       <div className="height-width-container">
         <div className="height-width">
           <div className="control">
             <ChoiceWrap>
               {[
-                { name: 'top-choice' },
-                { name: 'left-choice' },
-                { name: 'choice-bottom' },
-                { name: 'choice-right' },
+                { name: "top-choice" },
+                { name: "left-choice" },
+                { name: "choice-bottom" },
+                { name: "choice-right" },
               ].map(({ name, label }) => (
                 <React.Fragment key={name}>
-                  {name === 'top-choice' && (
+                  {name === "top-choice" && (
                     <FieldChoiceTop>
                       {renderCheckbox(name, label)}
                     </FieldChoiceTop>
                   )}
-                  {name === 'left-choice' && (
+                  {name === "left-choice" && (
                     <FieldChoiceLeft>
                       {renderCheckbox(name, label)}
                     </FieldChoiceLeft>
                   )}
-                  {name === 'choice-bottom' && (
+                  {name === "choice-bottom" && (
                     <FieldChoiceBottom>
                       {renderCheckbox(name, label)}
                     </FieldChoiceBottom>
                   )}
-                  {name === 'choice-right' && (
+                  {name === "choice-right" && (
                     <FieldChoiceRight>
                       {renderCheckbox(name, label)}
                     </FieldChoiceRight>

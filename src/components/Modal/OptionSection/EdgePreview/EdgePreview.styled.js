@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const ChoiceWrap = styled.div`
   display: grid;
@@ -14,7 +14,7 @@ export const FieldChoiceTop = styled.div`
   grid-column-start: 2;
   border: 1px solid #c2c2c2;
   &::after {
-    content: '';
+    content: "";
     width: 45px;
     height: 4px;
     background-color: #204b37;
@@ -41,7 +41,7 @@ export const FieldChoiceLeft = styled.div`
   grid-column-start: 1;
   border: 1px solid #c2c2c2;
   &::after {
-    content: '';
+    content: "";
     width: 4px;
     height: 45px;
     background-color: #204b37;
@@ -69,7 +69,7 @@ export const FieldChoiceBottom = styled.div`
   grid-row-start: 3;
   border: 1px solid #c2c2c2;
   &::after {
-    content: '';
+    content: "";
     width: 45px;
     height: 4px;
     background-color: #204b37;
@@ -95,7 +95,7 @@ export const FieldChoiceRight = styled.div`
   grid-row-start: 2;
   border: 1px solid #c2c2c2;
   &::after {
-    content: '';
+    content: "";
     width: 4px;
     height: 45px;
     background-color: #204b37;
@@ -106,7 +106,7 @@ export const FieldChoiceRight = styled.div`
     margin-right: 10px;
     @media (max-width: 425px) {
       margin-top: -37px;
-    margin-right: 4px;
+      margin-right: 4px;
     }
   }
   @media (max-width: 425px) {
@@ -137,12 +137,18 @@ export const StyledInputCheckbox = styled.input`
     background-repeat: no-repeat;
     background-size: auto;
   }
+  .checked {
+    background-color: rgb(2, 144, 74, 0.3);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' width='48px' height='48px'%3E%3Cpath fill='%2343A047' d='M40.6 12.1L17 35.7 7.4 26.1 4.6 29 17 41.3 43.4 14.9z'/%3E%3C/svg%3E");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto;
+  }
   &:hover {
     background-color: rgb(2, 144, 74, 0.3);
   }
   @media (max-width: 425px) {
     width: 60px;
     height: 60px;
-  
   }
 `;

@@ -28,6 +28,8 @@ const Modal = ({
   const { i18n } = useTranslation();
   const { t } = useTranslation("modalPage");
   const [newDetail, setNewDetail] = useState({});
+  const [openedDetail, setOpenedDetail] = useState(false);
+
   const handleClickOutside = (e) => {
     if (e.target === e.currentTarget) {
       close();
@@ -42,6 +44,7 @@ const Modal = ({
     setIsSavedDetail(false);
     setDetails((prevDetails) => [...prevDetails, newDetail]);
     setCountDetails((prev) => prev + 1);
+    setOpenedDetail(true);
   };
 
   const handleDeleteDetail = (id) => {
@@ -52,6 +55,7 @@ const Modal = ({
       const newDet = details.filter((detail) => detail.id !== id);
       setDetails(newDet);
       setIsSavedDetail(true);
+      setOpenedDetail(false);
     }
   };
 
@@ -88,7 +92,7 @@ const Modal = ({
             </svg>
           </StyledCloseButton>
         </ModalHeader>
-        <Detail
+        {/* <Detail
           i={1}
           handleDeleteDetail={handleDeleteDetail}
           product={product}
@@ -101,7 +105,7 @@ const Modal = ({
           setIsSavedDetail={setIsSavedDetail}
           handleAddDetail={handleAddDetail}
           setNewDetail={setNewDetail}
-        />
+        /> */}
         {details.map((detail, i) => (
           <Detail
             key={detail.id}
@@ -118,10 +122,13 @@ const Modal = ({
             isSavedDetail={isSavedDetail}
             setIsSavedDetail={setIsSavedDetail}
             handleAddDetail={handleAddDetail}
+            openedDetail={openedDetail}
+            setOpenedDetail={setOpenedDetail}
           />
         ))}
 
-        {isSavedDetail ? (
+        {(!isSavedDetail && !openedDetail) ||
+        (isSavedDetail && !openedDetail) ? (
           <WrapButtons>
             <StyledMoreButton onClick={handleAddDetail}>
               {t("more_button")}
