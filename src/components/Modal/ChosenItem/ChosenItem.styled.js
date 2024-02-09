@@ -76,7 +76,7 @@ export const ModalButton = styled.button`
   position: fixed;
   top: 15px;
   left: 30%;
-  padding: 7px 10px;
+  padding: 10px 10px;
   border: none;
   border-radius: 5px;
   z-index: 130;

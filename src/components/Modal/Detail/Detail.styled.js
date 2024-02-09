@@ -10,16 +10,9 @@ export const WrapSections = styled.div`
   transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
   section {
     width: 48%;
-    /* &:last-child {
-      padding-bottom: ${(props) =>
-      props.$isSaved === true ? `130px` : `0`}; */
-
     @media (max-width: 915px) {
       width: 100%;
     }
-    /* @media (max-width: 915px) {
-      padding-bottom: ${(props) => (props.$isSaved === true ? `100px` : `0`)};
-    } */
   }
   @media (max-width: 915px) {
     flex-direction: column;
@@ -46,7 +39,7 @@ export const StyledSaveButton = styled.button`
   }
   @media (max-width: 425px) {
     font-size: 12px;
-    padding: 6px 10px;
+    padding: 10px 15px;
     margin-right: 0;
     min-width: 0;
   }
@@ -55,9 +48,6 @@ export const StyledSaveButton = styled.button`
   }
 `;
 export const StyledUpdateButton = styled.button`
-  /* position: absolute;
-  bottom: -197px;
-  left: 0; */
   display: inline-block;
   padding: 10px 20px;
   font-size: 15px;
@@ -78,15 +68,12 @@ export const StyledUpdateButton = styled.button`
   }
   @media (max-width: 425px) {
     font-size: 12px;
-    padding: 6px 10px;
+    padding: 10px 15px;
     margin-right: 0;
     min-width: 0;
-    //bottom: -1181px;
   }
   @media (max-width: 915px) {
     margin-left: 0;
-    /* bottom: -907px;
-    left: 20px; */
   }
 `;
 export const WrapToggleDiv = styled.div`

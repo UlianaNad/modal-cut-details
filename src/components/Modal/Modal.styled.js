@@ -55,7 +55,7 @@ export const StyledCloseButton = styled.button`
     position: fixed;
     right: 0px;
     top: 14px;
-    padding: 0px 0px;
+    padding: 5px 5px;
   }
 `;
 export const WrapButtons = styled.div`
@@ -110,7 +110,7 @@ export const StyledButton = styled.button`
   @media (max-width: 425px) {
     min-width: 47%;
     font-size: 12px;
-    padding: 5px 10px;
+    padding: 10px 15px;
     margin-right: 0;
     white-space: pre-wrap;
   }
@@ -142,7 +142,7 @@ export const StyledMoreButton = styled.button`
 
   @media (max-width: 425px) {
     font-size: 12px;
-    padding: 5px 10px;
+    padding: 10px 15px;
     margin-right: 0;
     min-width: 0;
     white-space: pre-wrap;
