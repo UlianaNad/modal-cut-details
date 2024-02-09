@@ -178,21 +178,6 @@ const Detail = ({
     setEdgeBlock((prev) => !prev);
   };
 
-  // const handleDeleteDetail = (det) => {
-  //   console.log(detail);
-
-  //   const existingDetails = JSON.parse(window.localStorage.getItem("details"));
-  //   console.log(existingDetails);
-
-  //   const updatedDetails = existingDetails.filter(
-  //     (detail) => detail.id !== det.id
-  //   );
-  //   console.log(updatedDetails);
-
-  //   window.localStorage.setItem("details", JSON.stringify(updatedDetails));
-  //   clearState();
-  // };
-
   const handleDeleteDetail = (id) => {
     console.log(id);
     if (id === undefined) {
@@ -263,6 +248,7 @@ const Detail = ({
               setEdgeBlock={setEdgeBlock}
               comment={comment}
               id={id}
+              newDetail={newDetail}
             />
           </WrapSections>
           {!isSaved ? (

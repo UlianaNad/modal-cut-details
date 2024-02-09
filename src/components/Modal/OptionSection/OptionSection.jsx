@@ -45,7 +45,7 @@ const OptionSection = ({
   setEdgeBlock,
   comment,
   patternDirection,
-  countDetails,
+  newDetail,
   id,
 }) => {
   const [rotation, setRotation] = useState(90);
@@ -222,7 +222,7 @@ const OptionSection = ({
           </div>
           <DeleteDetailButton
             type="button"
-            onClick={() => handleDeleteDetail(id)}
+            onClick={() => handleDeleteDetail(newDetail.id)}
           >
             {t("deleteButton")}
           </DeleteDetailButton>
