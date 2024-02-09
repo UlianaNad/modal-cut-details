@@ -23,7 +23,7 @@ const Modal = ({ close, product, details, setDetails }) => {
   const { t } = useTranslation("modalPage");
   const [newDetail, setNewDetail] = useState({});
   const [openedDetail, setOpenedDetail] = useState(false);
-  const [countDetails, setCountDetails] = useState(1);
+  const [countDetails, setCountDetails] = useState(0);
 
   const handleClickOutside = (e) => {
     if (e.target === e.currentTarget) {
@@ -37,7 +37,7 @@ const Modal = ({ close, product, details, setDetails }) => {
   const handleAddDetail = () => {
     setIsSavedDetail(false);
     setDetails((prevDetails) => [...prevDetails, newDetail]);
-
+    setCountDetails((prev) => prev + 1);
     setOpenedDetail(true);
   };
 
