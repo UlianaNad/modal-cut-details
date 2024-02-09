@@ -179,7 +179,8 @@ const Detail = ({
     setIsSavedDetail(true);
     setOpenedDetail(false);
 
-    setDetails(updatedDetails);
+    setSavedDetails(updatedDetails);
+    setDetails(savedDetails);
   };
 
   return (
