@@ -15,7 +15,7 @@ import { useTranslation } from "react-i18next";
 const ChosenItem = ({
   product,
   width,
-
+  detail,
   height,
   edgeSide,
   edgeWidth,

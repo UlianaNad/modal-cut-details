@@ -62,6 +62,7 @@ const OptionSection = ({
     setEdgeWidth(null);
     setEdgeSide([]);
   };
+
   console.log(id);
   const handleImageClick = (e) => {
     const newRotation = rotation === 0 ? 90 : 0;
@@ -97,14 +98,12 @@ const OptionSection = ({
       setHeight(e.target.value);
     }
   };
-  console.log(countDetails);
+
   return (
     <WrapOptions>
       <div className="modal-window">
         <form>
           <Wrapper>
-            <StyledBlockName>Деталь {countDetails}</StyledBlockName>
-
             <StyledBlockName>
               {t("dimensions")}
               <SvgHoverComponent dimensions={hoverContent.dimensions} />

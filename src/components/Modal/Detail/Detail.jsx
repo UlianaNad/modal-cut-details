@@ -16,14 +16,15 @@ import { useTranslation } from "react-i18next";
 const Detail = ({
   i,
   product,
-  handleDeleteDetail,
   detail,
   details,
+  setDetails,
   setIsSavedDetail,
   setNewDetail,
   setOpenedDetail,
   countDetails,
   setCountDetails,
+  handleAddDetail,
 }) => {
   const [edgeSide, setEdgeSide] = useState([]);
   const [width, setWidth] = useState(null);
@@ -34,7 +35,7 @@ const Detail = ({
   const [comment, setComment] = useState("");
   const [selected, setSelected] = useState(null);
   const [isSaved, setIsSaved] = useState(false);
-  const [id] = useState(nanoid());
+  const [id, setId] = useState(nanoid());
   const { t } = useTranslation("detailPage");
 
   const [isBigWidth, setIsBigWidth] = useState(false);
@@ -42,13 +43,26 @@ const Detail = ({
   const [savedDetails, setSavedDetails] = useState([]);
   const [edgeBlock, setEdgeBlock] = useState(false);
   const [count] = useState(countDetails);
+  //const [newDetail, setNewDetail] = useState({});
+
+  const clearState = () => {
+    setEdgeSide([]);
+    setWidth(null);
+    setHeight(null);
+    setPatternDirection("horizontal");
+    setEdgeWidth(null);
+    setCustomAmount(null);
+    setComment("");
+
+    setId(null);
+  };
   const toggleDetail = (i) => {
     if (selected === i) {
       console.log(detail);
       setOpenedDetail(true);
       return setSelected(null);
     }
-    console.log(detail);
+
     setSelected(i);
     setEdgeBlock((prev) => !prev);
   };
@@ -89,6 +103,7 @@ const Detail = ({
       maxAmount,
     };
   }, [product, width, height, customAmount]);
+  console.log(detail);
 
   const newDetail = {
     id: id,
@@ -124,14 +139,19 @@ const Detail = ({
         `details`,
         JSON.stringify(updatedLocalStorageDetails)
       );
-
       setNewDetail(newDetail);
+
+      // setDetails((prevDetails) => [
+      //   ...prevDetails,
+      //   JSON.parse(window.localStorage.getItem("details")),
+      // ]);
       toggleDetail(i);
       setIsSavedDetail(true);
       setIsSaved(true);
       setOpenedDetail(false);
       setEdgeBlock((prev) => !prev);
       setCountDetails((prev) => prev + 1);
+      // handleAddDetail();
     }
   };
   const handleUpdateDetail = (updatedDetail) => {
@@ -156,6 +176,41 @@ const Detail = ({
     toggleDetail(i);
     setOpenedDetail(false);
     setEdgeBlock((prev) => !prev);
+  };
+
+  // const handleDeleteDetail = (det) => {
+  //   console.log(detail);
+
+  //   const existingDetails = JSON.parse(window.localStorage.getItem("details"));
+  //   console.log(existingDetails);
+
+  //   const updatedDetails = existingDetails.filter(
+  //     (detail) => detail.id !== det.id
+  //   );
+  //   console.log(updatedDetails);
+
+  //   window.localStorage.setItem("details", JSON.stringify(updatedDetails));
+  //   clearState();
+  // };
+
+  const handleDeleteDetail = (id) => {
+    console.log(id);
+    if (id === undefined) {
+      clearState();
+      console.log(id);
+    } else {
+      const existingDetails = JSON.parse(
+        window.localStorage.getItem("details")
+      );
+      const updatedDetails = existingDetails.filter(
+        (detail) => detail.id !== id
+      );
+
+      setDetails(updatedDetails);
+      window.localStorage.setItem("details", JSON.stringify(updatedDetails));
+      setIsSavedDetail(true);
+      setOpenedDetail(false);
+    }
   };
 
   return (

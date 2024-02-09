@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   StyledModal,
   StyledOverlay,
@@ -24,6 +24,7 @@ const Modal = ({ close, product, details, setDetails }) => {
   const [newDetail, setNewDetail] = useState({});
   const [openedDetail, setOpenedDetail] = useState(false);
   const [countDetails, setCountDetails] = useState(1);
+
   const handleClickOutside = (e) => {
     if (e.target === e.currentTarget) {
       close();
@@ -41,21 +42,7 @@ const Modal = ({ close, product, details, setDetails }) => {
     setOpenedDetail(true);
   };
 
-  const handleDeleteDetail = (id) => {
-    console.log(id);
-    if (id === undefined) {
-      close();
-    } else {
-      const newDet = details.filter((detail) => detail.id !== id);
-      setDetails(newDet);
-      setIsSavedDetail(true);
-      setOpenedDetail(false);
-    }
-  };
-
   const handleSubmit = () => {
-    //setDetails((prevDetails) => [...prevDetails, newDetail]);
-
     close();
   };
 
@@ -86,12 +73,12 @@ const Modal = ({ close, product, details, setDetails }) => {
             </svg>
           </StyledCloseButton>
         </ModalHeader>
+
         {details.length === 0 && <StyledInfo>{t("styled_info")}</StyledInfo>}
         {details.map((detail, i) => (
           <Detail
             key={`${product.id}-${i}`}
             i={i}
-            handleDeleteDetail={handleDeleteDetail}
             product={product}
             setDetails={setDetails}
             detail={detail}
