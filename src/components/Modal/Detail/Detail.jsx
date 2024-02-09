@@ -100,7 +100,6 @@ const Detail = ({
       maxAmount,
     };
   }, [product, width, height, customAmount]);
-  console.log(detail);
 
   const newDetail = {
     id: id,
@@ -169,24 +168,18 @@ const Detail = ({
     setEdgeBlock((prev) => !prev);
   };
 
-  const handleDeleteDetail = (id) => {
-    console.log(id);
-    if (id === undefined) {
-      clearState();
-      console.log(id);
-    } else {
-      const existingDetails = JSON.parse(
-        window.localStorage.getItem("details")
-      );
-      const updatedDetails = existingDetails.filter(
-        (detail) => detail.id !== id
-      );
+  const handleDeleteDetail = (detailToDel) => {
+    const existingDetails = JSON.parse(window.localStorage.getItem("details"));
+    const updatedDetails = existingDetails.filter(
+      (detail) => detail.id !== detailToDel.id
+    );
+    console.log(updatedDetails);
 
-      setDetails(updatedDetails);
-      window.localStorage.setItem("details", JSON.stringify(updatedDetails));
-      setIsSavedDetail(true);
-      setOpenedDetail(false);
-    }
+    window.localStorage.setItem("details", JSON.stringify(updatedDetails));
+    setIsSavedDetail(true);
+    setOpenedDetail(false);
+
+    setDetails(updatedDetails);
   };
 
   return (

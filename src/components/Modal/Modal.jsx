@@ -30,7 +30,6 @@ const Modal = ({ close, product, details, setDetails }) => {
       close();
     }
   };
-
   const handleClickCloseButton = () => {
     close();
   };
@@ -45,7 +44,7 @@ const Modal = ({ close, product, details, setDetails }) => {
   const handleSubmit = () => {
     close();
   };
-
+  console.log(details);
   return (
     <StyledOverlay onClick={handleClickOutside}>
       <StyledModal>

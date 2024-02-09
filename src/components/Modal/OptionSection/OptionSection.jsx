@@ -221,7 +221,7 @@ const OptionSection = ({
           </div>
           <DeleteDetailButton
             type="button"
-            onClick={() => handleDeleteDetail(newDetail.id)}
+            onClick={() => handleDeleteDetail(newDetail)}
           >
             {t("deleteButton")}
           </DeleteDetailButton>
