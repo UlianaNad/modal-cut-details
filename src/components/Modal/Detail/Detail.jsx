@@ -23,8 +23,6 @@ const Detail = ({
   setNewDetail,
   setOpenedDetail,
   countDetails,
-  setCountDetails,
-  handleAddDetail,
 }) => {
   const [edgeSide, setEdgeSide] = useState([]);
   const [width, setWidth] = useState(null);
@@ -43,7 +41,6 @@ const Detail = ({
   const [savedDetails, setSavedDetails] = useState([]);
   const [edgeBlock, setEdgeBlock] = useState(false);
   const [count] = useState(countDetails);
-  //const [newDetail, setNewDetail] = useState({});
 
   const clearState = () => {
     setEdgeSide([]);
@@ -141,17 +138,11 @@ const Detail = ({
       );
       setNewDetail(newDetail);
 
-      // setDetails((prevDetails) => [
-      //   ...prevDetails,
-      //   JSON.parse(window.localStorage.getItem("details")),
-      // ]);
       toggleDetail(i);
       setIsSavedDetail(true);
       setIsSaved(true);
       setOpenedDetail(false);
       setEdgeBlock((prev) => !prev);
-      setCountDetails((prev) => prev + 1);
-      // handleAddDetail();
     }
   };
   const handleUpdateDetail = (updatedDetail) => {
