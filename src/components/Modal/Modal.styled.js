@@ -30,7 +30,8 @@ export const StyledTitle = styled.p`
   text-transform: uppercase;
   font-weight: 600;
   font-size: 18px;
-  margin-bottom: 20px;
+  margin-top: 20px;
+  margin-bottom: 0px;
   @media (max-width: 425px) {
     margin-top: 10px;
     /* margin-bottom: 0; */
@@ -104,9 +105,7 @@ export const StyledButton = styled.button`
   overflow: hidden;
   transition: 0.4s;
   text-transform: uppercase;
-  &.disabled {
-    background-color: gray;
-  }
+
   &:hover {
     background-color: #204b37;
   }
@@ -118,26 +117,8 @@ export const StyledButton = styled.button`
     white-space: pre-wrap;
   }
 `;
-export const StyledMoreButton = styled.button`
-  display: inline-block;
-  padding: 10px 20px;
-  margin-bottom: 10px;
-  margin-top: 5px;
-  font-size: 15px;
-  font-weight: bold;
-  line-height: 1.42857143;
-  text-align: center;
-  white-space: nowrap;
-  cursor: pointer;
-  border-radius: 4px;
-  color: #fff;
-  border: 0;
+export const StyledAddDetailButton = styled(StyledButton)`
   background-color: #ffa700;
-
-  position: relative;
-  overflow: hidden;
-  transition: 0.4s;
-  text-transform: uppercase;
 
   &:hover {
     background-color: #c48000;
@@ -200,63 +181,5 @@ export const WrapSections = styled.div`
   }
   @media (max-width: 915px) {
     flex-direction: column;
-  }
-`;
-export const StyledSaveButton = styled.button`
-  display: inline-block;
-  padding: 10px 20px;
-  font-size: 15px;
-  font-weight: bold;
-  line-height: 1.4;
-  text-align: center;
-  cursor: pointer;
-  border-radius: 4px;
-  color: #fff;
-  border: 0;
-  background-color: #ffa700;
-  margin-left: 52%;
-  transition: 0.4s;
-  text-transform: uppercase;
-
-  &:hover {
-    background-color: #c48000;
-  }
-  @media (max-width: 425px) {
-    font-size: 12px;
-    padding: 10px 15px;
-    margin-right: 0;
-    min-width: 0;
-  }
-  @media (max-width: 915px) {
-    margin-left: 0;
-  }
-`;
-export const StyledUpdateButton = styled.button`
-  display: inline-block;
-  padding: 10px 20px;
-  font-size: 15px;
-  font-weight: bold;
-  line-height: 1.4;
-  text-align: center;
-  cursor: pointer;
-  border-radius: 4px;
-  color: #fff;
-  border: 0;
-  background-color: #ffa700;
-  margin-left: 52%;
-  transition: 0.4s;
-  text-transform: uppercase;
-
-  &:hover {
-    background-color: #c48000;
-  }
-  @media (max-width: 425px) {
-    font-size: 12px;
-    padding: 10px 15px;
-    margin-right: 0;
-    min-width: 0;
-  }
-  @media (max-width: 915px) {
-    margin-left: 0;
   }
 `;

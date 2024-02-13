@@ -13,6 +13,7 @@ import {
   StyledSaveButton,
   WrapModal,
   StyledTitle,
+  StyledAddDetailButton,
 } from "./Modal.styled";
 
 import { ToastContainer, toast } from "react-toastify";
@@ -246,12 +247,12 @@ const Modal = ({ close, product }) => {
             </WrapSections>
           </WrapDetail>
           <WrapButtons>
-            <StyledButton
+            <StyledAddDetailButton
               type="button"
               onClick={() => handleAddDetail(detailToAdd)}
             >
               {t("more_button")}
-            </StyledButton>
+            </StyledAddDetailButton>
             <StyledButton type="button" onClick={() => handleSubmit()}>
               {t("submit_button")}
             </StyledButton>

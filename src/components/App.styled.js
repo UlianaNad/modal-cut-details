@@ -11,7 +11,7 @@ export const AppWrapper = styled.div`
   h2,
   h3 {
     padding: 0;
-    margin: 0;
+
     list-style: none;
   }
 `;

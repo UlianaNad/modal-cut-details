@@ -30,7 +30,7 @@ export const StyledLi = styled.li`
   }
 `;
 export const StyledInput = styled.input`
-  width: 90%;
+  width: ${(props) => (props.$half === true ? "45%" : "90%")};
   height: 20px;
   padding: 10px;
   border-width: 1px;
@@ -65,7 +65,7 @@ export const StyledBlockName = styled.p`
   line-height: 1.4;
   display: flex;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
 `;
 
 export const PatternRotation = styled.div`

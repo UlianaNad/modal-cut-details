@@ -136,6 +136,7 @@ const OptionSection = ({
               <SvgHoverComponent amount={hoverContent.totalAmount} />
             </StyledBlockName>
             <StyledInput
+              $half={true}
               onChange={(e) => setCustomAmount(e.target.value)}
               type="number"
               name="total-amount"
