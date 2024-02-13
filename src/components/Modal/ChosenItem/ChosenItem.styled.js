@@ -50,7 +50,6 @@ export const StyledButton = styled.button.attrs((props) => ({
 StyledButton.shouldForwardProp = (prop) => prop !== "isimageclicked";
 
 export const StyledItemName = styled.h1`
-  margin-top: 30px;
   color: #00a152;
   text-transform: uppercase;
   font-weight: 600;
@@ -62,6 +61,7 @@ export const StyledItemName = styled.h1`
 `;
 
 export const HiddenOnPhone = styled.div`
+  margin-top: 30px;
   @media (max-width: 768px) {
     display: flex;
     align-items: center;
@@ -70,7 +70,7 @@ export const HiddenOnPhone = styled.div`
 `;
 
 export const WrapInfo = styled.div`
-  margin-bottom: 10px;
+  margin-bottom: 16px;
 `;
 export const ModalButton = styled.button`
   position: fixed;
@@ -86,5 +86,70 @@ export const ModalButton = styled.button`
 
   @media (min-width: 768px) {
     display: none;
+  }
+`;
+export const DeleteDetailButton = styled.button`
+  position: absolute;
+
+  right: 2px;
+  display: inline-block;
+  padding: 10px 20px;
+
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+  border-radius: 4px;
+  color: #fff;
+  border: 0;
+  background-color: red;
+  overflow: hidden;
+  transition: 0.4s;
+  text-transform: uppercase;
+
+  &:hover {
+    background-color: darkred;
+  }
+
+  @media (max-width: 425px) {
+    padding: 10px 15px;
+    font-size: 12px;
+  }
+`;
+export const WrapDetail = styled.div`
+  margin-top: 35px;
+  display: ${(props) => (props.$detail === true ? "flex" : "block")};
+  flex-direction: ${(props) =>
+    props.$detail === true ? "row-reverse" : "column"};
+  justify-content: ${(props) =>
+    props.$detail === true ? "space-between" : ""};
+`;
+
+export const WrapToggleDiv = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #c48000;
+  cursor: pointer;
+  /* margin-top: 20px; */
+  color: #001a34;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.4;
+  /* margin-bottom: 10px; */
+
+  @media (max-width: 425px) {
+    margin-top: 10px;
+  }
+
+  span {
+    transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+  p {
+    @media (max-width: 425px) {
+      font-size: 14px;
+    }
   }
 `;

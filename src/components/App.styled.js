@@ -5,14 +5,15 @@ export const AppWrapper = styled.div`
   font-family: Helvetica, Arial, sans-serif;
 
   ul,
-  li {
+  li,
+  p,
+  h1,
+  h2,
+  h3 {
     padding: 0;
     margin: 0;
     list-style: none;
   }
-  /* @media (max-width: 425px) {
-    width: 100%;
-  } */
 `;
 
 export const StyledUl = styled.ul`

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import { useState } from "react";
 import {
   PatternRotation,
   StyledBlockName,
@@ -13,7 +14,6 @@ import {
   StyledTextArea,
   Wrapper,
   WrapperButtons,
-  DeleteDetailButton,
   WrapOptions,
 } from "./OptionSection.styled";
 import { useTranslation } from "react-i18next";
@@ -21,6 +21,7 @@ import EdgePreview from "./EdgePreview/EdgePreview";
 import SvgHoverComponent from "./SvgHoverComponent/SvgHoverComponent";
 import { toast } from "react-toastify";
 import { hoverContent } from "../../data/hoverData";
+
 const OptionSection = ({
   product,
   setWidth,
@@ -30,22 +31,14 @@ const OptionSection = ({
   setEdgeWidth,
   setCustomAmount,
   setComment,
-  handleDeleteDetail,
   isBigHeight,
   setIsBigHeight,
   isBigWidth,
   setIsBigWidth,
-  width,
-  height,
   edgeSide,
-  edgeWidth,
-  customAmount,
   edgeBlock,
   setEdgeBlock,
-  comment,
   patternDirection,
-  newDetail,
-  id,
 }) => {
   const [rotation, setRotation] = useState(90);
 
@@ -62,7 +55,6 @@ const OptionSection = ({
     setEdgeSide([]);
   };
 
-  console.log(id);
   const handleImageClick = (e) => {
     const newRotation = rotation === 0 ? 90 : 0;
     setRotation(newRotation);
@@ -101,7 +93,7 @@ const OptionSection = ({
   return (
     <WrapOptions>
       <div className="modal-window">
-        <form>
+        <form id="form">
           <Wrapper>
             <StyledBlockName>
               {t("dimensions")}
@@ -111,13 +103,12 @@ const OptionSection = ({
               <StyledLi>
                 <StyledDivDimens>
                   <StyledInput
-                    $width={true}
                     onChange={handleInputWidth}
                     type="number"
                     name="width"
                     id="width"
                     className="width"
-                    placeholder={width ? width + " мм" : t("text_weight")}
+                    placeholder={t("text_weight")}
                   />
                 </StyledDivDimens>
                 <StyledP $isBig={isBigWidth}>
@@ -127,13 +118,12 @@ const OptionSection = ({
               <StyledLi>
                 <StyledDivDimens>
                   <StyledInput
-                    $width={true}
                     onChange={handleInputHeight}
                     type="number"
                     name="height"
                     id="height"
                     className="height"
-                    placeholder={height ? height + " мм" : t("text_height")}
+                    placeholder={t("text_height")}
                   />
                 </StyledDivDimens>
                 <StyledP $isBig={isBigHeight}>
@@ -149,7 +139,7 @@ const OptionSection = ({
               onChange={(e) => setCustomAmount(e.target.value)}
               type="number"
               name="total-amount"
-              placeholder={customAmount ? customAmount + " шт." : "шт."}
+              placeholder={"шт."}
             />
           </Wrapper>
           <div className="edge-block">
@@ -182,7 +172,6 @@ const OptionSection = ({
                     onChange={(e) => setEdgeWidth(e.target.value)}
                     name="edge-width"
                     id="edge-width"
-                    value={edgeWidth || ""}
                   >
                     <option value="">{t("edge")}</option>
                     <option value="22*0.6">22*0.6 </option>
@@ -216,15 +205,8 @@ const OptionSection = ({
               id=""
               cols="50"
               rows="6"
-              value={comment}
             ></StyledTextArea>
           </div>
-          <DeleteDetailButton
-            type="button"
-            onClick={() => handleDeleteDetail(newDetail)}
-          >
-            {t("deleteButton")}
-          </DeleteDetailButton>
         </form>
       </div>
     </WrapOptions>

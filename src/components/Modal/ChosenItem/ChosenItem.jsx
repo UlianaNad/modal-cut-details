@@ -1,17 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 
 import {
+  DeleteDetailButton,
   HiddenOnPhone,
   ModalButton,
   StyledItemName,
   StyledOption,
   StyledSpan,
+  WrapDetail,
   WrapInfo,
+  WrapToggleDiv,
 } from "./ChosenItem.styled";
 import VisualModal from "./VisualModal/VisualModal";
 import ExampleComponent from "./Example/ExampleComponent";
 import { useTranslation } from "react-i18next";
+
 const ChosenItem = ({
   product,
   width,
@@ -19,7 +24,13 @@ const ChosenItem = ({
   height,
   edgeSide,
   edgeWidth,
-  computedValues,
+  possibleAmountOfPieces,
+  setOpenedDetail,
+  totalPrice,
+  maxAmount,
+  details,
+  i,
+  handleDeleteDetail,
 }) => {
   const [scale, setScale] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
@@ -27,6 +38,7 @@ const ChosenItem = ({
   const [memorized, setMemorized] = useState({});
   const { t } = useTranslation("chosenItem");
 
+  const [selected, setSelected] = useState(null);
   useEffect(() => {
     let scaleToFit;
 
@@ -61,70 +73,99 @@ const ChosenItem = ({
     setIsOpen((prev) => !prev);
   };
 
+  const toggleDetail = (i) => {
+    if (selected === i) {
+      setOpenedDetail(true);
+      return setSelected(null);
+    }
+    setSelected(i);
+    setOpenedDetail(false);
+  };
+  console.log(detail);
   return (
     <section>
-      <StyledItemName></StyledItemName>
-      <WrapInfo>
-        <StyledOption>{t("name")}</StyledOption>
-        <StyledSpan>
-          {t("width")} {product.dimensions.width} мм {t("height")}{" "}
-          {product.dimensions.height} мм
-        </StyledSpan>
-      </WrapInfo>
-
-      <WrapInfo>
-        <StyledOption>{t("thickness")}</StyledOption>
-        <StyledSpan>{product.dimensions.thickness} мм</StyledSpan>
-      </WrapInfo>
-
-      <WrapInfo>
-        <StyledOption>{t("price1")}</StyledOption>
-        <StyledSpan>
-          {" "}
-          {product.offers.price} {product.offers.priceCurrency}
-        </StyledSpan>
-      </WrapInfo>
-      <WrapInfo>
-        <StyledOption>{t("possibleAmountOfPieces")}</StyledOption>
-        <StyledSpan>
-          {computedValues.possibleAmountOfPieces
-            ? computedValues.possibleAmountOfPieces
-            : 0}{" "}
-          шт.
-        </StyledSpan>
-      </WrapInfo>
-
-      <WrapInfo>
-        <StyledOption>{t("totalPrice")}</StyledOption>
-        <StyledSpan>
-          {computedValues.totalPrice ? computedValues.totalPrice : 0} грн.
-        </StyledSpan>
-      </WrapInfo>
-      <WrapInfo>
-        <StyledOption>{t("maxAmount")}</StyledOption>
-        <StyledSpan>{computedValues.maxAmount} шт.</StyledSpan>
-      </WrapInfo>
-      {edgeWidth ? (
-        <WrapInfo>
-          <StyledOption>{t("edgeWidth")}</StyledOption>
-          <StyledSpan>{edgeWidth ? edgeWidth : 0}</StyledSpan>
-        </WrapInfo>
-      ) : null}
-
-      <HiddenOnPhone ref={myRef}>
-        <StyledItemName>{t("cut")}</StyledItemName>
-        <ExampleComponent
-          width={width}
-          height={height}
-          scale={scale}
-          edgeSide={edgeSide}
-        />
-      </HiddenOnPhone>
-      {!myElIsVisible && (
-        <ModalButton onClick={toggleModal}>{t("cut")}</ModalButton>
+      {details && (
+        <WrapToggleDiv onClick={() => toggleDetail(i)}>
+          <p>
+            Деталь №{detail.count} {detail.width ? detail.width : 0} мм на{" "}
+            {detail.height ? detail.height : 0} мм
+          </p>
+          <span>{selected !== i ? "-" : "+"}</span>
+        </WrapToggleDiv>
       )}
-      {isOpen ? (
-        <VisualModal memorized={memorized} close={toggleModal} />
+      {selected !== i ? (
+        <>
+          <WrapDetail $detail={details?.length > 0 ? true : false}>
+            <div>
+              <WrapInfo>
+                <StyledOption>{t("name")}</StyledOption>
+                <StyledSpan>
+                  {t("width")} {product.dimensions.width} мм {t("height")}{" "}
+                  {product.dimensions.height} мм
+                </StyledSpan>
+              </WrapInfo>
+
+              <WrapInfo>
+                <StyledOption>{t("thickness")}</StyledOption>
+                <StyledSpan>{product.dimensions.thickness} мм</StyledSpan>
+              </WrapInfo>
+
+              <WrapInfo>
+                <StyledOption>{t("price1")}</StyledOption>
+                <StyledSpan>
+                  {" "}
+                  {product.offers.price} {product.offers.priceCurrency}
+                </StyledSpan>
+              </WrapInfo>
+              <WrapInfo>
+                <StyledOption>{t("possibleAmountOfPieces")}</StyledOption>
+                <StyledSpan>
+                  {possibleAmountOfPieces ? possibleAmountOfPieces : 0} шт.
+                </StyledSpan>
+              </WrapInfo>
+
+              <WrapInfo>
+                <StyledOption>{t("totalPrice")}</StyledOption>
+                <StyledSpan>{totalPrice ? totalPrice : 0} грн.</StyledSpan>
+              </WrapInfo>
+              <WrapInfo>
+                <StyledOption>{t("maxAmount")}</StyledOption>
+                <StyledSpan>{maxAmount ? maxAmount : 0} шт.</StyledSpan>
+              </WrapInfo>
+              {edgeWidth ? (
+                <WrapInfo>
+                  <StyledOption>{t("edgeWidth")}</StyledOption>
+
+                  <StyledSpan>{edgeWidth !== null ? edgeWidth : 0}</StyledSpan>
+                </WrapInfo>
+              ) : null}
+              {details && (
+                <DeleteDetailButton
+                  type="button"
+                  onClick={() => handleDeleteDetail(detail.id)}
+                >
+                  {t("deleteButton")}
+                </DeleteDetailButton>
+              )}
+            </div>
+
+            <HiddenOnPhone ref={myRef}>
+              <StyledItemName>{t("cut")}</StyledItemName>
+              <ExampleComponent
+                width={width}
+                height={height}
+                scale={scale}
+                edgeSide={edgeSide}
+              />
+            </HiddenOnPhone>
+          </WrapDetail>
+          {!myElIsVisible && (
+            <ModalButton onClick={toggleModal}>{t("cut")}</ModalButton>
+          )}
+          {isOpen ? (
+            <VisualModal memorized={memorized} close={toggleModal} />
+          ) : null}
+        </>
       ) : null}
     </section>
   );

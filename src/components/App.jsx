@@ -8,15 +8,12 @@ export const App = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [product, setProduct] = useState({});
 
-  const [details, setDetails] = useState([]);
-
   const toggleModal = (product) => {
     const body = document.body;
     if (!isOpen) {
       body.classList.add("modal-open");
     } else {
       body.classList.remove("modal-open");
-      setDetails([]);
     }
 
     setIsOpen((prev) => !prev);
@@ -34,14 +31,7 @@ export const App = () => {
           </Item>
         ))}
       </StyledUl>
-      {isOpen ? (
-        <Modal
-          close={toggleModal}
-          product={product}
-          details={details}
-          setDetails={setDetails}
-        />
-      ) : null}
+      {isOpen ? <Modal close={toggleModal} product={product} /> : null}
     </AppWrapper>
   );
 };

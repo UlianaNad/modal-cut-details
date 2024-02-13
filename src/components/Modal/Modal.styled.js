@@ -14,32 +14,43 @@ export const StyledOverlay = styled.div`
 `;
 
 export const StyledModal = styled.div`
-  width: calc(100vw - 50px);
-  height: calc(100vh - 50px);
+  width: calc(100vw - 100px);
+  height: calc(100vh - 10px);
   background-color: white;
   overflow-y: scroll;
   position: relative;
-  padding: 20px;
+`;
+
+export const WrapModal = styled.div`
+  padding: 20px 50px;
+`;
+export const StyledTitle = styled.p`
+  text-align: center;
+  color: #00a152;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 20px;
+  @media (max-width: 425px) {
+    margin-top: 10px;
+    /* margin-bottom: 0; */
+    font-size: 14px;
+  }
+  span {
+    color: black;
+  }
 `;
 export const StyledCloseButton = styled.button`
-  right: 4px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
   display: flex;
   padding: 4px 5px;
-  margin-right: 15px;
-  font-size: 15px;
-  font-weight: bold;
-  line-height: 1.42857143;
-  text-align: center;
-  white-space: nowrap;
   cursor: pointer;
   border-radius: 4px;
   color: #fff;
   border: 0;
   background: #ffa700;
-  transition: 0.4s;
-  text-transform: uppercase;
-  justify-content: center;
-  align-items: center;
   z-index: 100;
 
   svg {
@@ -59,11 +70,6 @@ export const StyledCloseButton = styled.button`
   }
 `;
 export const WrapButtons = styled.div`
-  position: fixed;
-  bottom: 15px;
-  left: 25px;
-
-  right: 35px;
   gap: 10px;
   display: flex;
   justify-content: space-between;
@@ -72,10 +78,7 @@ export const WrapButtons = styled.div`
   }
 
   @media (max-width: 425px) {
-    bottom: 5px;
-    left: 20px;
     gap: 20px;
-    right: 20px;
   }
 `;
 
@@ -180,5 +183,80 @@ export const StyledInfo = styled.p`
   @media (max-width: 425px) {
     margin-top: 50px;
     font-size: 18px;
+  }
+`;
+
+export const WrapSections = styled.div`
+  display: flex;
+  justify-content: space-between;
+  color: #001a34;
+
+  transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  section {
+    width: 48%;
+    @media (max-width: 915px) {
+      width: 100%;
+    }
+  }
+  @media (max-width: 915px) {
+    flex-direction: column;
+  }
+`;
+export const StyledSaveButton = styled.button`
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 1.4;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 4px;
+  color: #fff;
+  border: 0;
+  background-color: #ffa700;
+  margin-left: 52%;
+  transition: 0.4s;
+  text-transform: uppercase;
+
+  &:hover {
+    background-color: #c48000;
+  }
+  @media (max-width: 425px) {
+    font-size: 12px;
+    padding: 10px 15px;
+    margin-right: 0;
+    min-width: 0;
+  }
+  @media (max-width: 915px) {
+    margin-left: 0;
+  }
+`;
+export const StyledUpdateButton = styled.button`
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 1.4;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 4px;
+  color: #fff;
+  border: 0;
+  background-color: #ffa700;
+  margin-left: 52%;
+  transition: 0.4s;
+  text-transform: uppercase;
+
+  &:hover {
+    background-color: #c48000;
+  }
+  @media (max-width: 425px) {
+    font-size: 12px;
+    padding: 10px 15px;
+    margin-right: 0;
+    min-width: 0;
+  }
+  @media (max-width: 915px) {
+    margin-left: 0;
   }
 `;

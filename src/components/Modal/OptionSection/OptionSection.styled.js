@@ -30,14 +30,16 @@ export const StyledLi = styled.li`
   }
 `;
 export const StyledInput = styled.input`
-  height: 25px;
+  width: 90%;
+  height: 20px;
+  padding: 10px;
   border-width: 1px;
   border-style: solid;
   border-color: rgb(225, 225, 225);
-  padding: 8px 6px;
+  /* padding: 8px 6px; */
   outline: none;
   color: rgb(87, 75, 65);
-  margin-bottom: 5px;
+  /* margin-bottom: 5px; */
   display: block;
   background: rgb(248, 248, 248);
   border-radius: 0px;
@@ -61,9 +63,9 @@ export const StyledBlockName = styled.p`
   font-size: 16px;
   font-weight: 600;
   line-height: 1.4;
-  margin-bottom: 10px;
   display: flex;
   align-items: center;
+  margin-bottom: 15px;
 `;
 
 export const PatternRotation = styled.div`
@@ -302,35 +304,5 @@ export const StyledInputCheckbox = styled.input`
   @media (max-width: 425px) {
     width: 60px;
     height: 60px;
-  }
-`;
-export const DeleteDetailButton = styled.button`
-  position: absolute;
-
-  right: 2px;
-  display: inline-block;
-  padding: 10px 20px;
-
-  font-size: 15px;
-  font-weight: bold;
-  line-height: 1.42857143;
-  text-align: center;
-  white-space: nowrap;
-  cursor: pointer;
-  border-radius: 4px;
-  color: #fff;
-  border: 0;
-  background-color: red;
-  overflow: hidden;
-  transition: 0.4s;
-  text-transform: uppercase;
-
-  &:hover {
-    background-color: darkred;
-  }
-
-  @media (max-width: 425px) {
-    padding: 10px 15px;
-    font-size: 12px;
   }
 `;
