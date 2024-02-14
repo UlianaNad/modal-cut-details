@@ -12,6 +12,7 @@ import {
   WrapModal,
   StyledTitle,
   StyledAddDetailButton,
+  StyledListText,
 } from "./Modal.styled";
 
 import { ToastContainer, toast } from "react-toastify";
@@ -23,6 +24,10 @@ import { addDetail, deleteDetail, detailsData } from "../../redux/detailsSlice";
 import ChosenItem from "./ChosenItem/ChosenItem";
 import { nanoid } from "@reduxjs/toolkit";
 import OptionSection from "./OptionSection/OptionSection";
+import {
+  StyledOption,
+  StyledVisualBlockText,
+} from "./ChosenItem/ChosenItem.styled";
 
 const Modal = ({ close, product }) => {
   const { i18n } = useTranslation();
@@ -184,6 +189,9 @@ const Modal = ({ close, product }) => {
               </svg>
             </StyledCloseButton>
           </ModalHeader>
+          {dataDetails.length > 0 && (
+            <StyledListText>Список збережених деталей</StyledListText>
+          )}
           {dataDetails.length > 0
             ? dataDetails?.map((detail, i) => (
                 <ChosenItem
@@ -226,6 +234,7 @@ const Modal = ({ close, product }) => {
                 edgeWidth={edgeWidth}
                 customAmount={customAmount}
                 detail={dataDetails}
+                showButton={true}
               />
               <OptionSection
                 product={product}

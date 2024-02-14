@@ -16,30 +16,30 @@ export const StyledDimensions = styled.ul`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 10px;
 
-  @media (max-width: 425px) {
+  @media (max-width: 426px) {
     align-items: flex-start;
     flex-direction: column;
+    align-items: center;
   }
 `;
 
 export const StyledLi = styled.li`
   width: 100%;
-  @media (min-width: 425px) {
+  /* @media (max-width: 425px) {
     width: 50%;
-  }
+  } */
 `;
 export const StyledInput = styled.input`
   width: ${(props) => (props.$half === true ? "45%" : "90%")};
   height: 20px;
-  padding: 10px;
+  padding: 10px 0px 10px 10px;
   border-width: 1px;
   border-style: solid;
   border-color: rgb(225, 225, 225);
-  /* padding: 8px 6px; */
   outline: none;
   color: rgb(87, 75, 65);
-  /* margin-bottom: 5px; */
   display: block;
   background: rgb(248, 248, 248);
   border-radius: 0px;
@@ -49,8 +49,8 @@ export const StyledInput = styled.input`
     border-color: rgba(0, 161, 82, 0.5);
     box-shadow: 0 0 5px 1px #00a152;
   }
-  @media (max-width: 425px) {
-    width: 97%;
+  @media (max-width: 426px) {
+    width: ${(props) => (props.$half === true ? "97%" : "97%")};
   }
 `;
 export const StyledP = styled.p`

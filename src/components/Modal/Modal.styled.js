@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { StyledVisualBlockText } from "./ChosenItem/ChosenItem.styled";
 
 export const StyledOverlay = styled.div`
   position: fixed;
@@ -19,10 +20,25 @@ export const StyledModal = styled.div`
   background-color: white;
   overflow-y: scroll;
   position: relative;
+  @media (max-width: 1128px) {
+    width: calc(100vw - 100px);
+  }
+  @media (max-width: 968px) {
+    width: calc(100vw - 50px);
+  }
+  @media (max-width: 425px) {
+    width: calc(100vw - 20px);
+  }
 `;
 
 export const WrapModal = styled.div`
-  padding: 20px 65px;
+  padding: 20px 30px;
+  @media (max-width: 968px) {
+    padding: 20px 20px;
+  }
+  @media (max-width: 425px) {
+    padding: 10px 15px;
+  }
 `;
 export const StyledTitle = styled.p`
   text-align: center;
@@ -61,12 +77,16 @@ export const StyledCloseButton = styled.button`
   &:hover {
     background-color: #c48000;
   }
+  @media (max-width: 768px) {
+    right: 10px;
+    top: 10px;
+  }
   @media (max-width: 425px) {
     font-size: 12px;
     margin-bottom: 0;
     position: fixed;
-    right: 0px;
-    top: 14px;
+    right: 15px;
+    top: 10px;
     padding: 5px 5px;
   }
 `;
@@ -182,4 +202,9 @@ export const WrapSections = styled.div`
   @media (max-width: 915px) {
     flex-direction: column;
   }
+`;
+export const StyledListText = styled(StyledVisualBlockText)`
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
 `;

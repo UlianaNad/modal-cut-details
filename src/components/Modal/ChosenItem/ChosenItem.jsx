@@ -34,6 +34,7 @@ const ChosenItem = ({
   selected,
   toggleDetail,
   handleDeleteDetail,
+  showButton,
 }) => {
   const [scale, setScale] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
@@ -176,9 +177,9 @@ const ChosenItem = ({
               />
             </HiddenOnPhone>
           </WrapDetail>
-          {!myElIsVisible && (
+          {!myElIsVisible ? (
             <ModalButton onClick={toggleModal}>{t("cut")}</ModalButton>
-          )}
+          ) : null}
           {isOpen ? (
             <VisualModal memorized={memorized} close={toggleModal} />
           ) : null}

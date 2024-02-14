@@ -12,7 +12,7 @@ export const Example = styled.div`
     height: 360px;
   }
 
-  @media (max-width: 425px) {
+  @media (max-width: 426px) {
     width: 260px;
     height: 260px;
   }
@@ -34,7 +34,7 @@ export const Example = styled.div`
     transform: translateX(-50%);
     /* z-index: 1; */
 
-    @media (min-width: 425px) {
+    @media (min-width: 426px) {
       top: 20px;
       font-size: 15px;
     }
@@ -58,7 +58,7 @@ export const Example = styled.div`
     /* z-index: 1; */
     writing-mode: vertical-lr;
     text-orientation: mixed;
-    @media (min-width: 425px) {
+    @media (min-width: 426px) {
       left: 20px;
       font-size: 15px;
     }
@@ -97,7 +97,7 @@ export const ExampleItem = styled.div`
   transform: translateX(-50%) translateY(-50%)
     scale(${(props) => props.$scale || 1});
 
-  @media (min-width: 425px) {
+  @media (min-width: 426px) {
     width: ${(props) =>
       props.$width !== null && props.$width !== 0
         ? props.$width * props.$scale + "px"
@@ -122,7 +122,7 @@ export const LeftArrow = styled.div`
     margin: ${(props) =>
       props.$rotate ? "-10px 0px 146px -161px" : "16px 0px 0px 28px"};
   }
-  @media (max-width: 425px) {
+  @media (max-width: 426px) {
     margin: ${(props) =>
       props.$rotate ? "-9px 0px 190px -124px" : "12px 0px 0px 19px"};
   }
@@ -175,7 +175,7 @@ export const TopArrow = styled.div`
       top: ${(props) => (props.$rotate ? "0px" : "-9px")};
       left: ${(props) => (props.$rotate ? "-18px" : "-18px")};
     }
-    @media (max-width: 425px) {
+    @media (max-width: 426px) {
       top: ${(props) => (props.$rotate ? "-43px" : "-9px")};
       left: ${(props) => (props.$rotate ? "-105px" : "-18px")};
     }
@@ -192,7 +192,7 @@ export const TopArrow = styled.div`
       top: ${(props) => (props.$rotate ? "10px" : "0px")};
       left: ${(props) => (props.$rotate ? "-8px" : "-7px")};
     }
-    @media (max-width: 425px) {
+    @media (max-width: 426px) {
       top: ${(props) => (props.$rotate ? "-33px" : "0px")};
       left: ${(props) => (props.$rotate ? "-94px" : "-7px")};
     }

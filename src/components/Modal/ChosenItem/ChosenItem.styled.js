@@ -60,8 +60,8 @@ export const StyledItemName = styled.h1`
   }
 `;
 export const StyledVisualBlockText = styled(StyledItemName)`
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 `;
 export const HiddenOnPhone = styled.div`
   /* margin-top: 30px; */
@@ -120,14 +120,20 @@ export const WrapDetail = styled.div`
   display: ${(props) => (props.$detail === true ? "flex" : "block")};
   flex-direction: ${(props) =>
     props.$detail === true ? "row-reverse" : "column"};
-  justify-content: ${(props) =>
-    props.$detail === true ? "space-between" : ""};
+  justify-content: ${(props) => (props.$detail === true ? "space-around" : "")};
+  gap: 10px;
+  @media (max-width: 768px) {
+    flex-direction: column-reverse;
+  }
 `;
 export const InfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   margin-top: ${(props) => (props.$chosenItem === true ? "50px" : "35px")};
+  @media (max-width: 768px) {
+    margin-top: 10px;
+  }
 `;
 export const WrapToggleDiv = styled.div`
   display: flex;
@@ -156,6 +162,7 @@ export const WrapToggleDiv = styled.div`
 `;
 export const WrapList = styled.div``;
 export const StyledSection = styled.section`
+  gap: 10px;
   padding: ${(props) =>
     props.$detail === true
       ? props.$open
@@ -163,15 +170,35 @@ export const StyledSection = styled.section`
         : "10px 20px 10px"
       : "0"};
 
-  /* border-bottom: ${(props) =>
-    props.$detail === true ? "solid 1px green" : "0"};
-  border-left: ${(props) => (props.$detail === true ? "solid 1px green" : "0")};
-  border-right: ${(props) =>
-    props.$detail === true ? "solid 1px green" : "0"}; */
   border-bottom-left-radius: ${(props) =>
     props.$detail === true ? "10px" : "0"};
   border-bottom-right-radius: ${(props) =>
     props.$detail === true ? "10px" : "0"};
   box-shadow: ${(props) =>
     props.$detail === true ? "0px 3px 4px lightgrey" : "0"};
+
+  @media (max-width: 1128px) {
+    padding: ${(props) =>
+      props.$detail === true
+        ? props.$open
+          ? "10px 30px 25px"
+          : "10px 20px 10px"
+        : "0"};
+  }
+  @media (max-width: 968px) {
+    padding: ${(props) =>
+      props.$detail === true
+        ? props.$open
+          ? "10px 20px 20px"
+          : "10px 20px 10px"
+        : "0"};
+  }
+  @media (max-width: 425px) {
+    padding: ${(props) =>
+      props.$detail === true
+        ? props.$open
+          ? "10px 10px 10px"
+          : "10px 20px 10px"
+        : "0"};
+  }
 `;
