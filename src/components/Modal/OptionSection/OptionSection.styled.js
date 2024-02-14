@@ -75,7 +75,7 @@ export const StyledImg = styled.img`
   display: block;
   margin-left: 25px;
   width: 125px;
-  transform: rotate(90deg);
+  //transform: rotate(90deg);
   transform: ${(props) =>
     props.$patternDirection === "horizontal"
       ? "rotate(90deg)"

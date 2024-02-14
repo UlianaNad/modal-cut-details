@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import {
   PatternRotation,
@@ -40,8 +40,6 @@ const OptionSection = ({
   setEdgeBlock,
   patternDirection,
 }) => {
-  const [rotation, setRotation] = useState(90);
-
   const { t } = useTranslation("optionSection");
   const { dimensions } = product;
 
@@ -55,18 +53,10 @@ const OptionSection = ({
     setEdgeSide([]);
   };
 
-  const handleImageClick = (e) => {
-    const newRotation = rotation === 0 ? 90 : 0;
-    setRotation(newRotation);
-    e.target.style.transform = `rotate(${newRotation.toString()}deg)`;
-    if (rotation === 90) {
-      e.target.style.width = `90px`;
-      e.target.style.marginLeft = `0px`;
-    } else {
-      e.target.style.width = `125px`;
-      e.target.style.marginLeft = `25px`;
-    }
-    setPatternDirection(newRotation !== 0 ? "horizontal" : "vertical");
+  const handleImageClick = () => {
+    setPatternDirection(
+      patternDirection === "horizontal" ? "vertical" : "horizontal"
+    );
   };
 
   const handleInputWidth = (e) => {

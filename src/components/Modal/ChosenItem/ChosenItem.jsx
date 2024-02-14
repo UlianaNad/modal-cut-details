@@ -7,7 +7,6 @@ import {
   HiddenOnPhone,
   InfoWrapper,
   ModalButton,
-  StyledItemName,
   StyledOption,
   StyledSection,
   StyledSpan,
@@ -29,8 +28,6 @@ const ChosenItem = ({
   edgeSide,
   edgeWidth,
   possibleAmountOfPieces,
-  setOpenedDetail,
-  openedDetail,
   totalPrice,
   maxAmount,
   details,
@@ -81,7 +78,7 @@ const ChosenItem = ({
   return (
     <StyledSection
       $detail={details?.length > 0 ? true : false}
-      $open={openedDetail === true && selected === detail.id ? true : false}
+      $open={selected === detail.id ? true : false}
     >
       {details && (
         <WrapToggleDiv onClick={() => toggleDetail(detail.id)}>
@@ -141,6 +138,23 @@ const ChosenItem = ({
                     </StyledSpan>
                   </WrapInfo>
                 ) : null}
+                {details?.length > 0 && (
+                  <>
+                    <WrapInfo>
+                      <StyledOption>Напрям текстури:</StyledOption>
+
+                      <StyledSpan>
+                        {detail.patternDirection === "horizontal"
+                          ? "горизонтально"
+                          : "вертикально"}
+                      </StyledSpan>
+                    </WrapInfo>
+                    <WrapInfo>
+                      <StyledOption>Ваш коментар про порізку:</StyledOption>
+                      <StyledSpan>{detail.comment}</StyledSpan>
+                    </WrapInfo>
+                  </>
+                )}
               </WrapList>
               {details && (
                 <DeleteDetailButton

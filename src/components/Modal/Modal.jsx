@@ -5,12 +5,10 @@ import {
   StyledOverlay,
   StyledCloseButton,
   ModalHeader,
-  StyledItemName,
   WrapButtons,
   StyledButton,
   WrapDetail,
   WrapSections,
-  StyledSaveButton,
   WrapModal,
   StyledTitle,
   StyledAddDetailButton,
@@ -40,11 +38,8 @@ const Modal = ({ close, product }) => {
   const [customAmount, setCustomAmount] = useState(null);
   const [comment, setComment] = useState("");
   const [isSaved, setIsSaved] = useState(false);
-  // const { t } = useTranslation("detailPage");
   const [isBigWidth, setIsBigWidth] = useState(false);
   const [isBigHeight, setIsBigHeight] = useState(false);
-
-  const [openedDetail, setOpenedDetail] = useState(false);
   const [edgeBlock, setEdgeBlock] = useState(false);
 
   const clearState = () => {
@@ -120,17 +115,20 @@ const Modal = ({ close, product }) => {
 
   const toggleDetail = (i) => {
     if (selected === i) {
-      setOpenedDetail(true);
       return setSelected(null);
     }
     setSelected(i);
   };
-  const handleAddDetail = (data, ind) => {
+  const handleAddDetail = (data) => {
     if (width === null || height === null || customAmount === null) {
       toast.error(t("toast_error"));
       return;
     } else if (isBigHeight || isBigWidth) {
       toast.error(t("info_toast"));
+    } else if (edgeSide.length > 0 && edgeWidth === null) {
+      toast.error(t("edgeWidth_error"));
+    } else if (edgeSide.length === 0 && edgeWidth !== null) {
+      toast.error(t("edgeSide_error"));
     } else {
       setCountDetails((prev) => prev + 1);
       dispatch(addDetail(data));
@@ -207,8 +205,6 @@ const Modal = ({ close, product }) => {
                   customAmount={detail.customAmount}
                   details={dataDetails}
                   handleDeleteDetail={handleDeleteDetail}
-                  setOpenedDetail={setOpenedDetail}
-                  openedDetail={openedDetail}
                   selected={selected}
                   toggleDetail={toggleDetail}
                 />

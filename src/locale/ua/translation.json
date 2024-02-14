@@ -7,7 +7,9 @@
     "update_button": "Оновити",
     "save_button": "Зберегти",
     "toast_error": "Вкажіть розмір деталі і кількість!",
-    "info_toast": "Введіть менше значення!"
+    "info_toast": "Введіть менше значення!",
+    "edgeWidth_error": "Вкажіть ширину кромки!",
+    "edgeSide_error": "Вкажіть сторону кромки!"
   },
   "optionSection": {
     "dimensions": "Розміри деталі:",
