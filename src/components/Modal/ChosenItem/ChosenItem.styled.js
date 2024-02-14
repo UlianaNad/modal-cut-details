@@ -59,9 +59,12 @@ export const StyledItemName = styled.h1`
     font-size: 14px;
   }
 `;
-
+export const StyledVisualBlockText = styled(StyledItemName)`
+  margin-top: 20px;
+  margin-bottom: 20px;
+`;
 export const HiddenOnPhone = styled.div`
-  margin-top: 30px;
+  /* margin-top: 30px; */
   @media (max-width: 768px) {
     display: flex;
     align-items: center;
@@ -89,24 +92,18 @@ export const ModalButton = styled.button`
   }
 `;
 export const DeleteDetailButton = styled.button`
-  position: absolute;
-
-  right: 2px;
   display: inline-block;
   padding: 10px 20px;
-
   font-size: 15px;
   font-weight: bold;
-  line-height: 1.42857143;
+  line-height: 1.4;
   text-align: center;
-  white-space: nowrap;
   cursor: pointer;
   border-radius: 4px;
   color: #fff;
   border: 0;
   background-color: red;
-  overflow: hidden;
-  transition: 0.4s;
+  align-self: flex-end;
   text-transform: uppercase;
 
   &:hover {
@@ -119,26 +116,28 @@ export const DeleteDetailButton = styled.button`
   }
 `;
 export const WrapDetail = styled.div`
-  margin-top: 35px;
+  /* margin-top: 35px; */
   display: ${(props) => (props.$detail === true ? "flex" : "block")};
   flex-direction: ${(props) =>
     props.$detail === true ? "row-reverse" : "column"};
   justify-content: ${(props) =>
     props.$detail === true ? "space-between" : ""};
 `;
-
+export const InfoWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: ${(props) => (props.$chosenItem === true ? "50px" : "35px")};
+`;
 export const WrapToggleDiv = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #c48000;
   cursor: pointer;
-  /* margin-top: 20px; */
   color: #001a34;
   font-size: 18px;
   font-weight: 600;
   line-height: 1.4;
-  /* margin-bottom: 10px; */
 
   @media (max-width: 425px) {
     margin-top: 10px;
@@ -148,8 +147,31 @@ export const WrapToggleDiv = styled.div`
     transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
   }
   p {
+    margin-bottom: 5px;
+    margin-top: 5px;
     @media (max-width: 425px) {
       font-size: 14px;
     }
   }
+`;
+export const WrapList = styled.div``;
+export const StyledSection = styled.section`
+  padding: ${(props) =>
+    props.$detail === true
+      ? props.$open
+        ? "10px 50px 35px"
+        : "10px 20px 10px"
+      : "0"};
+
+  /* border-bottom: ${(props) =>
+    props.$detail === true ? "solid 1px green" : "0"};
+  border-left: ${(props) => (props.$detail === true ? "solid 1px green" : "0")};
+  border-right: ${(props) =>
+    props.$detail === true ? "solid 1px green" : "0"}; */
+  border-bottom-left-radius: ${(props) =>
+    props.$detail === true ? "10px" : "0"};
+  border-bottom-right-radius: ${(props) =>
+    props.$detail === true ? "10px" : "0"};
+  box-shadow: ${(props) =>
+    props.$detail === true ? "0px 3px 4px lightgrey" : "0"};
 `;

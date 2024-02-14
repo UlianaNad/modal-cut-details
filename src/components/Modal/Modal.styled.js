@@ -14,7 +14,7 @@ export const StyledOverlay = styled.div`
 `;
 
 export const StyledModal = styled.div`
-  width: calc(100vw - 100px);
+  width: calc(100vw - 150px);
   height: calc(100vh - 10px);
   background-color: white;
   overflow-y: scroll;
@@ -22,7 +22,7 @@ export const StyledModal = styled.div`
 `;
 
 export const WrapModal = styled.div`
-  padding: 20px 50px;
+  padding: 20px 65px;
 `;
 export const StyledTitle = styled.p`
   text-align: center;
@@ -30,7 +30,7 @@ export const StyledTitle = styled.p`
   text-transform: uppercase;
   font-weight: 600;
   font-size: 18px;
-  margin-top: 20px;
+  margin-top: 35px;
   margin-bottom: 0px;
   @media (max-width: 425px) {
     margin-top: 10px;

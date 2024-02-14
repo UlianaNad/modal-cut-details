@@ -115,7 +115,17 @@ const Modal = ({ close, product }) => {
   const clearForm = () => {
     document.getElementById("form").reset();
   };
-  const handleAddDetail = (data) => {
+
+  const [selected, setSelected] = useState(null);
+
+  const toggleDetail = (i) => {
+    if (selected === i) {
+      setOpenedDetail(true);
+      return setSelected(null);
+    }
+    setSelected(i);
+  };
+  const handleAddDetail = (data, ind) => {
     if (width === null || height === null || customAmount === null) {
       toast.error(t("toast_error"));
       return;
@@ -124,9 +134,7 @@ const Modal = ({ close, product }) => {
     } else {
       setCountDetails((prev) => prev + 1);
       dispatch(addDetail(data));
-      setOpenedDetail(false);
-      console.log(data);
-
+      setSelected(null);
       setIsSaved(true);
       setEdgeBlock((prev) => !prev);
       clearForm();
@@ -147,6 +155,7 @@ const Modal = ({ close, product }) => {
     dispatch(deleteDetail(id));
   };
   const handleSubmit = (data) => {
+    //add clean state
     dispatch(addDetail(data));
     close();
   };
@@ -154,14 +163,14 @@ const Modal = ({ close, product }) => {
   return (
     <StyledOverlay onClick={handleClickOutside}>
       <StyledModal>
-        <div>
+        {/* <div>
           <button data-lang="ua" onClick={() => i18n.changeLanguage("ua")}>
             ua
           </button>
           <button data-lang="ru" onClick={() => i18n.changeLanguage("ru")}>
             ru
           </button>
-        </div>
+        </div> */}
         <WrapModal>
           <ModalHeader>
             <StyledCloseButton onClick={handleClickCloseButton}>
@@ -177,30 +186,34 @@ const Modal = ({ close, product }) => {
               </svg>
             </StyledCloseButton>
           </ModalHeader>
-          {dataDetails.map((detail, i) => (
-            <ChosenItem
-              key={i}
-              i={i}
-              product={product}
-              detail={detail}
-              width={detail.width}
-              height={detail.height}
-              possibleAmountOfPieces={detail.possibleAmountOfPieces}
-              cutItemPrice={detail.cutItemPrice}
-              AmountOfCustomParticles={detail.AmountOfCustomParticles}
-              totalPrice={detail.totalPrice}
-              totalFit={detail.totalFit}
-              maxAmount={detail.maxAmount}
-              edgeSide={detail.edgeSide}
-              patternDirection={detail.patternDirection}
-              edgeWidth={detail.edgeWidth}
-              customAmount={detail.customAmount}
-              details={dataDetails}
-              handleDeleteDetail={handleDeleteDetail}
-              setOpenedDetail={setOpenedDetail}
-              openedDetail={openedDetail}
-            />
-          ))}
+          {dataDetails.length > 0
+            ? dataDetails?.map((detail, i) => (
+                <ChosenItem
+                  key={i}
+                  i={detail.id}
+                  product={product}
+                  detail={detail}
+                  width={detail.width}
+                  height={detail.height}
+                  possibleAmountOfPieces={detail.possibleAmountOfPieces}
+                  cutItemPrice={detail.cutItemPrice}
+                  AmountOfCustomParticles={detail.AmountOfCustomParticles}
+                  totalPrice={detail.totalPrice}
+                  totalFit={detail.totalFit}
+                  maxAmount={detail.maxAmount}
+                  edgeSide={detail.edgeSide}
+                  patternDirection={detail.patternDirection}
+                  edgeWidth={detail.edgeWidth}
+                  customAmount={detail.customAmount}
+                  details={dataDetails}
+                  handleDeleteDetail={handleDeleteDetail}
+                  setOpenedDetail={setOpenedDetail}
+                  openedDetail={openedDetail}
+                  selected={selected}
+                  toggleDetail={toggleDetail}
+                />
+              ))
+            : null}
           <WrapDetail>
             <StyledTitle>
               <span>Введіть параметри порізки для </span>

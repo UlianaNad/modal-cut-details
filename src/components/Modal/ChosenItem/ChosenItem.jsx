@@ -5,12 +5,16 @@ import { useInView } from "react-intersection-observer";
 import {
   DeleteDetailButton,
   HiddenOnPhone,
+  InfoWrapper,
   ModalButton,
   StyledItemName,
   StyledOption,
+  StyledSection,
   StyledSpan,
+  StyledVisualBlockText,
   WrapDetail,
   WrapInfo,
+  WrapList,
   WrapToggleDiv,
 } from "./ChosenItem.styled";
 import VisualModal from "./VisualModal/VisualModal";
@@ -26,10 +30,12 @@ const ChosenItem = ({
   edgeWidth,
   possibleAmountOfPieces,
   setOpenedDetail,
+  openedDetail,
   totalPrice,
   maxAmount,
   details,
-  i,
+  selected,
+  toggleDetail,
   handleDeleteDetail,
 }) => {
   const [scale, setScale] = useState(null);
@@ -38,7 +44,6 @@ const ChosenItem = ({
   const [memorized, setMemorized] = useState({});
   const { t } = useTranslation("chosenItem");
 
-  const [selected, setSelected] = useState(null);
   useEffect(() => {
     let scaleToFit;
 
@@ -73,72 +78,70 @@ const ChosenItem = ({
     setIsOpen((prev) => !prev);
   };
 
-  const toggleDetail = (i) => {
-    if (selected === i) {
-      setOpenedDetail(true);
-      return setSelected(null);
-    }
-    setSelected(i);
-    setOpenedDetail(false);
-  };
-  console.log(detail);
   return (
-    <section>
+    <StyledSection
+      $detail={details?.length > 0 ? true : false}
+      $open={openedDetail === true && selected === detail.id ? true : false}
+    >
       {details && (
-        <WrapToggleDiv onClick={() => toggleDetail(i)}>
+        <WrapToggleDiv onClick={() => toggleDetail(detail.id)}>
           <p>
             Деталь №{detail.count} {detail.width ? detail.width : 0} мм на{" "}
             {detail.height ? detail.height : 0} мм
           </p>
-          <span>{selected !== i ? "-" : "+"}</span>
+          <span>{selected === detail.id ? "-" : "+"}</span>
         </WrapToggleDiv>
       )}
-      {selected !== i ? (
+      {selected === detail.id ? (
         <>
           <WrapDetail $detail={details?.length > 0 ? true : false}>
-            <div>
-              <WrapInfo>
-                <StyledOption>{t("name")}</StyledOption>
-                <StyledSpan>
-                  {t("width")} {product.dimensions.width} мм {t("height")}{" "}
-                  {product.dimensions.height} мм
-                </StyledSpan>
-              </WrapInfo>
-
-              <WrapInfo>
-                <StyledOption>{t("thickness")}</StyledOption>
-                <StyledSpan>{product.dimensions.thickness} мм</StyledSpan>
-              </WrapInfo>
-
-              <WrapInfo>
-                <StyledOption>{t("price1")}</StyledOption>
-                <StyledSpan>
-                  {" "}
-                  {product.offers.price} {product.offers.priceCurrency}
-                </StyledSpan>
-              </WrapInfo>
-              <WrapInfo>
-                <StyledOption>{t("possibleAmountOfPieces")}</StyledOption>
-                <StyledSpan>
-                  {possibleAmountOfPieces ? possibleAmountOfPieces : 0} шт.
-                </StyledSpan>
-              </WrapInfo>
-
-              <WrapInfo>
-                <StyledOption>{t("totalPrice")}</StyledOption>
-                <StyledSpan>{totalPrice ? totalPrice : 0} грн.</StyledSpan>
-              </WrapInfo>
-              <WrapInfo>
-                <StyledOption>{t("maxAmount")}</StyledOption>
-                <StyledSpan>{maxAmount ? maxAmount : 0} шт.</StyledSpan>
-              </WrapInfo>
-              {edgeWidth ? (
+            <InfoWrapper $chosenItem={details?.length > 0 ? true : false}>
+              <WrapList>
                 <WrapInfo>
-                  <StyledOption>{t("edgeWidth")}</StyledOption>
-
-                  <StyledSpan>{edgeWidth !== null ? edgeWidth : 0}</StyledSpan>
+                  <StyledOption>{t("name")}</StyledOption>
+                  <StyledSpan>
+                    {t("width")} {product.dimensions.width} мм {t("height")}{" "}
+                    {product.dimensions.height} мм
+                  </StyledSpan>
                 </WrapInfo>
-              ) : null}
+
+                <WrapInfo>
+                  <StyledOption>{t("thickness")}</StyledOption>
+                  <StyledSpan>{product.dimensions.thickness} мм</StyledSpan>
+                </WrapInfo>
+
+                <WrapInfo>
+                  <StyledOption>{t("price1")}</StyledOption>
+                  <StyledSpan>
+                    {" "}
+                    {product.offers.price} {product.offers.priceCurrency}
+                  </StyledSpan>
+                </WrapInfo>
+                <WrapInfo>
+                  <StyledOption>{t("possibleAmountOfPieces")}</StyledOption>
+                  <StyledSpan>
+                    {possibleAmountOfPieces ? possibleAmountOfPieces : 0} шт.
+                  </StyledSpan>
+                </WrapInfo>
+
+                <WrapInfo>
+                  <StyledOption>{t("totalPrice")}</StyledOption>
+                  <StyledSpan>{totalPrice ? totalPrice : 0} грн.</StyledSpan>
+                </WrapInfo>
+                <WrapInfo>
+                  <StyledOption>{t("maxAmount")}</StyledOption>
+                  <StyledSpan>{maxAmount ? maxAmount : 0} шт.</StyledSpan>
+                </WrapInfo>
+                {edgeWidth ? (
+                  <WrapInfo>
+                    <StyledOption>{t("edgeWidth")}</StyledOption>
+
+                    <StyledSpan>
+                      {edgeWidth !== null ? edgeWidth : 0}
+                    </StyledSpan>
+                  </WrapInfo>
+                ) : null}
+              </WrapList>
               {details && (
                 <DeleteDetailButton
                   type="button"
@@ -147,10 +150,10 @@ const ChosenItem = ({
                   {t("deleteButton")}
                 </DeleteDetailButton>
               )}
-            </div>
+            </InfoWrapper>
 
             <HiddenOnPhone ref={myRef}>
-              <StyledItemName>{t("cut")}</StyledItemName>
+              <StyledVisualBlockText>{t("cut")}</StyledVisualBlockText>
               <ExampleComponent
                 width={width}
                 height={height}
@@ -167,7 +170,7 @@ const ChosenItem = ({
           ) : null}
         </>
       ) : null}
-    </section>
+    </StyledSection>
   );
 };
 
