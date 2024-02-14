@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import {
   StyledModal,
@@ -14,6 +14,14 @@ import {
   StyledAddDetailButton,
   StyledListText,
 } from "./Modal.styled";
+import {
+  Link,
+  Button,
+  Element,
+  Events,
+  animateScroll as scroll,
+  scrollSpy,
+} from "react-scroll";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -46,6 +54,27 @@ const Modal = ({ close, product }) => {
   const [isBigWidth, setIsBigWidth] = useState(false);
   const [isBigHeight, setIsBigHeight] = useState(false);
   const [edgeBlock, setEdgeBlock] = useState(false);
+
+  useEffect(() => {
+    // Registering the 'begin' event and logging it to the console when triggered.
+    Events.scrollEvent.register("begin", (to, StyledListText) => {
+      console.log("begin", to, StyledListText);
+    });
+
+    // Registering the 'end' event and logging it to the console when triggered.
+    Events.scrollEvent.register("end", (to, StyledListText) => {
+      console.log("end", to, StyledListText);
+    });
+
+    // Updating scrollSpy when the component mounts.
+    scrollSpy.update();
+
+    // Returning a cleanup function to remove the registered events when the component unmounts.
+    return () => {
+      Events.scrollEvent.remove("begin");
+      Events.scrollEvent.remove("end");
+    };
+  }, []);
 
   const clearState = () => {
     setEdgeSide([]);
@@ -143,6 +172,7 @@ const Modal = ({ close, product }) => {
       clearForm();
       clearState();
     }
+    scroll.scrollToTop();
   };
   const handleClickOutside = (e) => {
     if (e.target === e.currentTarget) {
