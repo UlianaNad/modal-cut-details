@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Example = styled.div`
-  /* margin-top: 15px; */
   width: 490px;
   height: 490px;
   background-color: rgb(0, 161, 82, 0.1);
