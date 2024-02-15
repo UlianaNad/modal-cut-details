@@ -178,6 +178,7 @@ const Modal = ({ close, product }) => {
           </button>
         </div>
         <WrapModal>
+          <div ref={ref}></div>
           <ModalHeader>
             <StyledCloseButton onClick={handleClickCloseButton}>
               <svg

@@ -42,6 +42,7 @@ const ChosenItem = ({
   const [memorized, setMemorized] = useState({});
   const { t } = useTranslation("chosenItem");
 
+  console.log(myElIsVisible);
   useEffect(() => {
     let scaleToFit;
 
