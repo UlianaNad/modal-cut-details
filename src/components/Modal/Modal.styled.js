@@ -16,7 +16,7 @@ export const StyledOverlay = styled.div`
 
 export const StyledModal = styled.div`
   width: calc(100vw - 150px);
-  height: calc(100vh - 1px);
+  height: calc(100vh - 50px);
   background-color: white;
   overflow-y: scroll;
   position: relative;
@@ -27,7 +27,8 @@ export const StyledModal = styled.div`
     width: calc(100vw - 50px);
   }
   @media (max-width: 425px) {
-    width: calc(100vw - 20px);
+    width: calc(100vw);
+    height: calc(100vh);
   }
 `;
 
