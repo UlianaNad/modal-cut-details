@@ -12,8 +12,10 @@ export const App = () => {
     const body = document.body;
     if (!isOpen) {
       body.classList.add("modal-open");
+      body.style.overflow = "hidden";
     } else {
       body.classList.remove("modal-open");
+      body.style.overflow = "";
     }
 
     setIsOpen((prev) => !prev);
