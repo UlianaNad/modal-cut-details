@@ -1,3 +1,4 @@
+import { type } from "@testing-library/user-event/dist/type";
 import styled from "styled-components";
 
 export const AppWrapper = styled.div`
@@ -13,6 +14,11 @@ export const AppWrapper = styled.div`
     padding: 0;
 
     list-style: none;
+  }
+  input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
   }
 `;
 

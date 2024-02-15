@@ -26,7 +26,6 @@ const EdgePreview = ({ setEdgeSide, edgeSide }) => {
   };
 
   const renderCheckbox = (name, label) => {
-    // Determine if the checkbox should be checked based on edgeSide
     const isChecked = edgeSide.includes(name);
     return (
       <>
