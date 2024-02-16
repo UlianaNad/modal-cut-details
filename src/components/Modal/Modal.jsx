@@ -219,6 +219,7 @@ const Modal = ({ close, product }) => {
                   handleDeleteDetail={handleDeleteDetail}
                   selected={selected}
                   toggleDetail={toggleDetail}
+                  showButton={false}
                 />
               ))
             : null}
@@ -238,7 +239,6 @@ const Modal = ({ close, product }) => {
                 edgeWidth={edgeWidth}
                 customAmount={customAmount}
                 detail={dataDetails}
-                showButton={true}
               />
               <OptionSection
                 product={product}

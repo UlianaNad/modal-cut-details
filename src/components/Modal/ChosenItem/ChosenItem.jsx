@@ -34,15 +34,15 @@ const ChosenItem = ({
   selected,
   toggleDetail,
   handleDeleteDetail,
-  showButton,
 }) => {
   const [scale, setScale] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
-  const { ref: myRef, inView: myElIsVisible } = useInView();
-  const [memorized, setMemorized] = useState({});
+  const { ref: myRef, inView: myElIsVisible, entry } = useInView();
+
   const { t } = useTranslation("chosenItem");
 
-  console.log(myElIsVisible);
+  const checkTop = entry?.boundingClientRect?.top < 0;
+
   useEffect(() => {
     let scaleToFit;
 
@@ -67,23 +67,19 @@ const ChosenItem = ({
     } else {
       section.classList.remove("modal-open");
     }
-    setMemorized({
-      width: width,
-      height: height,
-      scale: scale,
-      edgeSide: edgeSide,
-    });
 
     setIsOpen((prev) => !prev);
   };
-
+  const handleToggleDetail = (id) => {
+    toggleDetail(id);
+  };
   return (
     <StyledSection
       $detail={details?.length > 0 ? true : false}
       $open={selected === detail.id ? true : false}
     >
       {details && (
-        <WrapToggleDiv onClick={() => toggleDetail(detail.id)}>
+        <WrapToggleDiv onClick={() => handleToggleDetail(detail.id)}>
           <p>
             Деталь №{detail.count} {detail.width ? detail.width : 0} мм на{" "}
             {detail.height ? detail.height : 0} мм
@@ -152,7 +148,7 @@ const ChosenItem = ({
                       </StyledSpan>
                     </WrapInfo>
                     <WrapInfo>
-                      <StyledOption>Ваш коментар про порізку:</StyledOption>
+                      <StyledOption>{t("comment")}</StyledOption>
                       <StyledSpan>{detail.comment}</StyledSpan>
                     </WrapInfo>
                   </>
@@ -167,22 +163,39 @@ const ChosenItem = ({
                 </DeleteDetailButton>
               )}
             </InfoWrapper>
-
-            <HiddenOnPhone ref={myRef}>
-              <StyledVisualBlockText>{t("cut")}</StyledVisualBlockText>
-              <ExampleComponent
-                width={width}
-                height={height}
-                scale={scale}
-                edgeSide={edgeSide}
-              />
-            </HiddenOnPhone>
+            {details?.length > 0 ? (
+              <HiddenOnPhone>
+                <StyledVisualBlockText>{t("cut")}</StyledVisualBlockText>
+                <ExampleComponent
+                  width={width}
+                  height={height}
+                  scale={scale}
+                  edgeSide={edgeSide}
+                />
+              </HiddenOnPhone>
+            ) : (
+              <HiddenOnPhone ref={myRef}>
+                <StyledVisualBlockText>{t("cut")}</StyledVisualBlockText>
+                <ExampleComponent
+                  width={width}
+                  height={height}
+                  scale={scale}
+                  edgeSide={edgeSide}
+                />
+              </HiddenOnPhone>
+            )}
           </WrapDetail>
-          {!myElIsVisible ? (
+          {!myElIsVisible && checkTop ? (
             <ModalButton onClick={toggleModal}>{t("cut")}</ModalButton>
           ) : null}
           {isOpen ? (
-            <VisualModal memorized={memorized} close={toggleModal} />
+            <VisualModal
+              width={width}
+              height={height}
+              scale={scale}
+              edgeSide={edgeSide}
+              close={toggleModal}
+            />
           ) : null}
         </>
       ) : null}
