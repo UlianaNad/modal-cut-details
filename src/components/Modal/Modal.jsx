@@ -20,7 +20,12 @@ import "react-toastify/dist/ReactToastify.css";
 import { useTranslation } from "react-i18next";
 
 import { useDispatch, useSelector } from "react-redux";
-import { addDetail, deleteDetail, detailsData } from "../../redux/detailsSlice";
+import {
+  addDetail,
+  deleteDetail,
+  detailsData,
+  clearDetailsState,
+} from "../../redux/detailsSlice";
 import ChosenItem from "./ChosenItem/ChosenItem";
 import { nanoid } from "@reduxjs/toolkit";
 import OptionSection from "./OptionSection/OptionSection";
@@ -163,6 +168,15 @@ const Modal = ({ close, product }) => {
   const handleSubmit = (data) => {
     //add clean state
     dispatch(addDetail(data));
+
+    window.localStorage.setItem(
+      "details",
+      JSON.stringify([...dataDetails, data])
+    );
+    console.log(dataDetails);
+
+    clearState();
+    dispatch(clearDetailsState());
     close();
   };
 
@@ -275,7 +289,10 @@ const Modal = ({ close, product }) => {
             >
               {t("more_button")}
             </StyledAddDetailButton>
-            <StyledButton type="button" onClick={() => handleSubmit()}>
+            <StyledButton
+              type="button"
+              onClick={() => handleSubmit(detailToAdd)}
+            >
               {t("submit_button")}
             </StyledButton>
           </WrapButtons>

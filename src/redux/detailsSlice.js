@@ -20,10 +20,14 @@ export const detailsSlice = createSlice({
       }
       return state.filter((detail) => detail.id !== action.payload);
     },
+    clearDetailsState(state, action) {
+      return (state = []);
+    },
   },
 });
 
-export const { addDetail, deleteDetail } = detailsSlice.actions;
+export const { addDetail, deleteDetail, clearDetailsState } =
+  detailsSlice.actions;
 export const detailsReducer = detailsSlice.reducer;
 
 export const detailsData = (state) => state.details;
