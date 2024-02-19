@@ -5,6 +5,7 @@ import {
   LeftArrow,
   TopArrow,
 } from "./ExampleComponent.styled";
+import PropTypes from "prop-types";
 
 const ExampleComponent = ({ width, height, scale, edgeSide }) => {
   return (
@@ -28,4 +29,11 @@ const ExampleComponent = ({ width, height, scale, edgeSide }) => {
   );
 };
 
+ExampleComponent.propTypes = {
+  width: PropTypes.number,
+  height: PropTypes.number,
+  scale: PropTypes.number,
+  edgeSide: PropTypes.array,
+  close: PropTypes.func,
+};
 export default ExampleComponent;

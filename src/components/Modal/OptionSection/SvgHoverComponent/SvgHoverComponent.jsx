@@ -1,5 +1,6 @@
 import React from "react";
 import { StyledInfoSvg } from "./SvgHoverComponent.styled";
+import PropTypes from "prop-types";
 
 const SvgHoverComponent = ({ dimensions, edge, amount, rotation, comment }) => {
   return (
@@ -22,6 +23,14 @@ const SvgHoverComponent = ({ dimensions, edge, amount, rotation, comment }) => {
       </svg>
     </StyledInfoSvg>
   );
+};
+
+SvgHoverComponent.propTypes = {
+  dimensions: PropTypes.string,
+  edge: PropTypes.string,
+  amount: PropTypes.string,
+  rotation: PropTypes.string,
+  comment: PropTypes.string,
 };
 
 export default SvgHoverComponent;

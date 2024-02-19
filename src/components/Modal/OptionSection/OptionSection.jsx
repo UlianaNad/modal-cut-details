@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 import {
   PatternRotation,
   StyledBlockName,
@@ -66,7 +66,7 @@ const OptionSection = ({
       return;
     } else {
       setIsBigWidth(false);
-      setWidth(e.target.value);
+      setWidth(Number(e.target.value));
     }
   };
   const handleInputHeight = (e) => {
@@ -76,7 +76,7 @@ const OptionSection = ({
       return;
     } else {
       setIsBigHeight(false);
-      setHeight(e.target.value);
+      setHeight(Number(e.target.value));
     }
   };
 
@@ -204,4 +204,22 @@ const OptionSection = ({
   );
 };
 
+OptionSection.propTypes = {
+  product: PropTypes.object.isRequired,
+  setWidth: PropTypes.func,
+  setHeight: PropTypes.func,
+  setEdgeSide: PropTypes.func,
+  setPatternDirection: PropTypes.func,
+  setEdgeWidth: PropTypes.func,
+  setCustomAmount: PropTypes.func,
+  setComment: PropTypes.func,
+  isBigHeight: PropTypes.bool,
+  setIsBigHeight: PropTypes.func,
+  isBigWidth: PropTypes.bool,
+  setIsBigWidth: PropTypes.func,
+  edgeSide: PropTypes.array,
+  edgeBlock: PropTypes.bool,
+  setEdgeBlock: PropTypes.func,
+  patternDirection: PropTypes.oneOf(["horizontal", "vertical"]),
+};
 export default OptionSection;

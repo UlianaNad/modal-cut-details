@@ -14,7 +14,7 @@ import {
   StyledAddDetailButton,
   StyledListText,
 } from "./Modal.styled";
-
+import PropTypes from "prop-types";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useTranslation } from "react-i18next";
@@ -47,6 +47,7 @@ const Modal = ({ close, product }) => {
   const [isBigWidth, setIsBigWidth] = useState(false);
   const [isBigHeight, setIsBigHeight] = useState(false);
   const [edgeBlock, setEdgeBlock] = useState(false);
+  const [selected, setSelected] = useState(null);
 
   const clearState = () => {
     setEdgeSide([]);
@@ -56,6 +57,7 @@ const Modal = ({ close, product }) => {
     setEdgeWidth(null);
     setCustomAmount(null);
     setComment("");
+    setEdgeBlock(false);
   };
 
   const computedValues = () => {
@@ -117,8 +119,6 @@ const Modal = ({ close, product }) => {
     document.getElementById("form").reset();
   };
 
-  const [selected, setSelected] = useState(null);
-
   const toggleDetail = (i) => {
     if (selected === i) {
       return setSelected(null);
@@ -146,7 +146,7 @@ const Modal = ({ close, product }) => {
       dispatch(addDetail(data));
       setSelected(null);
       setIsSaved(true);
-      setEdgeBlock((prev) => !prev);
+
       clearForm();
       clearState();
       handleScrollUp();
@@ -162,18 +162,20 @@ const Modal = ({ close, product }) => {
   };
 
   const handleDeleteDetail = (id) => {
-    console.log(id);
     dispatch(deleteDetail(id));
   };
   const handleSubmit = (data) => {
-    //add clean state
     dispatch(addDetail(data));
+    console.log(data);
 
-    window.localStorage.setItem(
-      "details",
-      JSON.stringify([...dataDetails, data])
-    );
-    console.log(dataDetails);
+    if (width === null && height === null) {
+      window.localStorage.setItem("details", JSON.stringify([...dataDetails]));
+    } else {
+      window.localStorage.setItem(
+        "details",
+        JSON.stringify([...dataDetails, data])
+      );
+    }
 
     clearState();
     dispatch(clearDetailsState());
@@ -301,6 +303,11 @@ const Modal = ({ close, product }) => {
       </StyledModal>
     </StyledOverlay>
   );
+};
+
+Modal.propTypes = {
+  close: PropTypes.func.isRequired,
+  product: PropTypes.object.isRequired,
 };
 
 export default Modal;

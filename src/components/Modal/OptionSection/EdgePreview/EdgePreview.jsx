@@ -8,7 +8,7 @@ import {
   SpanLabel,
   StyledInputCheckbox,
 } from "./EdgePreview.styled";
-//import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { StyledBlockName } from "../OptionSection.styled";
 import { useTranslation } from "react-i18next";
 
@@ -90,4 +90,8 @@ const EdgePreview = ({ setEdgeSide, edgeSide }) => {
   );
 };
 
+EdgePreview.propTypes = {
+  setEdgeSide: PropTypes.func,
+  edgeSide: PropTypes.arrayOf(PropTypes.string),
+};
 export default EdgePreview;

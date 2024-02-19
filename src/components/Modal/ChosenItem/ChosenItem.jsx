@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
-
+import PropTypes from "prop-types";
 import {
   DeleteDetailButton,
   HiddenOnPhone,
@@ -139,7 +139,7 @@ const ChosenItem = ({
                 {details?.length > 0 && (
                   <>
                     <WrapInfo>
-                      <StyledOption>Напрям текстури:</StyledOption>
+                      <StyledOption>{t("patternDirection")}</StyledOption>
 
                       <StyledSpan>
                         {detail.patternDirection === "horizontal"
@@ -201,6 +201,21 @@ const ChosenItem = ({
       ) : null}
     </StyledSection>
   );
+};
+
+ChosenItem.propTypes = {
+  product: PropTypes.object.isRequired,
+  width: PropTypes.number,
+  height: PropTypes.number,
+  edgeSide: PropTypes.array,
+  edgeWidth: PropTypes.string,
+  possibleAmountOfPieces: PropTypes.number,
+  totalPrice: PropTypes.number,
+  maxAmount: PropTypes.number,
+  details: PropTypes.array,
+  selected: PropTypes.any,
+  toggleDetail: PropTypes.func,
+  handleDeleteDetail: PropTypes.func,
 };
 
 export default ChosenItem;
