@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { isIOS } from "react-device-detect";
 
 export const ChoiceWrap = styled.div`
   display: grid;
@@ -21,8 +22,7 @@ export const FieldChoiceTop = styled.div`
     display: block;
     border-radius: 20px;
     margin: 0 auto;
-    margin-top: -50px;
-
+    margin-top: ${isIOS ? "-10px" : "-50px"};
     @media (max-width: 425px) {
       margin-top: -40px;
     }
