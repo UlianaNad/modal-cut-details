@@ -5,6 +5,7 @@ import {
   FieldChoiceLeft,
   FieldChoiceRight,
   FieldChoiceTop,
+  SideLine,
   SpanLabel,
   StyledInputCheckbox,
 } from "./EdgePreview.styled";
@@ -35,7 +36,7 @@ const EdgePreview = ({ setEdgeSide, edgeSide }) => {
           type="checkbox"
           name={name}
           value={name}
-          checked={isChecked} // Set the checked attribute based on edgeSide
+          checked={isChecked}
         />
         <label htmlFor={`rounded_corners_${name}`}>
           <SpanLabel>{label}</SpanLabel>
@@ -62,6 +63,7 @@ const EdgePreview = ({ setEdgeSide, edgeSide }) => {
                 <React.Fragment key={name}>
                   {name === "top-choice" && (
                     <FieldChoiceTop>
+                      <SideLine></SideLine>
                       {renderCheckbox(name, label)}
                     </FieldChoiceTop>
                   )}
