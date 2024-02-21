@@ -27,8 +27,8 @@ export const StyledModal = styled.div`
     width: calc(100vw - 50px);
   }
   @media (max-width: 425px) {
-    width: calc(100vw + 10px);
-    height: calc(100vh + 10px);
+    width: 100vw;
+    height: 100vh;
   }
 `;
 
