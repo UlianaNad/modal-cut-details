@@ -112,12 +112,12 @@ const ChosenItem = ({
                     {product.offers.price} {product.offers.priceCurrency}
                   </StyledSpan>
                 </WrapInfo>
-                <WrapInfo>
+                {/* <WrapInfo>
                   <StyledOption>{t("possibleAmountOfPieces")}</StyledOption>
                   <StyledSpan>
                     {possibleAmountOfPieces ? possibleAmountOfPieces : 0} шт.
                   </StyledSpan>
-                </WrapInfo>
+                </WrapInfo> */}
 
                 <WrapInfo>
                   <StyledOption>{t("totalPrice")}</StyledOption>

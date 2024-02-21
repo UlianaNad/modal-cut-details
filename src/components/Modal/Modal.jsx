@@ -155,9 +155,13 @@ const Modal = ({ close, product }) => {
   const handleClickOutside = (e) => {
     if (e.target === e.currentTarget) {
       close();
+      clearState();
+      dispatch(clearDetailsState());
     }
   };
   const handleClickCloseButton = () => {
+    clearState();
+    dispatch(clearDetailsState());
     close();
   };
 
@@ -166,7 +170,6 @@ const Modal = ({ close, product }) => {
   };
   const handleSubmit = (data) => {
     dispatch(addDetail(data));
-    console.log(data);
 
     if (width === null && height === null) {
       window.localStorage.setItem("details", JSON.stringify([...dataDetails]));

@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const AppWrapper = styled.div`
-  height: 100hv;
   padding: 20px;
   font-family: Helvetica, Arial, sans-serif;
 
