@@ -90,9 +90,7 @@ const Modal = ({ close, product }) => {
     return {
       possibleAmountOfPieces,
       cutItemPrice,
-      AmountOfCustomParticles,
       totalPrice,
-      totalFit,
       maxAmount,
     };
   };

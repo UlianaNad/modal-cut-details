@@ -27,7 +27,6 @@ const ChosenItem = ({
   height,
   edgeSide,
   edgeWidth,
-  possibleAmountOfPieces,
   totalPrice,
   maxAmount,
   details,
@@ -112,13 +111,6 @@ const ChosenItem = ({
                     {product.offers.price} {product.offers.priceCurrency}
                   </StyledSpan>
                 </WrapInfo>
-                {/* <WrapInfo>
-                  <StyledOption>{t("possibleAmountOfPieces")}</StyledOption>
-                  <StyledSpan>
-                    {possibleAmountOfPieces ? possibleAmountOfPieces : 0} шт.
-                  </StyledSpan>
-                </WrapInfo> */}
-
                 <WrapInfo>
                   <StyledOption>{t("totalPrice")}</StyledOption>
                   <StyledSpan>{totalPrice ? totalPrice : 0} грн.</StyledSpan>
