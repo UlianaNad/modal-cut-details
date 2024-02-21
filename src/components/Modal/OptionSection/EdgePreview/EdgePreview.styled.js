@@ -28,22 +28,64 @@ export const SideLine = styled.div`
   background-color: #204b37;
   display: block;
   border-radius: 20px;
-  margin-left: 18px;
+  margin-left: ${(props) =>
+    props.$top === true
+      ? "18px"
+      : props.$left === true
+      ? "-10px"
+      : props.$right === true
+      ? "46px"
+      : props.$bottom === true
+      ? "18px"
+      : "0"};
   box-sizing: border-box;
-
+  transform: ${(props) =>
+    props.$left === true || props.$right === true ? "rotate(90deg)" : "none"};
+  margin-top: ${(props) =>
+    props.$top === true
+      ? "10px"
+      : props.$left === true
+      ? "37px"
+      : props.$right === true
+      ? "37px"
+      : props.$bottom === true
+      ? "65px"
+      : "0"};
   @media (max-width: 425px) {
-    /* margin-top: -40px; */
+    width: 35px;
+    height: 3px;
+    margin-top: ${(props) =>
+      props.$top === true
+        ? "5px"
+        : props.$left === true
+        ? "28px"
+        : props.$right === true
+        ? "28px"
+        : props.$bottom === true
+        ? "52px"
+        : "0"};
+    margin-left: ${(props) =>
+      props.$top === true
+        ? "13px"
+        : props.$left === true
+        ? "-10px"
+        : props.$right === true
+        ? "35px"
+        : props.$bottom === true
+        ? "13px"
+        : "0"};
   }
 `;
 
 export const FieldChoiceLeft = styled.div`
+  position: relative;
   width: 80px;
   height: 80px;
   background-color: #fff;
   border-radius: 6px;
   grid-column-start: 1;
   border: 1px solid #c2c2c2;
-  &::after {
+  /* &::after {
     content: "";
     width: 4px;
     height: 45px;
@@ -57,13 +99,14 @@ export const FieldChoiceLeft = styled.div`
       margin-top: -37px;
       margin-left: 5px;
     }
-  }
+  } */
   @media (max-width: 425px) {
     width: 60px;
     height: 60px;
   }
 `;
 export const FieldChoiceBottom = styled.div`
+  position: relative;
   width: 80px;
   height: 80px;
   background-color: #fff;
@@ -71,7 +114,7 @@ export const FieldChoiceBottom = styled.div`
   grid-column-start: 2;
   grid-row-start: 3;
   border: 1px solid #c2c2c2;
-  &::after {
+  /* &::after {
     content: "";
     width: 45px;
     height: 4px;
@@ -83,13 +126,14 @@ export const FieldChoiceBottom = styled.div`
     @media (max-width: 425px) {
       margin-top: 8px;
     }
-  }
+  } */
   @media (max-width: 425px) {
     width: 60px;
     height: 60px;
   }
 `;
 export const FieldChoiceRight = styled.div`
+  position: relative;
   width: 80px;
   height: 80px;
   background-color: #fff;
@@ -97,7 +141,7 @@ export const FieldChoiceRight = styled.div`
   grid-column-start: 3;
   grid-row-start: 2;
   border: 1px solid #c2c2c2;
-  &::after {
+  /* &::after {
     content: "";
     width: 4px;
     height: 45px;
@@ -111,7 +155,7 @@ export const FieldChoiceRight = styled.div`
       margin-top: -37px;
       margin-right: 4px;
     }
-  }
+  } */
   @media (max-width: 425px) {
     width: 60px;
     height: 60px;

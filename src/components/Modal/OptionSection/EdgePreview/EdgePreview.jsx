@@ -63,22 +63,25 @@ const EdgePreview = ({ setEdgeSide, edgeSide }) => {
                 <React.Fragment key={name}>
                   {name === "top-choice" && (
                     <FieldChoiceTop>
-                      <SideLine></SideLine>
+                      <SideLine $top={true}></SideLine>
                       {renderCheckbox(name, label)}
                     </FieldChoiceTop>
                   )}
                   {name === "left-choice" && (
                     <FieldChoiceLeft>
+                      <SideLine $left={true}></SideLine>
                       {renderCheckbox(name, label)}
                     </FieldChoiceLeft>
                   )}
                   {name === "choice-bottom" && (
                     <FieldChoiceBottom>
+                      <SideLine $bottom={true}></SideLine>
                       {renderCheckbox(name, label)}
                     </FieldChoiceBottom>
                   )}
                   {name === "choice-right" && (
                     <FieldChoiceRight>
+                      <SideLine $right={true}></SideLine>
                       {renderCheckbox(name, label)}
                     </FieldChoiceRight>
                   )}
