@@ -20,7 +20,6 @@ import { useTranslation } from "react-i18next";
 import EdgePreview from "./EdgePreview/EdgePreview";
 import SvgHoverComponent from "./SvgHoverComponent/SvgHoverComponent";
 import { toast } from "react-toastify";
-import { hoverContent } from "../../data/hoverData";
 
 const OptionSection = ({
   product,
@@ -87,7 +86,7 @@ const OptionSection = ({
           <Wrapper>
             <StyledBlockName>
               {t("dimensions")}
-              <SvgHoverComponent dimensions={hoverContent.dimensions} />
+              <SvgHoverComponent dimensions={t("dimensions-hover")} />
             </StyledBlockName>
             <StyledDimensions>
               <StyledLi>
@@ -123,7 +122,7 @@ const OptionSection = ({
             </StyledDimensions>
             <StyledBlockName>
               {t("totalAmount")}
-              <SvgHoverComponent amount={hoverContent.totalAmount} />
+              <SvgHoverComponent amount={t("totalAmount-hover")} />
             </StyledBlockName>
             <StyledInput
               $half={true}
@@ -136,7 +135,7 @@ const OptionSection = ({
           <div className="edge-block">
             <StyledBlockName>
               Кромка:
-              <SvgHoverComponent edge={hoverContent.edge} />
+              <SvgHoverComponent edge={t("edge-hover")} />
             </StyledBlockName>
             <WrapperButtons>
               <StyledButton
@@ -176,7 +175,7 @@ const OptionSection = ({
           <PatternRotation>
             <StyledBlockName>
               {t("rotation")}
-              <SvgHoverComponent rotation={hoverContent.rotation} />
+              <SvgHoverComponent rotation={t("rotation-hover")} />
             </StyledBlockName>
             <StyledImg
               $patternDirection={patternDirection}
@@ -188,7 +187,7 @@ const OptionSection = ({
           <div>
             <StyledBlockName>
               {t("comment")}
-              <SvgHoverComponent comment={hoverContent.comment} />
+              <SvgHoverComponent comment={t("comment-hover")} />
             </StyledBlockName>
             <StyledTextArea
               onChange={(e) => setComment(e.target.value)}

@@ -168,21 +168,30 @@ const Modal = ({ close, product }) => {
   const handleDeleteDetail = (id) => {
     dispatch(deleteDetail(id));
   };
+
   const handleSubmit = (data) => {
-    dispatch(addDetail(data));
-
-    if (width === null && height === null) {
-      window.localStorage.setItem("details", JSON.stringify([...dataDetails]));
+    if (dataDetails.length === 0) {
+      toast.error(t("no_details"));
+      return;
     } else {
-      window.localStorage.setItem(
-        "details",
-        JSON.stringify([...dataDetails, data])
-      );
-    }
+      dispatch(addDetail(data));
 
-    clearState();
-    dispatch(clearDetailsState());
-    close();
+      if (width === null && height === null) {
+        window.localStorage.setItem(
+          "details",
+          JSON.stringify([...dataDetails])
+        );
+      } else {
+        window.localStorage.setItem(
+          "details",
+          JSON.stringify([...dataDetails, data])
+        );
+      }
+
+      clearState();
+      dispatch(clearDetailsState());
+      close();
+    }
   };
 
   return (
