@@ -31,7 +31,7 @@ export const Example = styled.div`
     font-size: 12px;
     font-weight: 600;
     transform: translateX(-50%);
-    /* z-index: 1; */
+    z-index: 1;
 
     @media (min-width: 426px) {
       top: 20px;
@@ -45,6 +45,7 @@ export const Example = styled.div`
       props.$height !== null && props.$height !== 0
         ? props.$height + "mm"
         : "350mm"}";
+
     position: absolute;
     display: flex;
     justify-content: center;
@@ -54,7 +55,7 @@ export const Example = styled.div`
     top: 50%;
     left: 15px;
     transform: translateY(-50%);
-    /* z-index: 1; */
+    z-index: 1;
     writing-mode: vertical-lr;
     text-orientation: mixed;
     @media (min-width: 426px) {
@@ -145,7 +146,7 @@ export const LeftArrow = styled.div`
     width: 15px;
     height: 15px;
     transform: rotate(45deg);
-    top: 0px;
+    top: 1px;
     left: -8px;
   }
 `;
@@ -168,14 +169,14 @@ export const TopArrow = styled.div`
     height: 15px;
     transform: rotate(45deg);
 
-    top: ${(props) => (props.$rotate ? "55px" : "-9px")};
+    top: ${(props) => (props.$rotate ? "55px" : "-10px")};
     left: ${(props) => (props.$rotate ? "97px" : "-18px")};
     @media (max-width: 1150px) {
-      top: ${(props) => (props.$rotate ? "0px" : "-9px")};
+      top: ${(props) => (props.$rotate ? "0px" : "-10px")};
       left: ${(props) => (props.$rotate ? "-18px" : "-18px")};
     }
     @media (max-width: 426px) {
-      top: ${(props) => (props.$rotate ? "-43px" : "-9px")};
+      top: ${(props) => (props.$rotate ? "-43px" : "-10px")};
       left: ${(props) => (props.$rotate ? "-105px" : "-18px")};
     }
   }
@@ -185,14 +186,14 @@ export const TopArrow = styled.div`
     width: 15px;
     height: 15px;
     transform: rotate(-45deg);
-    top: ${(props) => (props.$rotate ? "66px" : "0px")};
+    top: ${(props) => (props.$rotate ? "66px" : "1px")};
     left: ${(props) => (props.$rotate ? "108px" : "-7px")};
     @media (max-width: 1150px) {
-      top: ${(props) => (props.$rotate ? "10px" : "0px")};
+      top: ${(props) => (props.$rotate ? "10px" : "1px")};
       left: ${(props) => (props.$rotate ? "-8px" : "-7px")};
     }
     @media (max-width: 426px) {
-      top: ${(props) => (props.$rotate ? "-33px" : "0px")};
+      top: ${(props) => (props.$rotate ? "-33px" : "1px")};
       left: ${(props) => (props.$rotate ? "-94px" : "-7px")};
     }
   }

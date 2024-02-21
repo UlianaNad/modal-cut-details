@@ -85,21 +85,7 @@ export const FieldChoiceLeft = styled.div`
   border-radius: 6px;
   grid-column-start: 1;
   border: 1px solid #c2c2c2;
-  /* &::after {
-    content: "";
-    width: 4px;
-    height: 45px;
-    background-color: #204b37;
-    display: block;
-    border-radius: 20px;
-    margin: 0 auto;
-    margin-top: -43px;
-    margin-left: 10px;
-    @media (max-width: 425px) {
-      margin-top: -37px;
-      margin-left: 5px;
-    }
-  } */
+ 
   @media (max-width: 425px) {
     width: 60px;
     height: 60px;
@@ -114,19 +100,7 @@ export const FieldChoiceBottom = styled.div`
   grid-column-start: 2;
   grid-row-start: 3;
   border: 1px solid #c2c2c2;
-  /* &::after {
-    content: "";
-    width: 45px;
-    height: 4px;
-    background-color: #204b37;
-    display: block;
-    border-radius: 20px;
-    margin: 0 auto;
-    margin-top: 8px;
-    @media (max-width: 425px) {
-      margin-top: 8px;
-    }
-  } */
+
   @media (max-width: 425px) {
     width: 60px;
     height: 60px;
@@ -141,21 +115,7 @@ export const FieldChoiceRight = styled.div`
   grid-column-start: 3;
   grid-row-start: 2;
   border: 1px solid #c2c2c2;
-  /* &::after {
-    content: "";
-    width: 4px;
-    height: 45px;
-    background-color: #204b37;
-    display: block;
-    border-radius: 20px;
-    margin: 0 auto;
-    margin-top: -43px;
-    margin-right: 10px;
-    @media (max-width: 425px) {
-      margin-top: -37px;
-      margin-right: 4px;
-    }
-  } */
+  
   @media (max-width: 425px) {
     width: 60px;
     height: 60px;

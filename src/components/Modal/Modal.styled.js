@@ -5,8 +5,8 @@ export const StyledOverlay = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  /* width: 100vw;
-  height: 100vh; */
+  width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,8 +27,8 @@ export const StyledModal = styled.div`
     width: calc(100vw - 50px);
   }
   @media (max-width: 425px) {
-    width: calc(100vw);
-    height: calc(100vh);
+    width: calc(100vw - 10px);
+    height: calc(100vh - 10px);
   }
 `;
 
