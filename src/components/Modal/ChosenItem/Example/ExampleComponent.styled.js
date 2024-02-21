@@ -176,7 +176,7 @@ export const TopArrow = styled.div`
       left: ${(props) => (props.$rotate ? "-18px" : "-18px")};
     }
     @media (max-width: 426px) {
-      top: ${(props) => (props.$rotate ? "-43px" : "-10px")};
+      top: ${(props) => (props.$rotate ? "-43px" : "-9px")};
       left: ${(props) => (props.$rotate ? "-105px" : "-18px")};
     }
   }
