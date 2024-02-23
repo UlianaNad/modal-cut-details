@@ -12,6 +12,7 @@ export const StyledOverlay = styled.div`
   align-items: center;
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 1200;
+  height: -webkit-fill-available;
 `;
 
 export const StyledModal = styled.div`
