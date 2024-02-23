@@ -16,30 +16,30 @@ export const StyledOverlay = styled.div`
 `;
 
 export const StyledModal = styled.div`
-  width: calc(100vw - 150px);
-  height: calc(100vh - 50px);
+  width: 100vw;
+  height: 100vh;
   background-color: white;
   overflow-y: scroll;
   position: relative;
-  @media (max-width: 1128px) {
-    width: calc(100vw - 100px);
-  }
-  @media (max-width: 968px) {
-    width: calc(100vw - 50px);
-  }
-  @media (max-width: 425px) {
-    width: 100vw;
-    height: 100vh;
-  }
-`;
+  //padding: 20px 30px;
 
-export const WrapModal = styled.div`
-  /* padding: 20px 30px; */
-  @media (max-width: 968px) {
+  /* @media (max-width: 968px) {
     padding: 20px 20px;
   }
   @media (max-width: 425px) {
-    padding: 10px 15px;
+    /* width: 100vw;
+    height: 100vh; */
+  /* padding: 10px 15px;
+  } */
+`;
+
+export const WrapModal = styled.div`
+  padding: 0px 30px 30px 30px;
+  @media (max-width: 968px) {
+    /* padding: 20px 20px; */
+  }
+  @media (max-width: 425px) {
+    padding: 0px 20px 20px 20px;
   }
 `;
 export const StyledTitle = styled.p`
@@ -52,7 +52,6 @@ export const StyledTitle = styled.p`
   margin-bottom: 0px;
   @media (max-width: 425px) {
     margin-top: 10px;
-    /* margin-bottom: 0; */
     font-size: 14px;
   }
   span {
@@ -61,8 +60,8 @@ export const StyledTitle = styled.p`
 `;
 export const StyledCloseButton = styled.button`
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 35px;
+  right: 15px;
   display: flex;
   padding: 4px 5px;
   cursor: pointer;
