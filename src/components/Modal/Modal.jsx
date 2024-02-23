@@ -125,7 +125,9 @@ const Modal = ({ close, product }) => {
   };
 
   const handleScrollUp = () => {
-    document.querySelector(".scrollTo").scrollIntoView();
+    document.querySelector(".scrollTo").scrollIntoView({
+      behavior: "smooth",
+    });
   };
 
   const handleAddDetail = (data) => {
