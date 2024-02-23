@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useState } from "react";
 import {
   StyledModal,
@@ -48,6 +48,7 @@ const Modal = ({ close, product }) => {
   const [isBigHeight, setIsBigHeight] = useState(false);
   const [edgeBlock, setEdgeBlock] = useState(false);
   const [selected, setSelected] = useState(null);
+  const ref = useRef(null);
 
   const clearState = () => {
     setEdgeSide([]);
@@ -59,6 +60,12 @@ const Modal = ({ close, product }) => {
     setComment("");
     setEdgeBlock(false);
   };
+
+  useEffect(() => {
+    if (isSaved) {
+      handleScrollUp();
+    }
+  }, [isSaved]);
 
   const computedValues = () => {
     const horizontalFit =
@@ -124,7 +131,6 @@ const Modal = ({ close, product }) => {
     setSelected(i);
   };
 
-  const ref = useRef(null);
   const handleScrollUp = () => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
   };
@@ -204,9 +210,8 @@ const Modal = ({ close, product }) => {
           </button>
         </div>
         <WrapModal>
-          <div ref={ref}></div>
           <ModalHeader>
-            <StyledCloseButton onClick={handleClickCloseButton}>
+            <StyledCloseButton ref={ref} onClick={handleClickCloseButton}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 x="0px"
