@@ -129,9 +129,10 @@ const Modal = ({ close, product }) => {
   };
 
   const handleAddDetail = (data) => {
-    if (width === null || height === null || customAmount === null) {
-      toast.error(t("toast_error"));
-      return;
+    if (width === null || height === null) {
+      toast.error(t("toast_error_size"));
+    } else if (customAmount === null) {
+      toast.error(t("toast_error_amount"));
     } else if (isBigHeight || isBigWidth) {
       toast.error(t("info_toast"));
     } else if (edgeSide.length > 0 && edgeWidth === null) {

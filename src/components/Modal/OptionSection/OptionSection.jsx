@@ -79,6 +79,15 @@ const OptionSection = ({
     }
   };
 
+  const handleAmountInput = (e) => {
+    const amount = Number(e.target.value);
+    console.log(amount);
+    if (amount <= 0) {
+      toast.info(t("amount_info"));
+    } else {
+      setCustomAmount(amount);
+    }
+  };
   return (
     <WrapOptions>
       <div className="modal-window">
@@ -126,7 +135,7 @@ const OptionSection = ({
             </StyledBlockName>
             <StyledInput
               $half={true}
-              onChange={(e) => setCustomAmount(e.target.value)}
+              onChange={handleAmountInput}
               type="number"
               name="total-amount"
               placeholder={"шт."}
