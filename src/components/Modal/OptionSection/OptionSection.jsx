@@ -81,10 +81,10 @@ const OptionSection = ({
 
   const handleAmountInput = (e) => {
     const amount = Number(e.target.value);
-    console.log(amount);
+
     if (amount <= 0) {
       toast.info(t("amount_info"));
-    } else {
+    } else if (amount > 0) {
       setCustomAmount(amount);
     }
   };

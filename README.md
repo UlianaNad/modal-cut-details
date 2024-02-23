@@ -17,7 +17,7 @@
 - patternDirection - напрям текстури
 - possibleAmountOfPieces - кількість деталей з порізки 1 листа
 - totalPrice - загальна вартість листів для порізки
-- maxAmount - загальна кількість листів порізки
+- AmountOfCustomParticles - загальна кількість листів порізки
 
 ## Used technologies
 

@@ -92,6 +92,7 @@ const Modal = ({ close, product }) => {
       cutItemPrice,
       totalPrice,
       maxAmount,
+      AmountOfCustomParticles,
     };
   };
 
@@ -191,7 +192,7 @@ const Modal = ({ close, product }) => {
       close();
     }
   };
-
+  console.log(customAmount);
   return (
     <StyledOverlay onClick={handleClickOutside}>
       <StyledModal>
@@ -259,12 +260,15 @@ const Modal = ({ close, product }) => {
                 product={product}
                 width={width}
                 height={height}
-                computedValues={computedValues}
                 edgeSide={edgeSide}
                 patternDirection={patternDirection}
                 edgeWidth={edgeWidth}
                 customAmount={customAmount}
                 detail={dataDetails}
+                AmountOfCustomParticles={
+                  computedValues().AmountOfCustomParticles
+                }
+                totalPrice={computedValues().totalPrice}
               />
               <OptionSection
                 product={product}

@@ -28,7 +28,7 @@ const ChosenItem = ({
   edgeSide,
   edgeWidth,
   totalPrice,
-  maxAmount,
+  AmountOfCustomParticles,
   details,
   selected,
   toggleDetail,
@@ -72,6 +72,7 @@ const ChosenItem = ({
   const handleToggleDetail = (id) => {
     toggleDetail(id);
   };
+
   return (
     <StyledSection
       $detail={details?.length > 0 ? true : false}
@@ -117,7 +118,9 @@ const ChosenItem = ({
                 </WrapInfo>
                 <WrapInfo>
                   <StyledOption>{t("maxAmount")}</StyledOption>
-                  <StyledSpan>{maxAmount ? maxAmount : 0} шт.</StyledSpan>
+                  <StyledSpan>
+                    {AmountOfCustomParticles ? AmountOfCustomParticles : 0} шт.
+                  </StyledSpan>
                 </WrapInfo>
                 {edgeWidth ? (
                   <WrapInfo>
