@@ -21,23 +21,11 @@ export const StyledModal = styled.div`
   background-color: white;
   overflow-y: scroll;
   position: relative;
-  /* height: -webkit-fill-available; */
-  //padding: 20px 30px;
-
-  /* @media (max-width: 968px) {
-    padding: 20px 20px;
-  }
-  @media (max-width: 425px) {
-    /* width: 100vw;
-    height: 100vh; */
-  /* padding: 10px 15px;
-  } */
 `;
 
 export const WrapModal = styled.div`
   padding: 0px 30px 30px 30px;
   @media (max-width: 968px) {
-    /* padding: 20px 20px; */
   }
   @media (max-width: 425px) {
     padding: 0px 20px 75px 20px;

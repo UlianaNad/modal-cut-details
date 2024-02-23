@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import { useState } from "react";
 import {
   StyledModal,
@@ -48,7 +48,6 @@ const Modal = ({ close, product }) => {
   const [isBigHeight, setIsBigHeight] = useState(false);
   const [edgeBlock, setEdgeBlock] = useState(false);
   const [selected, setSelected] = useState(null);
-  const ref = useRef(null);
 
   const clearState = () => {
     setEdgeSide([]);
@@ -126,7 +125,7 @@ const Modal = ({ close, product }) => {
   };
 
   const handleScrollUp = () => {
-    ref.current?.scrollIntoView({ behavior: "smooth" });
+    document.querySelector(".scrollTo").scrollIntoView();
   };
 
   const handleAddDetail = (data) => {
@@ -204,7 +203,7 @@ const Modal = ({ close, product }) => {
           </button>
         </div>
         <WrapModal>
-          <div ref={ref}></div>
+          <div className="scrollTo"></div>
           <ModalHeader>
             <StyledCloseButton onClick={handleClickCloseButton}>
               <svg
