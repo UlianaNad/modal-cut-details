@@ -40,7 +40,7 @@ export const WrapModal = styled.div`
     /* padding: 20px 20px; */
   }
   @media (max-width: 425px) {
-    padding: 0px 20px 65px 20px;
+    padding: 0px 20px 75px 20px;
   }
 `;
 export const StyledTitle = styled.p`

@@ -125,7 +125,6 @@ const Modal = ({ close, product }) => {
     setSelected(i);
   };
 
-  console.log(ref);
   const handleScrollUp = () => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
   };
