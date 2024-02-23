@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import { useState } from "react";
 import {
   StyledModal,
@@ -60,12 +60,6 @@ const Modal = ({ close, product }) => {
     setComment("");
     setEdgeBlock(false);
   };
-
-  useEffect(() => {
-    if (isSaved) {
-      handleScrollUp();
-    }
-  }, [isSaved]);
 
   const computedValues = () => {
     const horizontalFit =
@@ -131,6 +125,7 @@ const Modal = ({ close, product }) => {
     setSelected(i);
   };
 
+  console.log(ref);
   const handleScrollUp = () => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
   };
@@ -226,7 +221,7 @@ const Modal = ({ close, product }) => {
             </StyledCloseButton>
           </ModalHeader>
           {dataDetails.length > 0 && (
-            <StyledListText ref={ref}>{t("list")}</StyledListText>
+            <StyledListText>{t("list")}</StyledListText>
           )}
           {dataDetails.length > 0
             ? dataDetails?.map((detail, i) => (
