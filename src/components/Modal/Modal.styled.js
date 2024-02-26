@@ -5,8 +5,8 @@ export const StyledOverlay = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  /* width: 100vw;
+  height: 100vh; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,7 +27,7 @@ export const WrapModal = styled.div`
   @media (max-width: 968px) {
   }
   @media (max-width: 425px) {
-    padding: 0px 20px 85px 20px;
+    padding: 0px 20px 35px 20px;
   }
 `;
 export const StyledTitle = styled.p`

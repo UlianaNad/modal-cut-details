@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const AppWrapper = styled.div`
   padding: 20px;
   font-family: Helvetica, Arial, sans-serif;
-  height: 100vh;
+  /* height: 100vh; */
   ul,
   li,
   p,
