@@ -192,7 +192,7 @@ const Modal = ({ close, product }) => {
       close();
     }
   };
-  console.log(customAmount);
+
   return (
     <StyledOverlay onClick={handleClickOutside}>
       <StyledModal>

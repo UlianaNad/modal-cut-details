@@ -12,7 +12,6 @@ export const StyledOverlay = styled.div`
   align-items: center;
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 1200;
-  /* height: -webkit-fill-available; */
 `;
 
 export const StyledModal = styled.div`
@@ -28,7 +27,7 @@ export const WrapModal = styled.div`
   @media (max-width: 968px) {
   }
   @media (max-width: 425px) {
-    padding: 0px 20px 75px 20px;
+    padding: 0px 20px 85px 20px;
   }
 `;
 export const StyledTitle = styled.p`

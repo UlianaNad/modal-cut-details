@@ -112,6 +112,14 @@ const ChosenItem = ({
                     {product.offers.price} {product.offers.priceCurrency}
                   </StyledSpan>
                 </WrapInfo>
+                {details?.length > 0 ? (
+                  <WrapInfo>
+                    <StyledOption>{t("customAmount")}</StyledOption>
+                    <StyledSpan>
+                      {detail?.customAmount ? detail?.customAmount : 0} шт.
+                    </StyledSpan>
+                  </WrapInfo>
+                ) : null}
                 <WrapInfo>
                   <StyledOption>{t("totalPrice")}</StyledOption>
                   <StyledSpan>{totalPrice ? totalPrice : 0} грн.</StyledSpan>
