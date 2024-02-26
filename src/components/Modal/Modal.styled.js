@@ -5,8 +5,8 @@ export const StyledOverlay = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  /* width: 100vw;
-  height: 100vh; */
+  width: 100lvw;
+  height: 100lvh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,8 +15,8 @@ export const StyledOverlay = styled.div`
 `;
 
 export const StyledModal = styled.div`
-  width: 100vw;
-  height: 100vh;
+  width: 100lvw;
+  height: 100lvh;
   background-color: white;
   overflow-y: scroll;
   position: relative;
