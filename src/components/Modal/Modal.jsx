@@ -195,7 +195,7 @@ const Modal = ({ close, product }) => {
 
   return (
     <StyledOverlay onClick={handleClickOutside}>
-      <StyledModal>
+      <StyledModal $height={window.innerHeight}>
         <div>
           <button data-lang="ua" onClick={() => i18n.changeLanguage("ua")}>
             ua
