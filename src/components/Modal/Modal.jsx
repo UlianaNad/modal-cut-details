@@ -60,6 +60,11 @@ const Modal = ({ close, product }) => {
     setEdgeBlock(false);
   };
 
+  function multiplyAndRound(num1, num2) {
+    var product = num1 * num2;
+    var roundedProduct = Math.round(product * 100) / 100;
+    return roundedProduct;
+  }
   const computedValues = () => {
     const horizontalFit =
       width === null ? 0 : Math.floor(product?.dimensions?.width / width);
@@ -84,7 +89,7 @@ const Modal = ({ close, product }) => {
       : 0;
     const totalPrice =
       customAmount && AmountOfCustomParticles > 0
-        ? Math.round(product?.offers.price * AmountOfCustomParticles)
+        ? multiplyAndRound(product?.offers.price, AmountOfCustomParticles)
         : null;
 
     return {
