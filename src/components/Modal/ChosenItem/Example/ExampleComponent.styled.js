@@ -22,7 +22,7 @@ export const WidthText = styled.div`
   display: flex;
   justify-content: center;
   top: 15px;
-  left: 47%;
+  left: 43%;
   color: rgb(0, 161, 82);
   font-size: 12px;
   font-weight: 600;
