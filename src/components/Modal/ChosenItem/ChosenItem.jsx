@@ -44,20 +44,43 @@ const ChosenItem = ({
 
   useEffect(() => {
     let scaleToFit;
-
-    if (width < 500 && height < 500) {
-      scaleToFit = 0.6;
-    } else if (width >= 500 && width < 1600 && height >= 500 && height < 1600) {
-      scaleToFit = 0.4;
+    if (width <= 350 && height <= 350) {
+      scaleToFit = 0.83;
     } else if (
-      (width >= 1600 || width < 2700) &&
-      (height >= 1600 || height < 2700)
+      (width <= 350 || width <= 700) &&
+      (height <= 350 || height <= 700)
     ) {
-      scaleToFit = 0.3;
+      scaleToFit = 0.67;
+    } else if (
+      (width >= 700 && width <= 1000 && height >= 700 && height <= 1000) ||
+      (height >= 700 && height <= 1000 && width >= 700 && width <= 1000)
+    ) {
+      scaleToFit = 0.45;
+    } else if (
+      (width >= 1000 && width <= 1600 && height >= 1000 && height <= 1600) ||
+      (height >= 1000 && height <= 1600 && width >= 1000 && width <= 1600)
+    ) {
+      scaleToFit = 0.42;
+    } else if (
+      (width <= 1000 &&
+        (height >= 1600 || height <= product.dimensions.height)) ||
+      (width <= 1600 && (height >= 1000 || height <= product.dimensions.width))
+    ) {
+      scaleToFit = 0.32;
+    } else if (
+      (width < 1000 && (height > 1600 || height < 2500)) ||
+      (height < 1000 && (width > 1600 || width < 2500))
+    ) {
+      scaleToFit = 0.36;
+    } else if (
+      (width >= 1600 && width <= product.dimensions.width) ||
+      (height >= 1600 && height <= product.dimensions.height)
+    ) {
+      scaleToFit = 0.33;
     }
 
     setScale(scaleToFit);
-  }, [width, height]);
+  }, [width, height, product]);
 
   const toggleModal = () => {
     const section = document.querySelector("section");

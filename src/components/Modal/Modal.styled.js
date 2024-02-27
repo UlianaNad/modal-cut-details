@@ -27,7 +27,7 @@ export const WrapModal = styled.div`
   @media (max-width: 968px) {
   }
   @media (max-width: 425px) {
-    padding: 0px 20px 35px 20px;
+    padding: 0px 20px 2px 20px;
   }
 `;
 export const StyledTitle = styled.p`

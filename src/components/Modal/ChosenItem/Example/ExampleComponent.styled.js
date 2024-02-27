@@ -69,11 +69,11 @@ export const ExampleItem = styled.div`
   width: ${(props) =>
     props.$width !== null && props.$width !== 0
       ? props.$width * props.$scale + "px"
-      : "250px"};
+      : 250 * props.$scale + "px"};
   height: ${(props) =>
     props.$height !== null && props.$height !== 0
       ? props.$height * props.$scale + "px"
-      : "250px"};
+      : 250 * props.$scale + "px"};
   background-color: ${(props) => (props.$edgeside ? "transparent" : "white")};
   border-top: ${(props) =>
     props.$edgeside === "top-choice"
@@ -101,11 +101,11 @@ export const ExampleItem = styled.div`
     width: ${(props) =>
       props.$width !== null && props.$width !== 0
         ? props.$width * props.$scale + "px"
-        : "350px"};
+        : 350 * props.$scale + "px"};
     height: ${(props) =>
       props.$height !== null && props.$height !== 0
         ? props.$height * props.$scale + "px"
-        : "350px"};
+        : 350 * props.$scale + "px"};
   }
 `;
 export const LeftArrow = styled.div`
