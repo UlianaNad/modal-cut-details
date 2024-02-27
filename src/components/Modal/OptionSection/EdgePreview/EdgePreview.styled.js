@@ -85,7 +85,7 @@ export const FieldChoiceLeft = styled.div`
   border-radius: 6px;
   grid-column-start: 1;
   border: 1px solid #c2c2c2;
- 
+
   @media (max-width: 425px) {
     width: 60px;
     height: 60px;
@@ -115,7 +115,7 @@ export const FieldChoiceRight = styled.div`
   grid-column-start: 3;
   grid-row-start: 2;
   border: 1px solid #c2c2c2;
-  
+
   @media (max-width: 425px) {
     width: 60px;
     height: 60px;

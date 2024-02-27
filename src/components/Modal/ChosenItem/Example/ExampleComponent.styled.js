@@ -64,20 +64,20 @@ export const ExampleItem = styled.div`
   background-color: ${(props) => (props.$edgeside ? "transparent" : "white")};
   border-top: ${(props) =>
     props.$edgeside === "top-choice"
-      ? "10px solid rgb(0,161,82)"
-      : "1px solid rgb(0,161,82, 0.5)"};
+      ? "5px solid rgb(0,161,82)"
+      : "0px solid rgb(0,161,82, 0.5)"};
   border-bottom: ${(props) =>
     props.$edgeside === "choice-bottom"
-      ? "10px solid rgb(0,161,82)"
-      : "1px solid rgb(0,161,82, 0.5)"};
+      ? "5px solid rgb(0,161,82)"
+      : "0px solid rgb(0,161,82, 0.5)"};
   border-left: ${(props) =>
     props.$edgeside === "left-choice"
-      ? "10px solid rgb(0,161,82)"
-      : "1px solid rgb(0,161,82, 0.5)"};
+      ? "5px solid rgb(0,161,82)"
+      : "0px solid rgb(0,161,82, 0.5)"};
   border-right: ${(props) =>
     props.$edgeside === "choice-right"
-      ? "10px solid rgb(0,161,82)"
-      : "1px solid rgb(0,161,82, 0.5)"};
+      ? "5px solid rgb(0,161,82)"
+      : "0px solid rgb(0,161,82, 0.5)"};
   position: absolute;
   top: 50%;
   left: 50%;
