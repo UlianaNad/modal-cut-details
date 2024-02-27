@@ -19,6 +19,7 @@ import {
 import VisualModal from "./VisualModal/VisualModal";
 import ExampleComponent from "./Example/ExampleComponent";
 import { useTranslation } from "react-i18next";
+import { useMediaQuery } from "react-responsive";
 
 const ChosenItem = ({
   product,
@@ -41,32 +42,49 @@ const ChosenItem = ({
   const { t } = useTranslation("chosenItem");
 
   const checkTop = entry?.boundingClientRect?.top < 0;
+  const isMobileScreen = useMediaQuery({ query: "(max-width: 440px)" });
 
   useEffect(() => {
     let scaleToFit;
     if (width <= 350 && height <= 350) {
-      scaleToFit = 0.83;
+      if (isMobileScreen) {
+        scaleToFit = 0.7;
+      } else {
+        scaleToFit = 0.83;
+      }
     } else if (
       (width <= 350 || width <= 700) &&
       (height <= 350 || height <= 700)
     ) {
-      scaleToFit = 0.67;
+      if (isMobileScreen) {
+        scaleToFit = 0.57;
+      } else {
+        scaleToFit = 0.67;
+      }
     } else if (
       (width >= 700 && width <= 1000 && height >= 700 && height <= 1000) ||
       (height >= 700 && height <= 1000 && width >= 700 && width <= 1000)
     ) {
-      scaleToFit = 0.45;
+      scaleToFit = 0.44;
     } else if (
       (width >= 1000 && width <= 1600 && height >= 1000 && height <= 1600) ||
       (height >= 1000 && height <= 1600 && width >= 1000 && width <= 1600)
     ) {
-      scaleToFit = 0.42;
+      if (isMobileScreen) {
+        scaleToFit = 0.36;
+      } else {
+        scaleToFit = 0.42;
+      }
     } else if (
       (width <= 1000 &&
         (height >= 1600 || height <= product.dimensions.height)) ||
       (width <= 1600 && (height >= 1000 || height <= product.dimensions.width))
     ) {
-      scaleToFit = 0.32;
+      if (isMobileScreen) {
+        scaleToFit = 0.28;
+      } else {
+        scaleToFit = 0.322;
+      }
     } else if (
       (width < 1000 && (height > 1600 || height < 2500)) ||
       (height < 1000 && (width > 1600 || width < 2500))
@@ -76,12 +94,22 @@ const ChosenItem = ({
       (width >= 1600 && width <= product.dimensions.width) ||
       (height >= 1600 && height <= product.dimensions.height)
     ) {
-      scaleToFit = 0.33;
+      if (isMobileScreen) {
+        scaleToFit = 0.24;
+      } else {
+        scaleToFit = 0.33;
+      }
+    } else if (width >= 2600 || height >= 2600) {
+      if (isMobileScreen) {
+        scaleToFit = 0.23;
+      } else {
+        scaleToFit = 0.33;
+      }
     }
 
     setScale(scaleToFit);
-  }, [width, height, product]);
-
+  }, [width, height, product, isMobileScreen]);
+  console.log(scale);
   const toggleModal = () => {
     const section = document.querySelector("section");
     if (!isOpen) {
