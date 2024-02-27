@@ -15,57 +15,44 @@ export const Example = styled.div`
     width: 260px;
     height: 260px;
   }
+`;
 
-  /* Horizontal line */
-  &::before {
-    content: "${(props) =>
-      props.$width !== null && props.$width !== 0
-        ? props.$width + "mm"
-        : "350mm"}";
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    top: 15px;
-    left: 50%;
-    color: rgb(0, 161, 82);
-    font-size: 12px;
-    font-weight: 600;
-    transform: translateX(-50%);
-    z-index: 1;
+export const WidthText = styled.div`
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  top: 15px;
+  left: 47%;
+  color: rgb(0, 161, 82);
+  font-size: 12px;
+  font-weight: 600;
+  z-index: 1;
 
-    @media (min-width: 426px) {
-      top: 20px;
-      font-size: 15px;
-    }
+  @media (min-width: 440px) {
+    top: 20px;
+    font-size: 15px;
   }
+`;
+export const HeightText = styled.div`
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  top: 47%;
+  left: 2px;
+  color: rgb(0, 161, 82);
+  font-size: 12px;
+  font-weight: 600;
+  transform: rotate(90deg);
+  z-index: 1;
 
-  /* Vertical line */
-  &::after {
-    content: "${(props) =>
-      props.$height !== null && props.$height !== 0
-        ? props.$height + "mm"
-        : "350mm"}";
-
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    color: rgb(0, 161, 82);
-    font-weight: 600;
-    font-size: 12px;
-    top: 50%;
-    left: 15px;
-    transform: translateY(-50%);
-    z-index: 1;
-    writing-mode: vertical-lr;
-    text-orientation: mixed;
-    @media (min-width: 426px) {
-      left: 20px;
-      font-size: 15px;
-    }
+  @media (min-width: 440px) {
+    left: 5px;
+    font-size: 15px;
   }
 `;
 
 export const ExampleItem = styled.div`
+  position: relative;
   width: ${(props) =>
     props.$width !== null && props.$width !== 0
       ? props.$width * props.$scale + "px"

@@ -4,12 +4,16 @@ import {
   ExampleItem,
   LeftArrow,
   TopArrow,
+  WidthText,
+  HeightText,
 } from "./ExampleComponent.styled";
 import PropTypes from "prop-types";
 
 const ExampleComponent = ({ width, height, scale, edgeSide }) => {
   return (
     <Example $width={width} $height={height} key={scale}>
+      <WidthText $width={width}>{width ? width : 350}мм</WidthText>
+      <HeightText $height={height}>{height ? height : 350}мм</HeightText>
       <LeftArrow></LeftArrow>
       <TopArrow></TopArrow>
       <LeftArrow $rotate={true}></LeftArrow>
