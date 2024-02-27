@@ -6,7 +6,7 @@ export const StyledOverlay = styled.div`
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: 100svh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,8 +16,7 @@ export const StyledOverlay = styled.div`
 
 export const StyledModal = styled.div`
   width: 100vw;
-
-  height: ${(props) => (props.$height ? props.$height + "px" : null)};
+  height: 100svh;
   background-color: white;
   overflow-y: scroll;
   position: relative;
